@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8051618950637944346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8051618950637944347}
+  - component: {fileID: 8051618950637944295}
+  - component: {fileID: 8051618950637944294}
+  - component: {fileID: 8051618950637944293}
+  - component: {fileID: -3836244983010388799}
+  m_Layer: 5
+  m_Name: VideoPlayer
+  m_TagString: VideoPlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8051618950637944347
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051618950637944346}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.16, y: 1, z: 1.21}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.99}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!33 &8051618950637944295
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051618950637944346}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8051618950637944294
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051618950637944346}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7ea73ef8cdcb8894d894c63c2f6e4c8a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8051618950637944293
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051618950637944346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-3836244983010388799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051618950637944346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f705853358883624fb071753dcad19b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomVid: {fileID: 0}
+  CirclesVid: {fileID: 32900000, guid: 56ac462ca9a7cec4e83bb1bb4c4447e8, type: 3}
+  SeasonsKitaVid: {fileID: 32900000, guid: 5a27b050dd1189b4083c9afbfd39f8d4, type: 3}
+  SeasonsVid: {fileID: 32900000, guid: 506bce91fa6103345a844e3aee7940c4, type: 3}
+  MillionDaysVid: {fileID: 32900000, guid: 5ea49f1eddc13d142bb6a07517cd94a2, type: 3}
+  MeYouVid: {fileID: 32900000, guid: 4fc217271494bf245aaa8672baf32ac2, type: 3}
+  BrokenGlassVid: {fileID: 32900000, guid: a96dceb9ce493d64284fa6e60a81b84c, type: 3}
+  NevadaVid: {fileID: 32900000, guid: ffea4aaee5e099043b05d92644d65fe1, type: 3}
+  StayAlignedVid: {fileID: 32900000, guid: dcaf8e58fb5a6a54db381817d8707e96, type: 3}
+  XOVid: {fileID: 32900000, guid: 77941009a2632a4448465bfd3fbfeb81, type: 3}
+  RandomTexture: {fileID: 0}
+  CirclesTexture: {fileID: 8400000, guid: 0a3045c0b15fa044999dd92d90a0f7f8, type: 2}
+  SeasonsKitaTexture: {fileID: 8400000, guid: b619ad9f8073f3e4dace3abbd47576da, type: 2}
+  SeasonsTexture: {fileID: 8400000, guid: 39d78c65549d1c0438293de0914964ac, type: 2}
+  MillionDaysTexture: {fileID: 8400000, guid: e71356915c4eeea4b880e384678022b0, type: 2}
+  MeYouTexture: {fileID: 8400000, guid: ea347cc8c38acb84ca9373e09840898e, type: 2}
+  BrokenGlassTexture: {fileID: 8400000, guid: e39889c60cb95614abd0c853c0fe07ff, type: 2}
+  NevadaTexture: {fileID: 8400000, guid: d28d66f4af2780a4b95fec689df97872, type: 2}
+  StayAlignedTexture: {fileID: 8400000, guid: ee22b2adf6490af41a7b021b001437cf, type: 2}
+  XOTexture: {fileID: 8400000, guid: 1a40f27bd73079749a9720039565460c, type: 2}
+  player: {fileID: 0}
