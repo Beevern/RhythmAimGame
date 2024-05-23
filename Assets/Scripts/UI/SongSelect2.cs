@@ -29,7 +29,7 @@ public class SongSelect2 : MonoBehaviour
     //Other UI
     public TextMeshProUGUI songName;
     public TMP_Dropdown sortDrop;
-    public InputField searchBar;
+    public TMP_InputField searchBar;
     //GameObjects
     public GameObject dropDownObj;
     public GameObject searchObj;
@@ -64,12 +64,12 @@ public class SongSelect2 : MonoBehaviour
         right.GetComponent<Button>().onClick.AddListener(goRight);
         left.GetComponent<Button>().onClick.AddListener(goLeft);
         sortDrop = dropDownObj.GetComponent<TMP_Dropdown>();
-        searchBar = searchObj.GetComponent<InputField>();
+        searchBar = searchObj.GetComponent<TMP_InputField>();
         sort(sortDrop);
         sortDrop.onValueChanged.AddListener(delegate { sort(sortDrop); });
-
+        //searchBar.onValueChanged.AddListener(delegate {  search(); });
         //Initializing Dictionaries
-        
+
         songImages.Add("Broken Glass by SABAI", BrokenGlassI);
         songImages.Add("Circles by EDEN", CirclesI);
         songImages.Add("Dreams Pt II by Lost Sky and Sara Skinner", DreamsPt2I);
@@ -130,6 +130,24 @@ public class SongSelect2 : MonoBehaviour
         image.GetComponent<Image>().sprite = songImages[songNames[current]];
         songName.text = songNames[current];
         theSong = songNames[current];
+    }
+    void search()
+    {
+        List<string> results = new List<string>();
+        for (int i = 0;i<songNames.Length;i++)
+        {
+            if (songNames[i].IndexOf(searchBar.text)==-1)
+            {
+                results.Add(songNames[i]);
+            }
+        }
+        songNames = new string[results.Count];
+        for (int i = 0;i<results.Count;i++)
+        {
+            songNames[i] = results[i];
+            Debug.Log(songNames[i]);
+        }
+        
     }
     void sort(TMP_Dropdown drop)
     {
