@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6250846900448392462}
   - component: {fileID: 7618518199580956613}
   - component: {fileID: 3858470652795073191}
-  - component: {fileID: 5428259161080599250}
+  - component: {fileID: 5741122560669592378}
   m_Layer: 5
   m_Name: Counter
   m_TagString: Counter
@@ -29,9 +29,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.51, y: 0.07, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5428259161080599250
+--- !u!114 &5741122560669592378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,9 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8976918982265888757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d4d43f2aaedb3459c7e092412feb80, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0bc7a9e60f55a489de93c3ff46fef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notePrefab: {fileID: 2411401586737143622, guid: b0925dbd2c184ff49a8a153b308d704b, type: 3}
-  targetPrefab: {fileID: 8942850787531334807, guid: 9118a21562e64414698b2f4c6ada2beb, type: 3}
-  noteObj: {fileID: 0}
+  targetPrefab: {fileID: 0}
+  notiPri: {fileID: 2100000, guid: 4b1381fa0ae6471408ba8df4c86d06d0, type: 2}
+  noti: {fileID: 2100000, guid: 98c87abc84d31084babdeb198310369b, type: 2}
+  destroyTimer: 3

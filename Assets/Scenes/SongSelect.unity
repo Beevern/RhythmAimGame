@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2414,20 +2414,20 @@ MonoBehaviour:
   right: {fileID: 1440127352}
   left: {fileID: 2074226423}
   image: {fileID: 2079170013}
-  RandomI: {fileID: 21300000, guid: 4b8801491bf047841af18f53b4c03a9d, type: 3}
-  CirclesI: {fileID: 21300000, guid: ba2a7ca2df01e154d9b4b01368475069, type: 3}
-  SeasonsKitaI: {fileID: 21300000, guid: 8bae1604c58ac594086a7f4940107e18, type: 3}
-  SeasonsI: {fileID: 21300000, guid: 8bae1604c58ac594086a7f4940107e18, type: 3}
-  MillionDaysI: {fileID: 21300000, guid: 67b63b1f7eb775e45a09163d29dbc4ce, type: 3}
-  MeYouI: {fileID: 21300000, guid: ff6996a005a6307489092d641b606cca, type: 3}
-  BrokenGlassI: {fileID: 21300000, guid: 8d99e6696f7d18346905b62575368181, type: 3}
-  NevadaI: {fileID: 21300000, guid: d83887755aabb0444b796bad33569af1, type: 3}
-  StayAlignedI: {fileID: 21300000, guid: 1d021230aac5f764283940d633006078, type: 3}
-  XOI: {fileID: 21300000, guid: d5620ea1670fd2347ba3cc6ada5206f1, type: 3}
-  WhereWeStartedI: {fileID: 21300000, guid: 485833a26bacd91438ee3888eb7fa592, type: 3}
-  DreamsPt2I: {fileID: 21300000, guid: ab56b39a06e91ef439573d21f84fea7d, type: 3}
-  LoveIsGoneI: {fileID: 21300000, guid: beca514374c6ee24789dbeb332ddf261, type: 3}
-  ThePhoenixI: {fileID: 21300000, guid: b77c6f1f94557394b83d77f59b6395e2, type: 3}
+  RandomI: {fileID: 21300000, guid: 0c191e03ecdf1cc4eb4e502e4635754b, type: 3}
+  CirclesI: {fileID: 21300000, guid: e1d773a053bbf9e4f892f0c63a96f6c0, type: 3}
+  SeasonsKitaI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
+  SeasonsI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
+  MillionDaysI: {fileID: 21300000, guid: aed43997772776d4ca485c507092b414, type: 3}
+  MeYouI: {fileID: 21300000, guid: c139d60f54f0444468bd7da2ed62638a, type: 3}
+  BrokenGlassI: {fileID: 21300000, guid: 98509390e4faec54dbc36ca814aa594b, type: 3}
+  NevadaI: {fileID: 21300000, guid: a1f3b3e9748d1f64f9bf1957a1d7c5c3, type: 3}
+  StayAlignedI: {fileID: 21300000, guid: eef3ca8cd6c626646aea27f8774059fb, type: 3}
+  XOI: {fileID: 21300000, guid: 1c61f82dc310dc744954fc6fd922e314, type: 3}
+  WhereWeStartedI: {fileID: 21300000, guid: b3de440bcd802c747bfa596d42c00105, type: 3}
+  DreamsPt2I: {fileID: 21300000, guid: 6a7bbfc469b5e0246b87c53f3d5cc147, type: 3}
+  LoveIsGoneI: {fileID: 21300000, guid: 69c0d77f4bc6267499cfb2818fe72639, type: 3}
+  ThePhoenixI: {fileID: 21300000, guid: 2f2213522a4113e498a82d7aa35eec68, type: 3}
   songName: {fileID: 1801858123}
   sortDrop: {fileID: 0}
   searchBar: {fileID: 0}

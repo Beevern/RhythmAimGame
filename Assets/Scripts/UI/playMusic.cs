@@ -54,6 +54,7 @@ public class playMusic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.00f);
         //Initiallizing dictionaries
+        //For some reason, taking songNames from SongSelect2 doesn't work, but does in Spawner script
         string[] songNames = {"Circles by EDEN", "Seasons by Rival and Cadmium Piano Cover by Kita Sora", "Seasons by Rival and Cadmium Futuristik and Whogaux Remix",
         "Million Days by SABAI", "Me Plus You by SABAI", "Broken Glass by SABAI", "Nevada by Vicetone", "How to Stay Aligned by Cearul", "XO by EDEN",
         "Where We Started by Lost Sky and Jex", "Dreams Pt II by Lost Sky and Sara Skinner", "Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", "The Phoenix by Fall Out Boys"};
@@ -67,13 +68,13 @@ public class playMusic : MonoBehaviour
         songText.Clear();
         songVid.Clear();
         /*
-        for (int i = 0;i<songNames.Length;i++)
+        for (int i = 0;i<SongSelect2.songNames.Length;i++)
         {
-            songText.Add(songNames[i], textures[i]);
-            songVid.Add(songNames[i], videos[i]);
+            songText.Add(SongSelect2.songNames[i], textures[i]);
+            songVid.Add(SongSelect2.songNames[i], videos[i]);
         }
         */
-        // For some reason, a for loop to add key/values doesn't work, perhaps cuz im adding in different orders in different scripts?
+        
         songVid.Add("Broken Glass by SABAI", BrokenGlassVid);
         songVid.Add("Circles by EDEN", CirclesVid);
         songVid.Add("Dreams Pt II by Lost Sky and Sara Skinner", DreamsPt2Vid);
@@ -87,7 +88,6 @@ public class playMusic : MonoBehaviour
         songVid.Add("The Phoenix by Fall Out Boys", ThePhoenixVid);
         songVid.Add("Where We Started by Lost Sky and Jex", WhereWeStartedVid);
         songVid.Add("XO by EDEN", XOVid);
-
         songText.Add("Broken Glass by SABAI", BrokenGlassTexture);
         songText.Add("Circles by EDEN", CirclesTexture);
         songText.Add("Dreams Pt II by Lost Sky and Sara Skinner", DreamsPt2Texture);
