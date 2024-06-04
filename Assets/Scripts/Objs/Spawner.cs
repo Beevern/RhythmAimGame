@@ -30,17 +30,33 @@ public class Spawner : MonoBehaviour
         canvasTrans = GameObject.FindGameObjectWithTag("CrosshairUI").GetComponent<Transform>();
         //spawnPos = new Vector3(Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), 0.0f);
         StartCoroutine(start());
-        for (int i = 0; i < SongSelect2.allSongs.Length; i++)
-        {
-            songTimes.Add(SongSelect2.allSongs[i], SongSelect2.times[i]);
-        }
+        
+        
     }
     IEnumerator start()
     {
         yield return new WaitForSeconds(0.00f);
         StartCoroutine(countdown());
         songTimes.Clear();
-        
+        /*
+        for (int i = 0;i<SongSelect2.allSongs.Length;i++)
+        {
+            songTimes.Add(SongSelect2.allSongs[i], SongSelect2.times[i]);
+        }
+        */
+        songTimes.Add("Circles by EDEN", SongSelect2.times[0]);
+        songTimes.Add("Seasons by Rival and Cadmium Piano Cover by Kita Sora", SongSelect2.times[1]);
+        songTimes.Add("Seasons by Rival and Cadmium Futuristik and Whogaux Remix", SongSelect2.times[2]);
+        songTimes.Add("Million Days by SABAI", SongSelect2.times[3]);
+        songTimes.Add("Me Plus You by SABAI", SongSelect2.times[4]);
+        songTimes.Add("Broken Glass by SABAI", SongSelect2.times[5]);
+        songTimes.Add("Nevada by Vicetonel", SongSelect2.times[6]);
+        songTimes.Add("How to Stay Aligned by Cearul", SongSelect2.times[7]);
+        songTimes.Add("XO by EDEN", SongSelect2.times[8]);
+        songTimes.Add("Where We Started by Lost Sky and Jex", SongSelect2.times[9]);
+        songTimes.Add("Dreams Pt II by Lost Sky and Sara Skinner", SongSelect2.times[10]);
+        songTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.times[11]);
+        songTimes.Add("The Phoenix by Fall Out Boys", SongSelect2.times[12]);
         StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
     }
 
