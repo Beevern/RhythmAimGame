@@ -10,13 +10,14 @@ public class Player : MonoBehaviour
     //Instance
     public static float accuracy;
     //Mouse Look
-    public static float speedH = 0.5f;
-    public static float speedV = 0.5f;
+    public static float speedH = 40f;
+    public static float speedV = 40f;
     public float yaw = 0.0f;
     public float pitch = 0.0f;
     //Score
     private int shotsFired = 0;
     private int shotsHit = 0;
+    public static int scoreToAdd;
     //Text
     public TextMeshProUGUI accuracyText;
     //Objs
@@ -63,18 +64,25 @@ public class Player : MonoBehaviour
                 if (hit.transform.tag == "Target")
                 {
                     shotsHit++;
-                    Debug.Log("I'm destroying the Target");
+                    //Debug.Log("I'm destroying the Target");
                     Target.manualDestroy();
+                    scoreToAdd = (int)(500 - ((Target.lifeTime) * 100));
+                    ScoreKeeper.score += (int)((1 + (ScoreKeeper.combo * 0.05)) * scoreToAdd);
                     GameObject targetHit = hit.collider.gameObject;
+                    //ScoreDesc.scoreToAdd = scoreToAdd;
+                    //Destroy(GameObject.FindGameObjectWithTag("ScoreDesc"));
+                    Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }
                 if (hit.transform.tag == "Counter")
                 {
-                    Destroy(hit.collider.gameObject);
                     GameObject targetHit = hit.collider.gameObject;
-                    ScoreDesc.scoreToAdd = 0;
+                    Destroy(targetHit);
+                    scoreToAdd = 0;
+                    //ScoreDesc.scoreToAdd = 0;
+                    Debug.Log(scoreToAdd);
+                    //Destroy(GameObject.FindGameObjectWithTag("ScoreDesc"));
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
-                    
                 }
             }
         }
@@ -107,8 +115,8 @@ public class Player : MonoBehaviour
     private void mouseLook()
     {
         //Mouse Look
-        yaw += speedH * Input.GetAxis("Mouse X");
-        pitch -= speedV * Input.GetAxis("Mouse Y");
+        yaw += speedH*0.01f * Input.GetAxis("Mouse X");
+        pitch -= speedV*0.01f * Input.GetAxis("Mouse Y");
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
     }
 }

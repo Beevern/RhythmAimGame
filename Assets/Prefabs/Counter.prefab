@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0bc7a9e60f55a489de93c3ff46fef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 0}
+  targetPrefab: {fileID: 7351335477012750815, guid: 9118a21562e64414698b2f4c6ada2beb, type: 3}
+  heldPrefab: {fileID: 4727184679393610582, guid: e658f1acf7df9f040858e6d54618bdac, type: 3}
   notiPri: {fileID: 2100000, guid: 4b1381fa0ae6471408ba8df4c86d06d0, type: 2}
   noti: {fileID: 2100000, guid: 98c87abc84d31084babdeb198310369b, type: 2}
   destroyTimer: 3

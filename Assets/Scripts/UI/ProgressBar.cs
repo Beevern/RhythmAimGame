@@ -19,7 +19,7 @@ public class ProgressBar : MonoBehaviour
 
     void GetCurrentFill()
     {
-        mask.GetComponent<Image>().fillAmount = (float)Time.timeSinceLevelLoadAsDouble / (Spawner.totalTime + 3.0f);
+        mask.GetComponent<Image>().fillAmount = (float)Spawner.timeSinceLoad / (Spawner.totalTime + 3.0f);
         //mask.GetComponent<Image>().fillAmount = (float)ScoreKeeper.notesGiven / Spawner.totalNotes;
     }
 }

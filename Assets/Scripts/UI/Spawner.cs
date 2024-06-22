@@ -22,16 +22,25 @@ public class Spawner : MonoBehaviour
     public float spawnCooldown = 0.5f;
     public float timeFromSpawn = 0f;
     public float bloom = 0;
+    public static float timeSinceLoad;
     public static Dictionary<string, float[]> songTimes = new Dictionary<string, float[]>();
-    
+
     // Start is called before the first frame update
     void Start()
     {
         canvasTrans = GameObject.FindGameObjectWithTag("CrosshairUI").GetComponent<Transform>();
         //spawnPos = new Vector3(Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), 0.0f);
         StartCoroutine(start());
-        
-        
+        timeSinceLoad = 0;
+
+    }
+    void Update()
+    {
+        if (!Pause.isPaused)
+        {
+            timeSinceLoad += Time.deltaTime;
+        }
+        //Debug.Log(timeSinceLoad);
     }
     IEnumerator start()
     {
@@ -50,13 +59,13 @@ public class Spawner : MonoBehaviour
         songTimes.Add("Million Days by SABAI", SongSelect2.times[3]);
         songTimes.Add("Me Plus You by SABAI", SongSelect2.times[4]);
         songTimes.Add("Broken Glass by SABAI", SongSelect2.times[5]);
-        songTimes.Add("Nevada by Vicetonel", SongSelect2.times[6]);
+        songTimes.Add("Nevada by Vicetone", SongSelect2.times[6]);
         songTimes.Add("How to Stay Aligned by Cearul", SongSelect2.times[7]);
         songTimes.Add("XO by EDEN", SongSelect2.times[8]);
         songTimes.Add("Where We Started by Lost Sky and Jex", SongSelect2.times[9]);
         songTimes.Add("Dreams Pt II by Lost Sky and Sara Skinner", SongSelect2.times[10]);
         songTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.times[11]);
-        songTimes.Add("The Phoenix by Fall Out Boys", SongSelect2.times[12]);
+        songTimes.Add("The Phoenix by Fall Out Boy", SongSelect2.times[12]);
         StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
     }
 
@@ -78,13 +87,13 @@ public class Spawner : MonoBehaviour
         totalNotes = spawnTimes.Length;
         for (int i = 0; i < spawnTimes.Length; i++)
         {
-            yield return new WaitUntil(() => (float) Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
+            yield return new WaitUntil(() => (float)Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
             //Debug.Log(spawnTimes[i]);
-            
-            for (int j = i; j<spawnTimes.Length;j++)
+
+            for (int j = i; j < spawnTimes.Length; j++)
             {
-                if (spawnTimes[j] < (float)Time.timeSinceLevelLoadAsDouble + 3.0f)
-                {bloom += 0.025f;}
+                if (spawnTimes[j] < (float)timeSinceLoad + 3.0f)
+                { bloom += 0.025f; }
                 else
                 { break; }
             }
@@ -99,7 +108,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator spawnHeld(float[] spawnTimes)
     {
-        for (int i = 0; i < spawnTimes.Length; i+=2)
+        for (int i = 0; i < spawnTimes.Length; i += 2)
         {
             yield return new WaitUntil(() => (float)Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
             //Debug.Log(spawnTimes[i]);

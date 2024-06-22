@@ -5,27 +5,28 @@ using UnityEngine.UI;
 public class ScoreDesc : MonoBehaviour
 {
     public float timeToDestroy = 0.5f;
-    public static int scoreToAdd;
+    public int scoreToAdd;
     // Start is called before the first frame update
     void Start()
     {
-        scoreToAdd = Target.scoreToAdd;
-        Debug.Log("transferred");
+        scoreToAdd = Player.scoreToAdd;
+        //Debug.Log("transferred");
+        Debug.Log(scoreToAdd);
         if (scoreToAdd >= 475)
         {
-            GameObject.FindGameObjectWithTag("ScoreDesc").GetComponent<TextMesh>().text = "Perfect";
+            this.GetComponent<TextMesh>().text = "Perfect";
         }
         else if (scoreToAdd >= 400)
         {
-            GameObject.FindGameObjectWithTag("ScoreDesc").GetComponent<TextMesh>().text = "Great";
+            this.GetComponent<TextMesh>().text = "Great";
         }
         else if (scoreToAdd >= 1)
         {
-            GameObject.FindGameObjectWithTag("ScoreDesc").GetComponent<TextMesh>().text = "Nice";
+            this.GetComponent<TextMesh>().text = "Nice";
         }
         else if (scoreToAdd <= 0)
         {
-            GameObject.FindGameObjectWithTag("ScoreDesc").GetComponent<TextMesh>().text = "Too early";
+            this.GetComponent<TextMesh>().text = "Too early";
         }
         Destroy(GameObject.FindGameObjectWithTag("Target"));
     }

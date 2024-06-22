@@ -25,11 +25,13 @@ public class Target : MonoBehaviour
 
     public static void manualDestroy()
     {
+        /*
         if ((500 - (int)(lifeTime * 100)) > 0)
         {
             scoreToAdd = (int)((1 + (ScoreKeeper.combo * 0.05)) * (500 - ((lifeTime) * 100)));
             ScoreKeeper.score += scoreToAdd;
         }
+        */
         //Debug.Log("Score Updated");
         ScoreKeeper.noteHits++;
         ScoreKeeper.combo++;
