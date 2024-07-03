@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI participationText;
     public TextMeshProUGUI comboText;
+    public TextMeshProUGUI songText;
     //Other Scripts
 
 
@@ -23,5 +24,6 @@ public class GameOver : MonoBehaviour
         participationText.text = "Participation Rate: " + ScoreKeeper.participation + "%";
         scoreText.text = "Score: " + ScoreKeeper.score;
         comboText.text = "Highest Combo: " + ScoreKeeper.highestCombo;
+        songText.text = "Song: " + SongSelect2.theSong;
     }
 }

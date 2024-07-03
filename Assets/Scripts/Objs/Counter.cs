@@ -6,25 +6,20 @@ public class Counter : MonoBehaviour
 {
     //Prefabs
     public GameObject targetPrefab;
-    public GameObject heldPrefab;
     //Other Scripts
     //Objects
-    
-    private GameObject counterBase;
     //Material
     public Material notiPri;
     public Material noti;
     //Instance
     private bool isPri = false;
-    public static bool isHeld = false;
-    public float destroyTimer = 3f;
+    private float destroyTimer = 3f;
     //private int notesInSecond = 0;
     private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     // Start is called before the first frame update
     void Start()
     {
         this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.0f, (3.0f - destroyTimer) * (0.5f / 3));
-        counterBase = GameObject.FindGameObjectWithTag("Base");
         spawnPos = Spawner.spawnPos;
     }
 
@@ -55,20 +50,16 @@ public class Counter : MonoBehaviour
             destroyTimer -= Time.deltaTime;
             if (destroyTimer <= 0)
             {
-                
-                //Debug.Log("Spawn a target");
-                
-                //Target.lifeTime = 0;
-                if (!isHeld)
-                {
 
-                    if (GameObject.FindGameObjectWithTag("Target") != null)
-                    {
-                        //Debug.Log("I'm destroying the Target");
-                        Target.naturalDestroy();
-                    }
-                    Instantiate(targetPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
+                //Debug.Log("Spawn a target");
+
+                //Target.lifeTime = 0;
+                if (GameObject.FindGameObjectWithTag("Target") != null)
+                {
+                    //Debug.Log("I'm destroying the Target");
+                    Target.naturalDestroy();
                 }
+                Instantiate(targetPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
                 /*
                 else
                 {

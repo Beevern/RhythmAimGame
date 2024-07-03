@@ -2428,6 +2428,7 @@ MonoBehaviour:
   DreamsPt2I: {fileID: 21300000, guid: 6a7bbfc469b5e0246b87c53f3d5cc147, type: 3}
   LoveIsGoneI: {fileID: 21300000, guid: 69c0d77f4bc6267499cfb2818fe72639, type: 3}
   ThePhoenixI: {fileID: 21300000, guid: 2f2213522a4113e498a82d7aa35eec68, type: 3}
+  GoonswarmI: {fileID: 0}
   songName: {fileID: 1801858123}
   sortDrop: {fileID: 0}
   searchBar: {fileID: 0}
@@ -5883,10 +5884,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 21.05
   m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -7040,11 +7041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5494171773908757620, guid: 3fe0ec9f409eca7488495abf46b21f2b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 68.97649
+      value: 93.71835
       objectReference: {fileID: 0}
     - target: {fileID: 5494171773908757620, guid: 3fe0ec9f409eca7488495abf46b21f2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 343.4081
+      value: 467.1116
       objectReference: {fileID: 0}
     - target: {fileID: 5494171773908757620, guid: 3fe0ec9f409eca7488495abf46b21f2b, type: 3}
       propertyPath: m_LocalPosition.y

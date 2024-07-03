@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     //Variables
     //Instance
     public static float accuracy;
+    public bool holding;
     //Mouse Look
     public static float speedH = 40f;
     public static float speedV = 40f;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         {
             mouseLook();
             shoot();
+            hold();
             //showText();
         }
         
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour
     private void shoot()
     {
         //Mouse input
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = new Ray();
             ray.origin = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -90,7 +92,7 @@ public class Player : MonoBehaviour
 
     private void hold()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !holding)
         {
             Ray ray = new Ray();
             ray.origin = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -102,14 +104,26 @@ public class Player : MonoBehaviour
             {
                 if (hit.transform.tag == "HeldTarget")
                 {
-                    while (Input.GetMouseButtonDown(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null)
-                    {
-                        ScoreKeeper.score += 30;
-                    }
-
+                    holding = true;
                 }
             }
         }
+        if (!Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null && holding == true)
+        {
+            holding = false;
+            Destroy(GameObject.FindGameObjectWithTag("HeldTarget"));
+        }
+        if (holding && Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null)
+        {
+            ScoreKeeper.score += 7;
+        }
+        else if (!Input.GetMouseButton(1) || GameObject.FindGameObjectWithTag("HeldTarget") == null)
+        {
+            holding = false;
+        }
+        
+        
+        //Debug.Log(holding);
     }
 
     private void mouseLook()

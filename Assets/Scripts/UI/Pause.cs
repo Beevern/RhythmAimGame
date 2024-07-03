@@ -58,7 +58,7 @@ public class Pause : MonoBehaviour
 
     public void resume1()
     {
-        StartCoroutine(pause2());
+        StartCoroutine(resume2());
         
         Time.timeScale = 0.00000000001f;
         //isPaused = false;
@@ -67,7 +67,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         
     }
-    IEnumerator pause2()
+    IEnumerator resume2()
     {
         GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<AudioSource>().Pause();
         GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().Pause();

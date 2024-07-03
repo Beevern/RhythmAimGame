@@ -21,6 +21,7 @@ public class playMusic : MonoBehaviour
     public VideoClip DreamsPt2Vid;
     public VideoClip LoveIsGoneVid;
     public VideoClip ThePhoenixVid;
+    public VideoClip GoonswarmVid;
     //Players
     private AudioSource audioSource;
     private VideoPlayer vidPlayer;
@@ -39,12 +40,13 @@ public class playMusic : MonoBehaviour
     public RenderTexture DreamsPt2Texture;
     public RenderTexture LoveIsGoneTexture;
     public RenderTexture ThePhoenixTexture;
+    public RenderTexture GoonswarmTexture;
     //Other Objects
     public GameObject VideoPlayerParent;
     //Other Scripts
     private ScoreKeeper keeperScript;
     //Instance Vars
-
+    public static double volume;
     // Start is called before the first frame update
     void Awake()
     {
@@ -54,9 +56,9 @@ public class playMusic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.00f);
         //Initiallizing dictionaries
-        VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid, StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, LoveIsGoneVid, ThePhoenixVid };
+        VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid, StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, LoveIsGoneVid, ThePhoenixVid, GoonswarmVid};
         RenderTexture[] textures = {CirclesTexture, SeasonsKitaTexture, SeasonsTexture, MillionDaysTexture, MeYouTexture, BrokenGlassTexture, NevadaTexture, StayAlignedTexture,
-        XOTexture, WhereWeStartedTexture, DreamsPt2Texture, LoveIsGoneTexture, ThePhoenixTexture};
+        XOTexture, WhereWeStartedTexture, DreamsPt2Texture, LoveIsGoneTexture, ThePhoenixTexture, GoonswarmTexture};
 
         Dictionary<string, VideoClip> songVid = new Dictionary<string, VideoClip>();
         Dictionary<string, RenderTexture> songText = new Dictionary<string, RenderTexture>();
@@ -84,6 +86,7 @@ public class playMusic : MonoBehaviour
         songVid.Add("Dreams Pt II by Lost Sky and Sara Skinner", DreamsPt2Vid);
         songVid.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", LoveIsGoneVid);
         songVid.Add("The Phoenix by Fall Out Boy", ThePhoenixVid);
+        songVid.Add("We're Only Goonswarm by Srsli", GoonswarmVid);
 
         songText.Add("Circles by EDEN", CirclesTexture);
         songText.Add("Seasons by Rival and Cadmium Piano Cover by Kita Sora", SeasonsKitaTexture);
@@ -98,6 +101,7 @@ public class playMusic : MonoBehaviour
         songText.Add("Dreams Pt II by Lost Sky and Sara Skinner", DreamsPt2Texture);
         songText.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", LoveIsGoneTexture);
         songText.Add("The Phoenix by Fall Out Boy", ThePhoenixTexture);
+        songText.Add("We're Only Goonswarm by Srsli", GoonswarmTexture);
         vidPlayer = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>();
         /*
         RANDOM
@@ -110,7 +114,7 @@ public class playMusic : MonoBehaviour
         {
             yield return new WaitForSeconds(0.35f);
         }
-        yield return new WaitForSeconds(2.8f);
+        yield return new WaitForSeconds(3f);
         vidPlayer.clip = songVid[SongSelect2.theSong];
         vidPlayer.targetTexture = songText[SongSelect2.theSong];
         VideoPlayerParent.GetComponent<RawImage>().texture = songText[SongSelect2.theSong];

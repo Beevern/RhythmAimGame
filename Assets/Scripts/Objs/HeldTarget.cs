@@ -22,17 +22,17 @@ public class HeldTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        naturalDestroy();
         lifeTime += Time.deltaTime;
-        //this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.001f, (3.0f - destroyTimer) * (0.5f / 3));
+        this.transform.localScale = new Vector3((0.5f / destroyTimer) * (destroyTimer - lifeTime), 0.001f, (destroyTimer - lifeTime) * (0.5f / destroyTimer));
+        //this.transform.localScale = new Vector3((0.5f / 3) * (destroyTimer - lifeTime), 0.001f, (destroyTimer - lifeTime) * (0.5f / 3));
     }
 
-    public static void manualDestroy()
+    public void naturalDestroy()
     {
-        //Debug.Log("Score Updated");
-        ScoreKeeper.noteHits++;
-        ScoreKeeper.combo++;
-        //GameObject textObj = GameObject.FindGameObjectWithTag("ScoreDesc");
-        //Debug.Log("I'm destroying the target");
-        Destroy(GameObject.FindGameObjectWithTag("HeldTarget"));
+        if(lifeTime>destroyTimer)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

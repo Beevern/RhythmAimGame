@@ -15,6 +15,7 @@ TagManager:
   - ScoreDesc
   - Background
   - HeldTarget
+  - HeldCounter
   layers:
   - Default
   - TransparentFX

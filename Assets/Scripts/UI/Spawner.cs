@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     //Prefabs
     public GameObject targetPrefab;
     public GameObject counterPrefab;
-    public GameObject heldPrefab;
+    public GameObject heldCounter;
     //Other Scripts
     //Instance Vars
     public static int totalNotes;
@@ -66,7 +66,9 @@ public class Spawner : MonoBehaviour
         songTimes.Add("Dreams Pt II by Lost Sky and Sara Skinner", SongSelect2.times[10]);
         songTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.times[11]);
         songTimes.Add("The Phoenix by Fall Out Boy", SongSelect2.times[12]);
+        songTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.times[13]);
         StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
+        StartCoroutine(spawnHeld(new float[]{ (float) 1, (float)8}));
     }
 
     IEnumerator countdown()
@@ -122,8 +124,8 @@ public class Spawner : MonoBehaviour
             }
             //Debug.Log(bloom);
             spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f + bloom), 0.0f);
-            GameObject heldTarget = Instantiate(heldPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
-            HeldTarget.destroyTimer = spawnTimes[i] - spawnTimes[i + 1];
+            GameObject heldTarget = Instantiate(heldCounter, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            HeldTarget.destroyTimer = spawnTimes[i+1] - spawnTimes[i];
             bloom = 0;
         }
     }
