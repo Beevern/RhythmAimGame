@@ -32,6 +32,8 @@ public class HeldTarget : MonoBehaviour
     {
         if(lifeTime>destroyTimer)
         {
+            Player.holding = false;
+            GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(this.transform.position.x + 0.15f, this.transform.position.y + 0.005f), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

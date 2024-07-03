@@ -48,7 +48,7 @@ public class Counter : MonoBehaviour
 
             this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.001f, (3.0f - destroyTimer) * (0.5f / 3));
             destroyTimer -= Time.deltaTime;
-            Debug.Log(destroyTimer);
+            //Debug.Log(destroyTimer);
             if (destroyTimer <= 0)
             {
 

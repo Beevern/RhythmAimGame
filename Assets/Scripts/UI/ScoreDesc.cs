@@ -37,6 +37,7 @@ public class ScoreDesc : MonoBehaviour
         timeToDestroy -= Time.deltaTime;
         if (timeToDestroy <=0)
         {
+
             Destroy(this.gameObject);
         }
         

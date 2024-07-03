@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     //Variables
     //Instance
     public static float accuracy;
-    public bool holding;
+    public static bool holding;
+    public int holdTime;
     //Mouse Look
     public static float speedH = 40f;
     public static float speedV = 40f;
@@ -71,9 +72,7 @@ public class Player : MonoBehaviour
                     scoreToAdd = (int)(500 - ((Target.lifeTime) * 100));
                     ScoreKeeper.score += (int)((1 + (ScoreKeeper.combo * 0.05)) * scoreToAdd);
                     GameObject targetHit = hit.collider.gameObject;
-                    //ScoreDesc.scoreToAdd = scoreToAdd;
-                    //Destroy(GameObject.FindGameObjectWithTag("ScoreDesc"));
-                    Debug.Log(scoreToAdd);
+                    //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }
                 if (hit.transform.tag == "Counter")
@@ -81,9 +80,7 @@ public class Player : MonoBehaviour
                     GameObject targetHit = hit.collider.gameObject;
                     Destroy(targetHit);
                     scoreToAdd = 0;
-                    //ScoreDesc.scoreToAdd = 0;
-                    Debug.Log(scoreToAdd);
-                    //Destroy(GameObject.FindGameObjectWithTag("ScoreDesc"));
+                    //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
                 }
             }
@@ -97,6 +94,7 @@ public class Player : MonoBehaviour
             Ray ray = new Ray();
             ray.origin = GameObject.FindGameObjectWithTag("Player").transform.position;
             ray.direction = GameObject.FindGameObjectWithTag("Player").transform.forward;
+
             //Debug.DrawRay(ray.origin, ray.direction * 75f, Color.red, 3f);
             RaycastHit hit;
             shotsFired++;
@@ -106,16 +104,26 @@ public class Player : MonoBehaviour
                 {
                     holding = true;
                 }
+                if (hit.transform.tag == "HeldCounter")
+                {
+                    GameObject targetHit = hit.collider.gameObject;
+                    GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
+                    Destroy(hit.collider.gameObject);
+                }
             }
         }
         if (!Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null && holding == true)
         {
             holding = false;
+            scoreToAdd = holdTime * 7;
+            //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(GameObject.FindGameObjectWithTag("HeldTarget").transform.position.x, GameObject.FindGameObjectWithTag("HeldTarget").transform.position.y + 0.005f), Quaternion.identity);
+            scoreToAdd = 0;
             Destroy(GameObject.FindGameObjectWithTag("HeldTarget"));
         }
         if (holding && Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null)
         {
             ScoreKeeper.score += 7;
+            holdTime += 1;
         }
         else if (!Input.GetMouseButton(1) || GameObject.FindGameObjectWithTag("HeldTarget") == null)
         {
