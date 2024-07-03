@@ -13,7 +13,7 @@ public class Counter : MonoBehaviour
     public Material noti;
     //Instance
     private bool isPri = false;
-    private float destroyTimer = 3f;
+    public float destroyTimer = 3f;
     //private int notesInSecond = 0;
     private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     // Start is called before the first frame update
@@ -48,6 +48,7 @@ public class Counter : MonoBehaviour
 
             this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.001f, (3.0f - destroyTimer) * (0.5f / 3));
             destroyTimer -= Time.deltaTime;
+            Debug.Log(destroyTimer);
             if (destroyTimer <= 0)
             {
 
@@ -60,17 +61,6 @@ public class Counter : MonoBehaviour
                     Target.naturalDestroy();
                 }
                 Instantiate(targetPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
-                /*
-                else
-                {
-                    if (GameObject.FindGameObjectWithTag("Counter") != null)
-                    {
-                        //Debug.Log("I'm destroying the Target");
-                        Destroy(GameObject.FindGameObjectWithTag("Counter"));
-                    }
-                    Instantiate(heldPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
-                }
-                */
                 ScoreKeeper.bloom += 0.01f;
                 Destroy(this.gameObject);
             }

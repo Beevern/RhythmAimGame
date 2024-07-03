@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4149028306058669941}
   m_Layer: 0
   m_Name: HeldNoti
-  m_TagString: Counter
+  m_TagString: HeldCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,7 +10,6 @@ public class HeldCounter : MonoBehaviour
     //Objects
     //Instance
     private float destroyTimer = 3f;
-    //private int notesInSecond = 0;
     private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     // Start is called before the first frame update
     void Start()
@@ -22,6 +21,7 @@ public class HeldCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!Pause.isPaused)
         {
 
@@ -31,13 +31,6 @@ public class HeldCounter : MonoBehaviour
             {
 
                 //Debug.Log("Spawn a target");
-
-                //Target.lifeTime = 0;
-                if (GameObject.FindGameObjectWithTag("Target") != null)
-                {
-                    //Debug.Log("I'm destroying the Target");
-                    Target.naturalDestroy();
-                }
                 Instantiate(heldPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
                 ScoreKeeper.bloom += 0.01f;
                 Destroy(this.gameObject);
