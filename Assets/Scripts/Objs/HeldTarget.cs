@@ -6,7 +6,7 @@ public class HeldTarget : MonoBehaviour
 {
     //Instance
     public static int heldScoreToAdd;
-    public static float lifeTime = 0f;
+    public float lifeTime = 0f;
     public static float destroyTimer;
     //Other Objs
     public static GameObject scoreDesc;
@@ -30,10 +30,10 @@ public class HeldTarget : MonoBehaviour
 
     public void naturalDestroy()
     {
-        if(lifeTime>destroyTimer)
+        if(lifeTime>=destroyTimer)
         {
             Player.holding = false;
-            GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(this.transform.position.x + 0.15f, this.transform.position.y + 0.005f), Quaternion.identity);
+            //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(this.transform.position.x + 0.15f, this.transform.position.y + 0.005f), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

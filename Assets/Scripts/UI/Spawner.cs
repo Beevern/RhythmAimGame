@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
     public GameObject heldCounter;
     //Other Scripts
     //Instance Vars
+    public int finished = 0;
     public static int totalNotes;
     public static float totalTime;
     public static Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
@@ -24,6 +25,7 @@ public class Spawner : MonoBehaviour
     public float bloom = 0;
     public static float timeSinceLoad;
     public static Dictionary<string, float[]> songTimes = new Dictionary<string, float[]>();
+    public static Dictionary<string, float[]> heldTimes = new Dictionary<string, float[]>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class Spawner : MonoBehaviour
         //spawnPos = new Vector3(Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), 0.0f);
         StartCoroutine(start());
         timeSinceLoad = 0;
-
+        finished = 0;
     }
     void Update()
     {
@@ -41,6 +43,11 @@ public class Spawner : MonoBehaviour
             timeSinceLoad += Time.deltaTime;
         }
         //Debug.Log(timeSinceLoad);
+
+        if (finished==2)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
     IEnumerator start()
     {
@@ -68,7 +75,10 @@ public class Spawner : MonoBehaviour
         songTimes.Add("The Phoenix by Fall Out Boy", SongSelect2.times[12]);
         songTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.times[13]);
         StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
-        StartCoroutine(spawnHeld(new float[]{ (float) 1, (float)8}));
+
+        heldTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.heldTimes[11]);
+        heldTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.heldTimes[13]);
+        StartCoroutine(spawnHeld(heldTimes[SongSelect2.theSong]));
     }
 
     IEnumerator countdown()
@@ -104,8 +114,8 @@ public class Spawner : MonoBehaviour
             GameObject target = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
             bloom = 0;
         }
+        finished++;
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene("GameOver");
     }
 
     IEnumerator spawnHeld(float[] spawnTimes)
@@ -127,7 +137,9 @@ public class Spawner : MonoBehaviour
             GameObject heldTarget = Instantiate(heldCounter, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
             HeldTarget.destroyTimer = spawnTimes[i+1] - spawnTimes[i];
             bloom = 0;
+
         }
+        finished++;
     }
 }
 //enter ="'"&J2&"'"&"," in a random cell in excel after importing Edit Index to add single quotes (remember to CTRL+H to replace with double quotes) and a comma at the end

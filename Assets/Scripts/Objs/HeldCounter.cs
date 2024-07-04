@@ -32,6 +32,7 @@ public class HeldCounter : MonoBehaviour
 
                 //Debug.Log("Spawn a target");
                 Instantiate(heldPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
+                Destroy(GameObject.FindGameObjectWithTag("Target"));
                 ScoreKeeper.bloom += 0.01f;
                 Destroy(this.gameObject);
             }
