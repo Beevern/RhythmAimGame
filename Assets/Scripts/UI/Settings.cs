@@ -36,7 +36,7 @@ public class Settings : MonoBehaviour
 
     void setVol()
     {
-       //source.volume = volSlider.value;
+       source.volume = volSlider.value;
     }
 
     public void setSens()

@@ -118,6 +118,7 @@ public class playMusic : MonoBehaviour
         vidPlayer.clip = songVid[SongSelect2.theSong];
         vidPlayer.targetTexture = songText[SongSelect2.theSong];
         VideoPlayerParent.GetComponent<RawImage>().texture = songText[SongSelect2.theSong];
-
+        yield return new WaitForSeconds((float)vidPlayer.clip.length);
+        SceneManager.LoadScene("GameOver");
     }
 }

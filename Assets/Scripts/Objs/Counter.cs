@@ -6,13 +6,14 @@ public class Counter : MonoBehaviour
 {
     //Prefabs
     public GameObject targetPrefab;
+    public GameObject trailPrefab;
     //Other Scripts
     //Objects
     //Material
     public Material notiPri;
     public Material noti;
     //Instance
-    private bool isPri = false;
+    public bool isPri = false;
     public float destroyTimer = 3f;
     //private int notesInSecond = 0;
     private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
@@ -60,7 +61,8 @@ public class Counter : MonoBehaviour
                     //Debug.Log("I'm destroying the Target");
                     Target.naturalDestroy();
                 }
-                Instantiate(targetPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
+                Instantiate(targetPrefab, transform.position, Quaternion.identity);
+                Instantiate(trailPrefab, transform.position, Quaternion.identity);
                 ScoreKeeper.bloom += 0.01f;
                 Destroy(this.gameObject);
             }

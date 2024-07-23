@@ -9,40 +9,63 @@ public class Target : MonoBehaviour
     public static float lifeTime = 0f;
     //Other Objs
     public static GameObject scoreDesc;
-    
+    public GameObject trailPrefab;
+    //Sprites
+    public Sprite Circle;
+    public Sprite Goonswarm;
+    public Sprite Align;
+    //Materials
+    public Material reg;
+    public Material nBlue;
     // Start is called before the first frame update
     void Start()
     {
         ScoreKeeper.notesGiven++;
         lifeTime = 0f;
+        changeSprite();
     }
 
     // Update is called once per frame
     void Update()
     {
         lifeTime += Time.deltaTime;
+        
     }
 
     public static void manualDestroy()
     {
-        /*
-        if ((500 - (int)(lifeTime * 100)) > 0)
-        {
-            scoreToAdd = (int)((1 + (ScoreKeeper.combo * 0.05)) * (500 - ((lifeTime) * 100)));
-            ScoreKeeper.score += scoreToAdd;
-        }
-        */
-        //Debug.Log("Score Updated");
         ScoreKeeper.noteHits++;
         ScoreKeeper.combo++;
-        //GameObject textObj = GameObject.FindGameObjectWithTag("ScoreDesc");
-        //Debug.Log("I'm destroying the target");
         Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
     public static void naturalDestroy()
     {
         ScoreKeeper.combo = 0;
-        //GameObject.FindGameObjectWithTag("ScoreDesc").GetComponent<TextMesh>().text = "Miss";
         Destroy(GameObject.FindGameObjectWithTag("Target"));
+    }
+
+    public void changeSprite()
+    {
+        if (SongSelect2.theSong.Equals("We're Only Goonswarm by Srsli"))
+        {
+            /*
+            Destroy(this.gameObject.GetComponent<MeshRenderer>());
+            Destroy(this.gameObject.GetComponent<MeshFilter>());
+            this.gameObject.AddComponent<SpriteRenderer>();
+            GetComponent<SpriteRenderer>().sprite = Goonswarm;
+            */
+            GetComponent<SpriteRenderer>().sprite = Goonswarm;
+            GetComponent<Renderer>().material = reg;
+        }
+        else if (SongSelect2.theSong.Equals("How to Stay Aligned by Cearul"))
+        {
+            GetComponent<SpriteRenderer>().sprite = Align;
+            GetComponent<Renderer>().material = reg;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = Circle;
+            GetComponent<Renderer>().material = nBlue;
+        }
     }
 }

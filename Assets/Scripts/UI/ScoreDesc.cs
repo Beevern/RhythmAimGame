@@ -11,7 +11,7 @@ public class ScoreDesc : MonoBehaviour
     {
         scoreToAdd = Player.scoreToAdd;
         //Debug.Log("transferred");
-        Debug.Log(scoreToAdd);
+        //Debug.Log(scoreToAdd);
         if (scoreToAdd >= 475)
         {
             this.GetComponent<TextMesh>().text = "Perfect";

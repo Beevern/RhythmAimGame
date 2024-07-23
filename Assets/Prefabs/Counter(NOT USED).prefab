@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3858470652795073191}
   - component: {fileID: 5741122560669592378}
   m_Layer: 5
-  m_Name: Counter
+  m_Name: Counter(NOT USED)
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 7351335477012750815, guid: 9118a21562e64414698b2f4c6ada2beb, type: 3}
-  heldPrefab: {fileID: 4727184679393610582, guid: e658f1acf7df9f040858e6d54618bdac, type: 3}
+  trailPrefab: {fileID: 342044205645577178, guid: c34b3e6781000a04fa732c68cab40128, type: 3}
   notiPri: {fileID: 2100000, guid: 4b1381fa0ae6471408ba8df4c86d06d0, type: 2}
   noti: {fileID: 2100000, guid: 98c87abc84d31084babdeb198310369b, type: 2}
   destroyTimer: 3

@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI accuracyText;
     //Objs
     public GameObject scoreDesc;
+    public GameObject trailPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
                     scoreToAdd = (int)(500 - ((Target.lifeTime) * 100));
                     ScoreKeeper.score += (int)((1 + (ScoreKeeper.combo * 0.05)) * scoreToAdd);
                     GameObject targetHit = hit.collider.gameObject;
+                    //Instantiate(trailPrefab, transform.position, Quaternion.identity);
                     //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }

@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
 
         if (finished==2)
         {
-            SceneManager.LoadScene("GameOver");
+            //SceneManager.LoadScene("GameOver");
         }
     }
     IEnumerator start()
@@ -115,6 +115,7 @@ public class Spawner : MonoBehaviour
             bloom = 0;
         }
         finished++;
+        Debug.Log("Finished");
         yield return new WaitForSeconds(5);
     }
 
@@ -140,6 +141,7 @@ public class Spawner : MonoBehaviour
 
         }
         finished++;
+        Debug.Log("Finished1");
     }
 }
 //enter ="'"&J2&"'"&"," in a random cell in excel after importing Edit Index to add single quotes (remember to CTRL+H to replace with double quotes) and a comma at the end
