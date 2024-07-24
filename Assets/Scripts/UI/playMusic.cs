@@ -22,6 +22,13 @@ public class playMusic : MonoBehaviour
     public VideoClip LoveIsGoneVid;
     public VideoClip ThePhoenixVid;
     public VideoClip GoonswarmVid;
+    public VideoClip DollarSadnessVid;
+    public VideoClip NeverKnowVid;
+    public VideoClip DeadOrAliveVid;
+    public VideoClip HypnotizedVid;
+    public VideoClip SayGoodbyeVid;
+    public VideoClip HateYouVid;
+    public VideoClip LowlifeVid;
     //Players
     private AudioSource audioSource;
     private VideoPlayer vidPlayer;
@@ -41,6 +48,13 @@ public class playMusic : MonoBehaviour
     public RenderTexture LoveIsGoneTexture;
     public RenderTexture ThePhoenixTexture;
     public RenderTexture GoonswarmTexture;
+    public RenderTexture DollarSadnessTexture;
+    public RenderTexture NeverKnowTexture;
+    public RenderTexture DeadOrAliveTexture;
+    public RenderTexture HypnotizedTexture;
+    public RenderTexture SayGoodbyeTexture;
+    public RenderTexture HateYouTexture;
+    public RenderTexture LowlifeTexture;
     //Other Objects
     public GameObject VideoPlayerParent;
     //Other Scripts
@@ -56,9 +70,11 @@ public class playMusic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.00f);
         //Initiallizing dictionaries
-        VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid, StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, LoveIsGoneVid, ThePhoenixVid, GoonswarmVid};
+        VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid, StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, 
+            LoveIsGoneVid, ThePhoenixVid, GoonswarmVid, DollarSadnessVid, NeverKnowVid, DeadOrAliveVid, HypnotizedVid, SayGoodbyeVid, HateYouVid, LowlifeVid};
         RenderTexture[] textures = {CirclesTexture, SeasonsKitaTexture, SeasonsTexture, MillionDaysTexture, MeYouTexture, BrokenGlassTexture, NevadaTexture, StayAlignedTexture,
-        XOTexture, WhereWeStartedTexture, DreamsPt2Texture, LoveIsGoneTexture, ThePhoenixTexture, GoonswarmTexture};
+        XOTexture, WhereWeStartedTexture, DreamsPt2Texture, LoveIsGoneTexture, ThePhoenixTexture, GoonswarmTexture, DollarSadnessTexture, NeverKnowTexture, DeadOrAliveTexture,
+        HypnotizedTexture, SayGoodbyeTexture, HateYouTexture, LowlifeTexture};
 
         Dictionary<string, VideoClip> songVid = new Dictionary<string, VideoClip>();
         Dictionary<string, RenderTexture> songText = new Dictionary<string, RenderTexture>();
@@ -87,6 +103,13 @@ public class playMusic : MonoBehaviour
         songVid.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", LoveIsGoneVid);
         songVid.Add("The Phoenix by Fall Out Boy", ThePhoenixVid);
         songVid.Add("We're Only Goonswarm by Srsli", GoonswarmVid);
+        songVid.Add("Dollar For Your Sadness by Unlike Pluto", DollarSadnessVid);
+        songVid.Add("Never Know by Swif7", NeverKnowVid);
+        songVid.Add("Dead Or Alive by Stileto", DeadOrAliveVid);
+        songVid.Add("Hypnotized by DEAMN", HypnotizedVid);
+        songVid.Add("Say Goodbye by Krewella", SayGoodbyeVid);
+        songVid.Add("Hate You by Jim Yosef X Riell", HateYouVid);
+        songVid.Add("Lowlife by Neck Deep", LowlifeVid);
 
         songText.Add("Circles by EDEN", CirclesTexture);
         songText.Add("Seasons by Rival and Cadmium Piano Cover by Kita Sora", SeasonsKitaTexture);
@@ -102,6 +125,14 @@ public class playMusic : MonoBehaviour
         songText.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", LoveIsGoneTexture);
         songText.Add("The Phoenix by Fall Out Boy", ThePhoenixTexture);
         songText.Add("We're Only Goonswarm by Srsli", GoonswarmTexture);
+        songText.Add("Dollar For Your Sadness by Unlike Pluto", DollarSadnessTexture);
+        songText.Add("Never Know by Swif7", NeverKnowTexture);
+        songText.Add("Dead Or Alive by Stileto", DeadOrAliveTexture);
+        songText.Add("Hypnotized by DEAMN", HypnotizedTexture);
+        songText.Add("Say Goodbye by Krewella", SayGoodbyeTexture);
+        songText.Add("Hate You by Jim Yosef X Riell", HateYouTexture);
+        songText.Add("Lowlife by Neck Deep", LowlifeTexture);
+
         vidPlayer = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>();
         /*
         RANDOM

@@ -74,10 +74,18 @@ public class Spawner : MonoBehaviour
         songTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.times[11]);
         songTimes.Add("The Phoenix by Fall Out Boy", SongSelect2.times[12]);
         songTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.times[13]);
+        songTimes.Add("Dollar For Your Sadness by Unlike Pluto", SongSelect2.times[14]);
+        songTimes.Add("Never Know by Swif7", SongSelect2.times[15]);
+        songTimes.Add("Dead Or Alive by Stileto", SongSelect2.times[16]);
+        songTimes.Add("Hypnotized by DEAMN", SongSelect2.times[17]);
+        songTimes.Add("Say Goodbye by Krewella", SongSelect2.times[18]);
+        songTimes.Add("Hate You by Jim Yosef X Riell", SongSelect2.times[19]);
+        songTimes.Add("Lowlife by Neck Deep", SongSelect2.times[20]);
         StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
 
         heldTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.heldTimes[11]);
         heldTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.heldTimes[13]);
+        heldTimes.Add("Lowlife by Neck Deep", SongSelect2.heldTimes[20]);
         StartCoroutine(spawnHeld(heldTimes[SongSelect2.theSong]));
     }
 

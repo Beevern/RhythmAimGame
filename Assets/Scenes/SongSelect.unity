@@ -2429,6 +2429,13 @@ MonoBehaviour:
   LoveIsGoneI: {fileID: 21300000, guid: 69c0d77f4bc6267499cfb2818fe72639, type: 3}
   ThePhoenixI: {fileID: 21300000, guid: 2f2213522a4113e498a82d7aa35eec68, type: 3}
   GoonswarmI: {fileID: 21300000, guid: 0dfbbb29dd217634bbf5082b7c5c88d4, type: 3}
+  DollarSadnessI: {fileID: 21300000, guid: 03d4040f08a1a3c40b52ad0832ec6e88, type: 3}
+  NeverKnowI: {fileID: 21300000, guid: 76f5822b7b8f4114da4f6366871ae3d7, type: 3}
+  DeadOrAliveI: {fileID: 21300000, guid: 970edf55671b60743b36d5591268cc53, type: 3}
+  HypnotizedI: {fileID: 21300000, guid: ab71b96c866978e48af5a81b9f18eee2, type: 3}
+  SayGoodbyeI: {fileID: 21300000, guid: cbd78b3d5623e8f4b8b1b7f7db3c6dbc, type: 3}
+  HateYouI: {fileID: 21300000, guid: a3049e1204eef7645979a6d218adef50, type: 3}
+  LowlifeI: {fileID: 21300000, guid: 895e248f60993dd4e8093dd4582e0bdb, type: 3}
   songName: {fileID: 1801858123}
   sortDrop: {fileID: 0}
   searchBar: {fileID: 0}

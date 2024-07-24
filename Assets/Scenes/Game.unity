@@ -3062,7 +3062,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3173,6 +3173,13 @@ MonoBehaviour:
   LoveIsGoneVid: {fileID: 32900000, guid: eda636158f02eda429a6e9c3ffd8f080, type: 3}
   ThePhoenixVid: {fileID: 32900000, guid: 02a3e4e9968dce74d9814e0f0337d48c, type: 3}
   GoonswarmVid: {fileID: 32900000, guid: e868412687c25064391e6d6da2aeb95b, type: 3}
+  DollarSadnessVid: {fileID: 32900000, guid: e1ff3d57950114d41869c94102844ad3, type: 3}
+  NeverKnowVid: {fileID: 32900000, guid: 8c77e30a16282614da7e9674e1cd4639, type: 3}
+  DeadOrAliveVid: {fileID: 32900000, guid: b8a1290bd07b96a45acc75a8256e20e0, type: 3}
+  HypnotizedVid: {fileID: 32900000, guid: 89c1d5bcecfed2743ae498be4d227b55, type: 3}
+  SayGoodbyeVid: {fileID: 32900000, guid: 2e3d8256b3e210447936efffac92407c, type: 3}
+  HateYouVid: {fileID: 32900000, guid: 44395889028899d4493cb37d45469017, type: 3}
+  LowlifeVid: {fileID: 32900000, guid: e274de3f0b1c0744c9615c6d2fd0babf, type: 3}
   RandomTexture: {fileID: 0}
   CirclesTexture: {fileID: 8400000, guid: 0a3045c0b15fa044999dd92d90a0f7f8, type: 2}
   SeasonsKitaTexture: {fileID: 8400000, guid: b619ad9f8073f3e4dace3abbd47576da, type: 2}
@@ -3188,6 +3195,13 @@ MonoBehaviour:
   LoveIsGoneTexture: {fileID: 8400000, guid: 66d1c5b9e5225884db2e37d5fa6f0423, type: 2}
   ThePhoenixTexture: {fileID: 8400000, guid: b8c170fc6e65cdf46be49b7957c36e43, type: 2}
   GoonswarmTexture: {fileID: 8400000, guid: fed1f398f0022e541982075949e01ca3, type: 2}
+  DollarSadnessTexture: {fileID: 8400000, guid: bf63e9b11fc8f8648a5ca99aa88950e5, type: 2}
+  NeverKnowTexture: {fileID: 8400000, guid: 266ccd5129f22444a9c16b635b637103, type: 2}
+  DeadOrAliveTexture: {fileID: 8400000, guid: 7712b203b94de7d46b6fb1424ed61891, type: 2}
+  HypnotizedTexture: {fileID: 8400000, guid: 0dbf1faec05245e4fbc3c524b0b726d4, type: 2}
+  SayGoodbyeTexture: {fileID: 8400000, guid: 28d27c676829455459ff5cb7d26e87fc, type: 2}
+  HateYouTexture: {fileID: 8400000, guid: 1ddc7a2e591e3ce4589efc76e5881172, type: 2}
+  LowlifeTexture: {fileID: 8400000, guid: f23f63f4802999c40944f017a792ade2, type: 2}
   VideoPlayerParent: {fileID: 1240889478}
 --- !u!1 &1631237611
 GameObject:
