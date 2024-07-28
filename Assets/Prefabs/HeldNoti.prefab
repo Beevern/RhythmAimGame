@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2719430319127764621}
   - component: {fileID: 1671404047476965805}
   - component: {fileID: 7001481111591732903}
-  - component: {fileID: 4149028306058669941}
+  - component: {fileID: -1369008615358444692}
   m_Layer: 0
   m_Name: HeldNoti
-  m_TagString: HeldCounter
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4149028306058669941
+--- !u!114 &-1369008615358444692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8723855391254553374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a75412824721814395fdfd8fbbdad45, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0bc7a9e60f55a489de93c3ff46fef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   heldPrefab: {fileID: 4727184679393610582, guid: e658f1acf7df9f040858e6d54618bdac, type: 3}
+  targetPrefab: {fileID: 7351335477012750815, guid: 9118a21562e64414698b2f4c6ada2beb, type: 3}
+  trailPrefab: {fileID: 1352020778533362962, guid: 931689686d3ae3149b9d6a1b1196c4e3, type: 3}
+  notiPri: {fileID: 2100000, guid: 4b1381fa0ae6471408ba8df4c86d06d0, type: 2}
+  noti: {fileID: 2100000, guid: 98c87abc84d31084babdeb198310369b, type: 2}
+  heldNoti: {fileID: 2100000, guid: 90598165b4d633a42b0753c95e5483d9, type: 2}
+  isPri: 0
+  destroyTimer: 3
+  isHeld: 0

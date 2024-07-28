@@ -22,7 +22,7 @@ public class Target : MonoBehaviour
     {
         ScoreKeeper.notesGiven++;
         lifeTime = 0f;
-        changeSprite();
+        //changeSprite();
     }
 
     // Update is called once per frame
@@ -46,6 +46,7 @@ public class Target : MonoBehaviour
 
     public void changeSprite()
     {
+
         if (SongSelect2.theSong.Equals("We're Only Goonswarm by Srsli"))
         {
             /*

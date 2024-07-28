@@ -5,6 +5,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     //Prefabs
+    public GameObject heldPrefab;
     public GameObject targetPrefab;
     public GameObject trailPrefab;
     //Other Scripts
@@ -12,9 +13,11 @@ public class Counter : MonoBehaviour
     //Material
     public Material notiPri;
     public Material noti;
+    public Material heldNoti;
     //Instance
     public bool isPri = false;
     public float destroyTimer = 3f;
+    public bool isHeld = false;
     //private int notesInSecond = 0;
     private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     // Start is called before the first frame update
@@ -22,6 +25,10 @@ public class Counter : MonoBehaviour
     {
         this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.0f, (3.0f - destroyTimer) * (0.5f / 3));
         spawnPos = Spawner.spawnPos;
+        if(isHeld)
+        {
+            this.gameObject.GetComponent<Renderer>().material = heldNoti;
+        }
     }
 
     // Update is called once per frame
@@ -37,34 +44,46 @@ public class Counter : MonoBehaviour
                     isPri = false;
                 }
             }
-            if (isPri)
+            if (!isHeld)
             {
-                this.GetComponent<Renderer>().material = notiPri;
-                this.transform.Translate(Vector3.forward * Time.deltaTime * 0.001f);
+                if (isPri)
+                {
+                    this.GetComponent<Renderer>().material = notiPri;
+                    this.transform.Translate(Vector3.forward * Time.deltaTime * 0.001f);
+                }
+                else
+                {
+                    this.GetComponent<Renderer>().material = noti;
+                }
             }
-            else
-            {
-                this.GetComponent<Renderer>().material = noti;
-            }
+            
 
             this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.001f, (3.0f - destroyTimer) * (0.5f / 3));
             destroyTimer -= Time.deltaTime;
             //Debug.Log(destroyTimer);
             if (destroyTimer <= 0)
             {
-
-                //Debug.Log("Spawn a target");
-
-                //Target.lifeTime = 0;
-                if (GameObject.FindGameObjectWithTag("Target") != null)
+                if (isHeld)
                 {
-                    //Debug.Log("I'm destroying the Target");
-                    Target.naturalDestroy();
+                    //Debug.Log("Spawn a target");
+                    Instantiate(heldPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
+                    Instantiate(trailPrefab, transform.position, Quaternion.identity);
+                    ScoreKeeper.bloom += 0.01f;
+                    Destroy(this.gameObject);
                 }
-                Instantiate(targetPrefab, transform.position, Quaternion.identity);
-                Instantiate(trailPrefab, transform.position, Quaternion.identity);
-                ScoreKeeper.bloom += 0.01f;
-                Destroy(this.gameObject);
+                else
+                {
+                    if (GameObject.FindGameObjectWithTag("Target") != null)
+                    {
+                        //Debug.Log("I'm destroying the Target");
+                        Target.naturalDestroy();
+                    }
+                    Instantiate(targetPrefab, transform.position, Quaternion.identity);
+                    Instantiate(trailPrefab, transform.position, Quaternion.identity);
+                    ScoreKeeper.bloom += 0.01f;
+                    Destroy(this.gameObject);
+                }
+                
             }
             
         }

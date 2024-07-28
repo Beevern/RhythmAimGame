@@ -118,8 +118,9 @@ public class Spawner : MonoBehaviour
                 { break; }
             }
             //Debug.Log(bloom);
-            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f + bloom), 0.0f);
+            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
             GameObject target = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            target.GetComponent<Counter>().isHeld = false;
             bloom = 0;
         }
         finished++;
@@ -129,6 +130,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator spawnHeld(float[] spawnTimes)
     {
+        Debug.Log("Running");
         for (int i = 0; i < spawnTimes.Length; i += 2)
         {
             yield return new WaitUntil(() => (float)Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
@@ -142,8 +144,9 @@ public class Spawner : MonoBehaviour
                 { break; }
             }
             //Debug.Log(bloom);
-            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f + bloom), 0.0f);
-            GameObject heldTarget = Instantiate(heldCounter, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
+            GameObject heldCounter = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            heldCounter.GetComponent<Counter>().isHeld = true;
             HeldTarget.destroyTimer = spawnTimes[i+1] - spawnTimes[i];
             bloom = 0;
 

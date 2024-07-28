@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
                     scoreToAdd = 0;
                     //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
+                    ScoreKeeper.combo = 0;
                 }
             }
         }
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
                 {
                     holding = true;
                 }
-                if (hit.transform.tag == "HeldCounter")
+                if (hit.transform.tag == "Counter")
                 {
                     GameObject targetHit = hit.collider.gameObject;
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);

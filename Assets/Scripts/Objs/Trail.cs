@@ -4,20 +4,15 @@ using UnityEngine;
 public class Trail : MonoBehaviour
 {
     //Positions
-    private GameObject nextNoti;
-    private Vector3 startPos;
     private Vector3 finalPos;
     //GameObjects
-    private GameObject thisCounter;
     private GameObject lowestCounter;
     private GameObject secondCounter;
     //Instances
-    private double speed = 0.2;
-    private double destroyTimer = 180.0;
+    private double speed;
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
         if (GameObject.FindGameObjectsWithTag("Counter") != null)
         {
 
@@ -29,15 +24,9 @@ public class Trail : MonoBehaviour
     }
     void Update()
     {
-        //speed = Mathf.Sqrt(Mathf.Pow(finalPos.x - transform.position.x, 2) + Mathf.Pow(finalPos.y - transform.position.y, 2)) / (secondCounter.GetComponent<Counter>().destroyTimer);
-        //Debug.Log(finalPos);
+        Debug.Log(finalPos);
         transform.position = Vector3.MoveTowards(transform.position, finalPos, (float)speed*Time.deltaTime);
         if (transform.position == finalPos)
-        {
-            //Destroy(this.gameObject);
-        }
-        destroyTimer -= Time.deltaTime;
-        if (destroyTimer<=0)
         {
             Destroy(this.gameObject);
         }
