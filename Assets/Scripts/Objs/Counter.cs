@@ -66,7 +66,12 @@ public class Counter : MonoBehaviour
                 if (isHeld)
                 {
                     //Debug.Log("Spawn a target");
-                    Instantiate(heldPrefab, transform.position, Quaternion.AngleAxis(90, Vector3.right));
+                    if (GameObject.FindGameObjectWithTag("Target") != null)
+                    {
+                        //Debug.Log("I'm destroying the Target");
+                        Target.naturalDestroy();
+                    }
+                    Instantiate(heldPrefab, transform.position, Quaternion.identity);
                     Instantiate(trailPrefab, transform.position, Quaternion.identity);
                     ScoreKeeper.bloom += 0.01f;
                     Destroy(this.gameObject);

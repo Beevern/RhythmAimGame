@@ -9,12 +9,10 @@ public class ToDo : MonoBehaviour
     {
         //In Order Of Importance
         /*
-         * Held notes not spawning after previously loading a level held notes
-         * Time.deltaTime for counters so nothing is dependent on frames
+         * Fix "average" stats
+         * Held Notes Score Desc/Score Adding
          * Custom sprites
-         * Subtitles?
          * Self adding levels?
-         * Settings (saving prefs)
          * Optimize initializing dictionaries
          * Vfx 
          *  Tell which beats need vfx by hardcoding. Play animation when hit???

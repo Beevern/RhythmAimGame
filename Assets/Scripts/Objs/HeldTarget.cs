@@ -24,8 +24,7 @@ public class HeldTarget : MonoBehaviour
     {
         naturalDestroy();
         lifeTime += Time.deltaTime;
-        this.transform.localScale = new Vector3((0.5f / destroyTimer) * (destroyTimer - lifeTime), 0.001f, (destroyTimer - lifeTime) * (0.5f / destroyTimer));
-        //this.transform.localScale = new Vector3((0.5f / 3) * (destroyTimer - lifeTime), 0.001f, (destroyTimer - lifeTime) * (0.5f / 3));
+        this.transform.localScale = new Vector3((0.5f / destroyTimer) * (destroyTimer - lifeTime), (destroyTimer - lifeTime) * (0.5f / destroyTimer), 0.001f);
     }
 
     public void naturalDestroy()

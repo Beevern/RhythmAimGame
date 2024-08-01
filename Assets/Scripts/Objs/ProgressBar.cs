@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 public class ProgressBar : MonoBehaviour
 {
     public GameObject mask;
@@ -19,7 +20,11 @@ public class ProgressBar : MonoBehaviour
 
     void GetCurrentFill()
     {
-        mask.GetComponent<Image>().fillAmount = (float)Spawner.timeSinceLoad / (Spawner.totalTime + 3.0f);
-        //mask.GetComponent<Image>().fillAmount = (float)ScoreKeeper.notesGiven / Spawner.totalNotes;
+        if (Time.timeSinceLevelLoadAsDouble>3)
+        {
+            mask.GetComponent<Image>().fillAmount = (float)Time.timeSinceLevelLoadAsDouble / (float)(GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().length);
+            //mask.GetComponent<Image>().fillAmount = (float)ScoreKeeper.notesGiven / Spawner.totalNotes;
+        }
+
     }
 }

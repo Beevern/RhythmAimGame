@@ -24,7 +24,7 @@ public class Trail : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(finalPos);
+        //Debug.Log(finalPos);
         transform.position = Vector3.MoveTowards(transform.position, finalPos, (float)speed*Time.deltaTime);
         if (transform.position == finalPos)
         {

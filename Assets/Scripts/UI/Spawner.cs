@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using TMPro;
 public class Spawner : MonoBehaviour
 {
@@ -16,50 +17,38 @@ public class Spawner : MonoBehaviour
     public GameObject heldCounter;
     //Other Scripts
     //Instance Vars
-    public int finished = 0;
+    public float[] beatArr;
+    public float[] heldArr;
+    public int beat = 0;
+    public int held = 0;
     public static int totalNotes;
-    public static float totalTime;
+    public static double totalTime;
     public static Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     public float spawnCooldown = 0.5f;
     public float timeFromSpawn = 0f;
     public float bloom = 0;
-    public static float timeSinceLoad;
     public static Dictionary<string, float[]> songTimes = new Dictionary<string, float[]>();
     public static Dictionary<string, float[]> heldTimes = new Dictionary<string, float[]>();
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        canvasTrans = GameObject.FindGameObjectWithTag("CrosshairUI").GetComponent<Transform>();
-        //spawnPos = new Vector3(Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), Random.Range(-1.4f - ScoreKeeper.bloom, 1.4f + ScoreKeeper.bloom), 0.0f);
-        StartCoroutine(start());
-        timeSinceLoad = 0;
-        finished = 0;
-    }
-    void Update()
-    {
-        if (!Pause.isPaused)
-        {
-            timeSinceLoad += Time.deltaTime;
-        }
-        //Debug.Log(timeSinceLoad);
-
-        if (finished==2)
-        {
-            //SceneManager.LoadScene("GameOver");
-        }
-    }
-    IEnumerator start()
-    {
-        yield return new WaitForSeconds(0.00f);
-        StartCoroutine(countdown());
         songTimes.Clear();
         /*
         for (int i = 0;i<SongSelect2.allSongs.Length;i++)
         {
             songTimes.Add(SongSelect2.allSongs[i], SongSelect2.times[i]);
+            heldTimes.Add(SongSelect2.allSongs[i], SongSelect2.heldTimes[i]);
         }
         */
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        canvasTrans = GameObject.FindGameObjectWithTag("CrosshairUI").GetComponent<Transform>();
+        StartCoroutine(countdown());
+        
+        
         songTimes.Add("Circles by EDEN", SongSelect2.times[0]);
         songTimes.Add("Seasons by Rival and Cadmium Piano Cover by Kita Sora", SongSelect2.times[1]);
         songTimes.Add("Seasons by Rival and Cadmium Futuristik and Whogaux Remix", SongSelect2.times[2]);
@@ -81,12 +70,54 @@ public class Spawner : MonoBehaviour
         songTimes.Add("Say Goodbye by Krewella", SongSelect2.times[18]);
         songTimes.Add("Hate You by Jim Yosef X Riell", SongSelect2.times[19]);
         songTimes.Add("Lowlife by Neck Deep", SongSelect2.times[20]);
-        StartCoroutine(spawnCounter(songTimes[SongSelect2.theSong]));
 
         heldTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.heldTimes[11]);
         heldTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.heldTimes[13]);
         heldTimes.Add("Lowlife by Neck Deep", SongSelect2.heldTimes[20]);
-        StartCoroutine(spawnHeld(heldTimes[SongSelect2.theSong]));
+
+        //For some reason, replacing songTimes[SongSelect2.theSong] with beatArr doesn't work
+        beatArr = songTimes[SongSelect2.theSong];
+        heldArr = heldTimes[SongSelect2.theSong];
+
+        totalTime = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().length;
+        totalNotes = songTimes[SongSelect2.theSong].Length + heldTimes[SongSelect2.theSong].Length;
+
+        beat = 0;
+        held = 0;
+    }
+
+    void Update()
+    {
+        //For some reason, bloom is not resetting (line 119)
+        /* 
+        if (beat < songTimes[SongSelect2.theSong].Length-20)
+        {
+            for (int j = beat; j < beat + 20; j++)
+            {
+                if (songTimes[SongSelect2.theSong][j] < (float)Time.timeSinceLevelLoadAsDouble + 3.0f)
+                { bloom += 0.00025f; }
+                else
+                { break; }
+                Debug.Log(bloom);
+            }
+        }
+        */
+        if (beat < songTimes[SongSelect2.theSong].Length && (float)Time.timeSinceLevelLoadAsDouble >= songTimes[SongSelect2.theSong][beat])
+        {
+            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
+            GameObject target = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            target.GetComponent<Counter>().isHeld = false;
+            beat++;
+        }
+        if (held < heldTimes[SongSelect2.theSong].Length && (float)Time.timeSinceLevelLoadAsDouble >= heldTimes[SongSelect2.theSong][held] && held%2==0)
+        {
+            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f + bloom), 0.0f);
+            GameObject heldCounter = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
+            heldCounter.GetComponent<Counter>().isHeld = true;
+            HeldTarget.destroyTimer = heldTimes[SongSelect2.theSong][held + 1] - heldTimes[SongSelect2.theSong][held];
+            held += 2;
+        }
+        bloom = 0;
     }
 
     IEnumerator countdown()
@@ -100,59 +131,6 @@ public class Spawner : MonoBehaviour
         startTimer.text = "Go!";
         yield return new WaitForSeconds(0.5f);
         startTimer.text = "";
-    }
-    IEnumerator spawnCounter(float[] spawnTimes)
-    {
-        totalTime = spawnTimes[spawnTimes.Length - 1];
-        totalNotes = spawnTimes.Length;
-        for (int i = 0; i < spawnTimes.Length; i++)
-        {
-            yield return new WaitUntil(() => (float)Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
-            //Debug.Log(spawnTimes[i]);
-
-            for (int j = i; j < spawnTimes.Length; j++)
-            {
-                if (spawnTimes[j] < (float)timeSinceLoad + 3.0f)
-                { bloom += 0.025f; }
-                else
-                { break; }
-            }
-            //Debug.Log(bloom);
-            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
-            GameObject target = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
-            target.GetComponent<Counter>().isHeld = false;
-            bloom = 0;
-        }
-        finished++;
-        Debug.Log("Finished");
-        yield return new WaitForSeconds(5);
-    }
-
-    IEnumerator spawnHeld(float[] spawnTimes)
-    {
-        Debug.Log("Running");
-        for (int i = 0; i < spawnTimes.Length; i += 2)
-        {
-            yield return new WaitUntil(() => (float)Time.timeSinceLevelLoadAsDouble >= spawnTimes[i]);
-            //Debug.Log(spawnTimes[i]);
-
-            for (int j = i; j < spawnTimes.Length; j++)
-            {
-                if (spawnTimes[j] < (float)Time.timeSinceLevelLoadAsDouble + 3.0f)
-                { bloom += 0.025f; }
-                else
-                { break; }
-            }
-            //Debug.Log(bloom);
-            spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
-            GameObject heldCounter = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
-            heldCounter.GetComponent<Counter>().isHeld = true;
-            HeldTarget.destroyTimer = spawnTimes[i+1] - spawnTimes[i];
-            bloom = 0;
-
-        }
-        finished++;
-        Debug.Log("Finished1");
     }
 }
 //enter ="'"&J2&"'"&"," in a random cell in excel after importing Edit Index to add single quotes (remember to CTRL+H to replace with double quotes) and a comma at the end

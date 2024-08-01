@@ -71,7 +71,7 @@ public class playMusic : MonoBehaviour
         yield return new WaitForSeconds(0.00f);
         //Initiallizing dictionaries
         VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid, StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, 
-            LoveIsGoneVid, ThePhoenixVid, GoonswarmVid, DollarSadnessVid, NeverKnowVid, DeadOrAliveVid, HypnotizedVid, SayGoodbyeVid, HateYouVid, LowlifeVid};
+        LoveIsGoneVid, ThePhoenixVid, GoonswarmVid, DollarSadnessVid, NeverKnowVid, DeadOrAliveVid, HypnotizedVid, SayGoodbyeVid, HateYouVid, LowlifeVid};
         RenderTexture[] textures = {CirclesTexture, SeasonsKitaTexture, SeasonsTexture, MillionDaysTexture, MeYouTexture, BrokenGlassTexture, NevadaTexture, StayAlignedTexture,
         XOTexture, WhereWeStartedTexture, DreamsPt2Texture, LoveIsGoneTexture, ThePhoenixTexture, GoonswarmTexture, DollarSadnessTexture, NeverKnowTexture, DeadOrAliveTexture,
         HypnotizedTexture, SayGoodbyeTexture, HateYouTexture, LowlifeTexture};

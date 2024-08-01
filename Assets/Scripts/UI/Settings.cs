@@ -26,38 +26,44 @@ public class Settings : MonoBehaviour
         //source = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<AudioSource>();
         //videoPlayer.AudioSource = source;
         Button openBtn = settingsButton.GetComponent<Button>();
-        openBtn.onClick.AddListener(OpenSettings);
+        openBtn.onClick.AddListener(OpenCloseSettings);
         Button closeBtn = closeSettings.GetComponent<Button>();
-        closeBtn.onClick.AddListener(CloseSettings);
+        closeBtn.onClick.AddListener(OpenCloseSettings);
         sensField = field.GetComponent<TMP_InputField>();
         sensField.onValueChanged.AddListener(delegate { setSens(); });
         volSlider.onValueChanged.AddListener(delegate { setVol(); });
+        volSlider.value = PlayerPrefs.GetFloat("volume", 0.5f);
+        field.GetComponent<TMP_InputField>().text = "" + PlayerPrefs.GetFloat("xSen", 50);
     }
 
     void setVol()
     {
-       source.volume = volSlider.value;
+        PlayerPrefs.SetFloat("volume", volSlider.value);
+        source.volume = PlayerPrefs.GetFloat("volume", 0.5f);
     }
 
     public void setSens()
     {
 
-        Player.speedH = float.Parse(field.GetComponent<TMP_InputField>().text);
-        Player.speedV = float.Parse(field.GetComponent<TMP_InputField>().text);
-
-        field.GetComponent<TMP_InputField>().text = "" + Player.speedV;
+        
+        PlayerPrefs.SetFloat("xSen", float.Parse(field.GetComponent<TMP_InputField>().text));
+        PlayerPrefs.SetFloat("ySen", float.Parse(field.GetComponent<TMP_InputField>().text));
+        Player.speedH = PlayerPrefs.GetFloat("xSen", 50);
+        Player.speedV = PlayerPrefs.GetFloat("ySen", 50);
     }
-    public void OpenSettings()
+    public void OpenCloseSettings()
     {
         //Debug.Log("Opening Settings");
-        settingsMenu.SetActive(true);
-        isSettings = true;
-    }
-    public void CloseSettings()
-    {
-        //Debug.Log("Closing Settings");
-        settingsMenu.SetActive(false);
-        isSettings = false;
+        if (!isSettings)
+        {
+            settingsMenu.SetActive(true);
+            isSettings = true;
+        }
+        else
+        {
+            settingsMenu.SetActive(false);
+            isSettings = false;
+        }
     }
     void OnMouseOver()
     {

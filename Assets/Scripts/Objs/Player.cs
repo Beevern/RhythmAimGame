@@ -106,12 +106,14 @@ public class Player : MonoBehaviour
                 if (hit.transform.tag == "HeldTarget")
                 {
                     holding = true;
+                    ScoreKeeper.combo++;
                 }
                 if (hit.transform.tag == "Counter")
                 {
                     GameObject targetHit = hit.collider.gameObject;
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
                     Destroy(hit.collider.gameObject);
+                    ScoreKeeper.combo = 0;
                 }
             }
         }
@@ -120,7 +122,6 @@ public class Player : MonoBehaviour
             holding = false;
             scoreToAdd = holdTime * 7;
             //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(GameObject.FindGameObjectWithTag("HeldTarget").transform.position.x, GameObject.FindGameObjectWithTag("HeldTarget").transform.position.y + 0.005f), Quaternion.identity);
-            scoreToAdd = 0;
             Destroy(GameObject.FindGameObjectWithTag("HeldTarget"));
         }
         if (holding && Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null)
@@ -128,9 +129,10 @@ public class Player : MonoBehaviour
             ScoreKeeper.score += 7;
             holdTime += 1;
         }
-        else if (!Input.GetMouseButton(1) || GameObject.FindGameObjectWithTag("HeldTarget") == null)
+        else if ((!Input.GetMouseButton(1) || GameObject.FindGameObjectWithTag("HeldTarget") == null)&& holding)
         {
             holding = false;
+            //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(GameObject.FindGameObjectWithTag("HeldTarget").transform.position.x, GameObject.FindGameObjectWithTag("HeldTarget").transform.position.y + 0.015f), Quaternion.identity);
         }
         
         
