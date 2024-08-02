@@ -9,7 +9,6 @@ public class ToDo : MonoBehaviour
     {
         //In Order Of Importance
         /*
-         * Fix "average" stats
          * Held Notes Score Desc/Score Adding
          * Custom sprites
          * Self adding levels?

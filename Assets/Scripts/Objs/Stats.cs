@@ -29,12 +29,21 @@ public class Stats : MonoBehaviour
         timesPlayedT.text = "Times Played: "+PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 0);
         highScoreT.text = "High Score: "+PlayerPrefs.GetInt(SongSelect2.theSong + "highScore", 0);
         highComboT.text = "Highest Combo: "+PlayerPrefs.GetInt(SongSelect2.theSong + "highCombo", 0);
-        avgScoreT.text = "Average Score: "+PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore", 0)/PlayerPrefs.GetInt("timesPlayed", 1);
-        avgPartiT.text = "Average Participation: "+(int)PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti", 0)/ PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 1) + "%";
+        if (PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 1)>0)
+        {
+            avgScoreT.text = "Average Score: " + PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore", 0) / PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 1);
+            avgPartiT.text = "Average Participation: " + (int)PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti", 0) / PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 1) + "%";
+        }
+        else
+        {
+            avgScoreT.text = "Average Score: 0";
+            avgPartiT.text = "Average Participation: 0%";
+        }
     }
 
     void resetStats()
     {
+        /* FOR ALL SONGS
         for (int i = 0; i < SongSelect2.allSongs.Length; i++)
         {
             PlayerPrefs.SetInt(SongSelect2.allSongs[i] + "highScore", 0);
@@ -44,5 +53,13 @@ public class Stats : MonoBehaviour
             PlayerPrefs.SetInt(SongSelect2.allSongs[i] + "timesPlayed", 0);
             PlayerPrefs.SetInt(SongSelect2.allSongs[i] + "gamesPlayed", 0);
         }
+        */
+        //FOR ONE SONG
+        PlayerPrefs.SetInt(SongSelect2.theSong + "highScore", 0);
+        PlayerPrefs.SetInt(SongSelect2.theSong + "highCombo", 0);
+        PlayerPrefs.SetInt(SongSelect2.theSong + "totalScore", 0);
+        PlayerPrefs.SetInt(SongSelect2.theSong + "totalParti", 0);
+        PlayerPrefs.SetInt(SongSelect2.theSong + "timesPlayed", 0);
+        PlayerPrefs.SetInt(SongSelect2.theSong + "gamesPlayed", 0);
     }
 }

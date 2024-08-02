@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System;
 public class SongSelect2 : MonoBehaviour
 {
@@ -199,6 +200,10 @@ public class SongSelect2 : MonoBehaviour
                 current--;
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene("Game");
         }
         if (songNames.Length > current && songNames.Length > 0)
         {

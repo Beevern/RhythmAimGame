@@ -28,13 +28,14 @@ public class GameOver : MonoBehaviour
         {
             PlayerPrefs.SetInt(SongSelect2.theSong + "highCombo", ScoreKeeper.highestCombo);
         }
-        //With the averages, it's taking the current one, (eg 20k), adding (1/timesPlayed) of the previous total
-        PlayerPrefs.SetInt(SongSelect2.theSong + "totalScore", PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore"));
-        PlayerPrefs.SetFloat(SongSelect2.theSong + "totalParti", PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti"));
+        PlayerPrefs.SetInt(SongSelect2.theSong + "totalScore", ScoreKeeper.score+PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore"));
+        PlayerPrefs.SetFloat(SongSelect2.theSong + "totalParti", (float) ScoreKeeper.participation+PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti"));
         PlayerPrefs.SetInt(SongSelect2.theSong + "timesPlayed", PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 0)+1);
-
+        /*
+        Debug.Log(SongSelect2.theSong);
         Debug.Log(PlayerPrefs.GetInt(SongSelect2.theSong + "timesPlayed", 0));
-        Debug.Log((ScoreKeeper.participation + PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti"))/2);
-        Debug.Log((ScoreKeeper.score + PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore"))/2);
+        Debug.Log(PlayerPrefs.GetFloat(SongSelect2.theSong + "totalParti"));
+        Debug.Log(PlayerPrefs.GetInt(SongSelect2.theSong + "totalScore"));
+        */
     }
 }
