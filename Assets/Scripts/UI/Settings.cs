@@ -15,6 +15,7 @@ public class Settings : MonoBehaviour
     public GameObject settingsMenu;
     //Instance 
     public bool isSettings=false;
+    public static float vol;
     //Audio
     public AudioSource source;
     public AudioClip hover;
@@ -32,20 +33,21 @@ public class Settings : MonoBehaviour
         sensField = field.GetComponent<TMP_InputField>();
         sensField.onValueChanged.AddListener(delegate { setSens(); });
         volSlider.onValueChanged.AddListener(delegate { setVol(); });
-        volSlider.value = PlayerPrefs.GetFloat("volume", 0.5f);
-        field.GetComponent<TMP_InputField>().text = "" + PlayerPrefs.GetFloat("xSen", 50);
+        vol = PlayerPrefs.GetFloat("volume", 0.5f);
+        volSlider.value = vol;
+        source.volume = vol;
+        sensField.text = "" + PlayerPrefs.GetFloat("xSen", 50);
     }
 
     void setVol()
     {
         PlayerPrefs.SetFloat("volume", volSlider.value);
-        source.volume = PlayerPrefs.GetFloat("volume", 0.5f);
+        vol = PlayerPrefs.GetFloat("volume", 0.5f);
+        source.volume = vol;
     }
 
     public void setSens()
     {
-
-        
         PlayerPrefs.SetFloat("xSen", float.Parse(field.GetComponent<TMP_InputField>().text));
         PlayerPrefs.SetFloat("ySen", float.Parse(field.GetComponent<TMP_InputField>().text));
         Player.speedH = PlayerPrefs.GetFloat("xSen", 50);

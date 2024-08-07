@@ -15,14 +15,6 @@ public class Pause : MonoBehaviour
     public static float destroyTimer = 0f;
     public TMP_InputField sensField;
     public bool isCountingDown = false;
-    //public float sens = 0.5f;
-
-    private void Start()
-    {
-        sensField = field.GetComponent<TMP_InputField>();
-        sensField.onValueChanged.AddListener(delegate { setSens(); });
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -40,20 +32,7 @@ public class Pause : MonoBehaviour
             }
         }
 
-        //setSens();
-
         //Debug.Log(field.GetComponent<InputField>().text);
-    }
-
-    public void setSens()
-    {
-        
-        Player.speedH = float.Parse(field.GetComponent<TMP_InputField>().text);
-        Player.speedV = float.Parse(field.GetComponent<TMP_InputField>().text);
-
-        field.GetComponent<TMP_InputField>().text = ""+Player.speedV;
-
-        
     }
 
     public void resume1()
