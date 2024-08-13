@@ -26,9 +26,9 @@ public class ScoreDesc : MonoBehaviour
         }
         else if (scoreToAdd <= 0)
         {
-            this.GetComponent<TextMesh>().text = "Too early";
+            this.GetComponent<TextMesh>().text = "Bad";
         }
-        Destroy(GameObject.FindGameObjectWithTag("Target"));
+        //Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
 
     // Update is called once per frame

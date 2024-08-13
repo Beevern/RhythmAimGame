@@ -7,11 +7,9 @@ public class ToDo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //In Order Of Importance
+        //In Order Of Importance?
         /*
-         * Held Notes Score Desc/Score Adding
          * Custom sprites
-         *  We need sprites to be the same size 
          * Self adding levels?
          *  - We can do this by allowing user to add mp3 or mp4, and a slider that represents where we are in the video. We can press a certain key to create a marker with
          *    a property which contains the time of the video when it was created. Then, cycle through all markers and get their times, which then becomes a level

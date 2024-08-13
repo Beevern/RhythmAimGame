@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
     //Instance
     public static float accuracy;
     public static bool holding;
-    public int holdTime;
+    public float holdTime;
+    private double holdScore;
+    private GameObject heldHit;
+    private GameObject hitTarget;
+    private Vector2 heldPos;
     //Mouse Look
     public static float speedH = 40f;
     public static float speedV = 40f;
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
             //Debug.Log(shotsFired);
             if (Physics.Raycast(ray, out hit, 75.0f))
             {
+                GameObject targetHit = hit.collider.gameObject;
                 if (hit.transform.tag == "Target")
                 {
                     shotsHit++;
@@ -72,18 +77,19 @@ public class Player : MonoBehaviour
                     Target.manualDestroy();
                     scoreToAdd = (int)(500 - ((Target.lifeTime) * 100));
                     ScoreKeeper.score += (int)((1 + (ScoreKeeper.combo * 0.05)) * scoreToAdd);
-                    GameObject targetHit = hit.collider.gameObject;
+                    
                     //Instantiate(trailPrefab, transform.position, Quaternion.identity);
                     //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }
                 if (hit.transform.tag == "Counter")
                 {
-                    GameObject targetHit = hit.collider.gameObject;
-                    Destroy(targetHit);
+                    targetHit = hit.collider.gameObject;
                     scoreToAdd = 0;
                     //Debug.Log(scoreToAdd);
+                    
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
+                    Destroy(targetHit);
                     ScoreKeeper.combo = 0;
                 }
             }
@@ -103,40 +109,45 @@ public class Player : MonoBehaviour
             shotsFired++;
             if (Physics.Raycast(ray, out hit, 75.0f))
             {
+                heldHit = hit.collider.gameObject;
+                heldPos = new Vector2(heldHit.transform.position.x, heldHit.transform.position.y + 0.005f);
                 if (hit.transform.tag == "HeldTarget")
                 {
                     holding = true;
+                    holdTime = 0;
                     ScoreKeeper.combo++;
                 }
                 if (hit.transform.tag == "Counter")
                 {
-                    GameObject targetHit = hit.collider.gameObject;
-                    GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x + 0.15f, targetHit.transform.position.y + 0.005f), Quaternion.identity);
-                    Destroy(hit.collider.gameObject);
+                    holdTime = 0;
+                    scoreToAdd = 0;
+                    GameObject heldHit = hit.collider.gameObject;
+                    GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(heldHit.transform.position.x + 0.15f, heldHit.transform.position.y + 0.005f), Quaternion.identity);
+                    Destroy(heldHit);
                     ScoreKeeper.combo = 0;
                 }
             }
         }
-        if (!Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null && holding == true)
+        if (heldHit == null && Input.GetMouseButton(1) && holding)
+        {
+            holdTime -= 5*Time.deltaTime;
+        }
+        else if ((heldHit == null || !Input.GetMouseButton(1)) && holding)
         {
             holding = false;
-            scoreToAdd = holdTime * 7;
-            //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(GameObject.FindGameObjectWithTag("HeldTarget").transform.position.x, GameObject.FindGameObjectWithTag("HeldTarget").transform.position.y + 0.005f), Quaternion.identity);
-            Destroy(GameObject.FindGameObjectWithTag("HeldTarget"));
+            holdScore = (double)(holdTime / HeldTarget.destroyTimer) * 500;
+            scoreToAdd = (int)holdScore;
+            if (scoreToAdd>0)
+            {
+                ScoreKeeper.score += scoreToAdd;
+            }
+            GameObject scoreDesc1 = Instantiate(scoreDesc, heldPos, Quaternion.identity);
+            Destroy(heldHit);
         }
-        if (holding && Input.GetMouseButton(1) && GameObject.FindGameObjectWithTag("HeldTarget") != null)
+        if (holding && heldHit != null && Input.GetMouseButton(1))
         {
-            ScoreKeeper.score += 7;
-            holdTime += 1;
+            holdTime += Time.deltaTime;
         }
-        else if ((!Input.GetMouseButton(1) || GameObject.FindGameObjectWithTag("HeldTarget") == null)&& holding)
-        {
-            holding = false;
-            //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(GameObject.FindGameObjectWithTag("HeldTarget").transform.position.x, GameObject.FindGameObjectWithTag("HeldTarget").transform.position.y + 0.015f), Quaternion.identity);
-        }
-        
-        
-        //Debug.Log(holding);
     }
 
     private void mouseLook()
