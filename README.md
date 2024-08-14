@@ -1,6 +1,6 @@
 How to edit?
 
-[https://github.com/Ean14/Passion-Project](https://github.com/Beevern/RhythmAimGame)
+(https://github.com/Beevern/RhythmAimGame)
 Install a unity editor from https://unity.com/download
 Install GitHub desktop to pull all changes added to the project
 Download the latest release from the release tab on the right of the github page
