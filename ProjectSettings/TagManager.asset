@@ -17,6 +17,7 @@ TagManager:
   - HeldTarget
   - HeldCounter
   - MarkerT
+  - Marker
   layers:
   - Default
   - TransparentFX

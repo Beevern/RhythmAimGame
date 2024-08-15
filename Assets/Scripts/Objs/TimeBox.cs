@@ -8,12 +8,16 @@ using TMPro;
 //Partially done by chatgpt
 public class TimeBox : MonoBehaviour, IPointerDownHandler
 {
+    //Other objects
     public GameObject needle;
     public GameObject box;
+    public GameObject rightBound;
+    public GameObject leftBound;
     public VideoPlayer vidPlayer;
     public GameObject oneTenthInc;
     public GameObject secInc;
     public Transform boxTransform;
+    //Instances
     public static float boxLength;
     public bool isPlayed;
     public int sizeFactor;
@@ -29,12 +33,13 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
         //For every second, make a increment
         for (int i = 0; i<vidPlayer.length+9;i++)
         {
-            GameObject secInc1 = Instantiate(secInc, new Vector3(-1000+i*100, 40f, 0), Quaternion.identity);
+            //                                                    Move 997 so that it's time accurate
+            GameObject secInc1 = Instantiate(secInc, new Vector3(-997+i*sizeFactor, 40f, 0), Quaternion.identity);
             secInc1.transform.SetParent(boxTransform);
             //For every second, make 10 increments for each 1/10th second
             for (int j = 1;j<10;j++)
             {
-                GameObject tenthInc1 = Instantiate(oneTenthInc, new Vector3(-1000 + i * 100 + j*10, 45.5f, 0), Quaternion.identity);
+                GameObject tenthInc1 = Instantiate(oneTenthInc, new Vector3(-997 + i * sizeFactor + j*sizeFactor/10, 45.5f, 0), Quaternion.identity);
                 tenthInc1.transform.SetParent(boxTransform);
             }
         }
@@ -53,17 +58,20 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
         }
         if (vidPlayer.isPlaying)
         {
-            /*
-            if (needle.transform.position.x >= 1840)// && (vidPlayer.time/vidPlayer.length)<=0.95)
+            if (needle.transform.position.x > rightBound.transform.position.x && box.transform.position.x < boxLength-1920)
             {
-                box.transform.position += Vector3.left * 1000;
+                box.transform.position += Vector3.left * sizeFactor*5;
+                rightBound.transform.position += Vector3.right * sizeFactor * 5;
+                leftBound.transform.position += Vector3.right * sizeFactor * 5;
+
             }
-            
-            if (needle.transform.position.x <= -850)
+            if (needle.transform.position.x < leftBound.transform.position.x && box.transform.position.x <= -sizeFactor*5)
             {
-                box.transform.position += Vector3.right * 1000;
+                box.transform.position += Vector3.right * sizeFactor * 5;
+                leftBound.transform.position += Vector3.left * sizeFactor * 5;
+                rightBound.transform.position += Vector3.left * sizeFactor * 5;
             }
-            */
+
             needle.transform.position += Vector3.right * 100 * Time.deltaTime;
         }
         
@@ -89,31 +97,9 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
 
     private void SetTimeFromNeedlePosition(float xPosition)
     {
-        float durationInSeconds = GetSongLengthInSeconds();
-        float timelineWidth = boxLength/2;
-
-        // Calculate the new time based on the needle's position
-        float normalizedTime = xPosition / timelineWidth;
-        float newTime = normalizedTime * durationInSeconds;
-
-        // Set the new time in the video or audio player
         if (vidPlayer != null && vidPlayer.clip != null)
         {
-            vidPlayer.time = newTime;
-        }
-    }
-
-    float GetSongLengthInSeconds()
-    {
-        // Determine the length of the song (in seconds)
-        if (vidPlayer != null && vidPlayer.clip != null)
-        {
-            return (float)vidPlayer.clip.length;
-        }
-        else
-        {
-            Debug.LogError("No valid audio or video clip found.");
-            return 0;
+            vidPlayer.time = (xPosition / (boxLength/2)) * (float)vidPlayer.clip.length;
         }
     }
 

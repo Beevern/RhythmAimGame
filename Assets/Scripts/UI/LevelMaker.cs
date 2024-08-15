@@ -40,6 +40,7 @@ public class LevelMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeNow = Mathf.Round((float)vidPlayer.time * 100) / 100;
         placeMarker();
         if (!Input.GetMouseButton(0))
         {
@@ -63,12 +64,19 @@ public class LevelMaker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            timeNow = Mathf.Round((float)vidPlayer.time * 100) / 100;
+            
             if (times.Contains(timeNow))
             {
                 //Debug.Log("Removed: " + timeNow);
                 times.Remove(timeNow);
-                //Destroy()
+                foreach (GameObject mark in GameObject.FindGameObjectsWithTag("Marker"))
+                {
+                    if (mark.GetComponent<Marker>().myTime == timeNow)
+                    {
+                        Destroy(mark);
+                        Debug.Log("Marker Destroyed");
+                    }
+                }
                 displayMarkers();
             }
             else
@@ -77,6 +85,7 @@ public class LevelMaker : MonoBehaviour
                 times.Add(timeNow);
                 GameObject marker1 = Instantiate(marker, needle.transform.position, Quaternion.identity);
                 marker1.transform.SetParent(box.transform);
+                marker1.GetComponent<Marker>().myTime = timeNow;
                 displayMarkers();
             }
         }
@@ -101,7 +110,7 @@ public class LevelMaker : MonoBehaviour
         {
             //vidPlayer.Pause();
             vidPlayer.time = timeSlider.value;
-            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*TimeBox.boxLength/2, needle.GetComponent<RectTransform>().anchoredPosition.y+27);
+            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2), needle.GetComponent<RectTransform>().anchoredPosition.y+27);
         }
     }
 
@@ -110,27 +119,53 @@ public class LevelMaker : MonoBehaviour
         if (vidPlayer.isPaused)
         {
             vidPlayer.Play();
-            //playPauseText.text = "Pause";
 
         }
         else
         {
             vidPlayer.Pause();
-            //playPauseText.text = "Play";
         }
     }
 
     void goRight()
     {
-        vidPlayer.time -= 0.01;
-        foreach (GameObject markerText in GameObject.FindGameObjectsWithTag("MarkerT"))
+        //vidPlayer.time -= 0.01;
+        GameObject closestRight = null;
+        double diff = double.MaxValue;
+        double closestDiff = double.MaxValue;
+        foreach (GameObject marker in GameObject.FindGameObjectsWithTag("Marker"))
         {
-            //markerText.GetComponent<TMP_Text>().text
+            diff = marker.GetComponent<Marker>().myTime - timeNow;
+            //Debug.Log("Current: " + diff);
+            if ((diff<closestDiff||closestDiff<0) && diff>0)
+            {
+                closestRight = marker;
+                closestDiff = diff;
+                //Debug.Log("Changed:" + closestDiff);
+            }
         }
+        needle.transform.position = closestRight.transform.position;
+        vidPlayer.time = (needle.transform.position.x / (TimeBox.boxLength / 2)) * (float)vidPlayer.clip.length;
     }
 
     void goLeft()
     {
-        vidPlayer.time -= 0.01;
+        GameObject closestLeft = null;
+        double diff = double.MaxValue;
+        double closestDiff = double.MaxValue;
+        foreach (GameObject marker in GameObject.FindGameObjectsWithTag("Marker"))
+        {
+            diff = timeNow - marker.GetComponent<Marker>().myTime;
+            //Debug.Log("Current: " + diff);
+            if ((diff < closestDiff || closestDiff < 0) && diff > 0)
+            {
+                closestLeft = marker;
+                closestDiff = diff;
+                //Debug.Log("Changed:" + closestDiff);
+            }
+        }
+        needle.transform.position = closestLeft.transform.position;
+        vidPlayer.time = (needle.transform.position.x / (TimeBox.boxLength / 2)) * (float)vidPlayer.clip.length;
     }
 }
+
