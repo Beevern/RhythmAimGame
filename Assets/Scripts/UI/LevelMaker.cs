@@ -18,6 +18,7 @@ public class LevelMaker : MonoBehaviour
     public Button PlayPauseBtn;
     public Button right;
     public Button left;
+    public Button done;
     public TextMeshProUGUI playPauseText;
     public TextMeshProUGUI markerT;
     //Instances
@@ -35,6 +36,8 @@ public class LevelMaker : MonoBehaviour
         rightBtn.onClick.AddListener(goRight);
         Button leftBtn = left.GetComponent<Button>();
         leftBtn.onClick.AddListener(goLeft);
+        Button doneBtn = done.GetComponent<Button>();
+        doneBtn.onClick.AddListener(doneFunc);
     }
 
     // Update is called once per frame
@@ -110,8 +113,17 @@ public class LevelMaker : MonoBehaviour
         {
             //vidPlayer.Pause();
             vidPlayer.time = timeSlider.value;
-            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2), needle.GetComponent<RectTransform>().anchoredPosition.y+27);
+            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2.0f), needle.GetComponent<RectTransform>().anchoredPosition.y+27);
         }
+    }
+
+    void doneFunc()
+    {
+        foreach (GameObject marker in GameObject.FindGameObjectsWithTag("Marker"))
+        {
+            times.Add(marker.GetComponent<Marker>().myTime);
+        }
+
     }
 
     void PlayPause()
@@ -145,7 +157,7 @@ public class LevelMaker : MonoBehaviour
             }
         }
         needle.transform.position = closestRight.transform.position;
-        vidPlayer.time = (needle.transform.position.x / (TimeBox.boxLength / 2)) * (float)vidPlayer.clip.length;
+        vidPlayer.time = closestRight.GetComponent<Marker>().myTime;
     }
 
     void goLeft()
@@ -165,7 +177,7 @@ public class LevelMaker : MonoBehaviour
             }
         }
         needle.transform.position = closestLeft.transform.position;
-        vidPlayer.time = (needle.transform.position.x / (TimeBox.boxLength / 2)) * (float)vidPlayer.clip.length;
+        vidPlayer.time = closestLeft.GetComponent<Marker>().myTime;
     }
 }
 

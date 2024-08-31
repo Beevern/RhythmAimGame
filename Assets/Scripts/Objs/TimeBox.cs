@@ -72,7 +72,7 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
                 rightBound.transform.position += Vector3.left * sizeFactor * 5;
             }
 
-            needle.transform.position += Vector3.right * 100 * Time.deltaTime;
+            needle.transform.position += Vector3.right * sizeFactor * Time.deltaTime;
         }
         
     }
