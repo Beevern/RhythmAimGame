@@ -14,6 +14,7 @@ public class LevelMaker : MonoBehaviour
     public Transform canvas;
     public TextMeshProUGUI timeT;
     public VideoPlayer vidPlayer;
+    public RawImage vidParent;
     public Slider timeSlider;
     public Button PlayPauseBtn;
     public Button right;
@@ -38,6 +39,8 @@ public class LevelMaker : MonoBehaviour
         leftBtn.onClick.AddListener(goLeft);
         Button doneBtn = done.GetComponent<Button>();
         doneBtn.onClick.AddListener(doneFunc);
+
+        StartCoroutine(PlayVid());
     }
 
     // Update is called once per frame
@@ -178,6 +181,19 @@ public class LevelMaker : MonoBehaviour
         }
         needle.transform.position = closestLeft.transform.position;
         vidPlayer.time = closestLeft.GetComponent<Marker>().myTime;
+    }
+
+    IEnumerator PlayVid()
+    {
+        Debug.Log(FileSelection.theVid);
+        vidPlayer.url = FileSelection.theVid;
+        vidPlayer.Prepare();
+        yield return vidPlayer.isPrepared;
+        RenderTexture newTexture = new RenderTexture(vidPlayer.texture.width, vidPlayer.texture.height, 1, RenderTextureFormat.ARGB32);
+        newTexture.Create();
+        vidParent.texture = newTexture;
+        vidPlayer.targetTexture = newTexture;
+        vidPlayer.Play();
     }
 }
 

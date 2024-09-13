@@ -29,32 +29,33 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
     }
     void Start()
     {
-        sizeFactor = 100;
-        //For every second, make a increment
-        for (int i = 0; i<vidPlayer.length+9;i++)
-        {
-            //                                                    Move 997 so that it's time accurate
-            GameObject secInc1 = Instantiate(secInc, new Vector3(-997+i*sizeFactor, 40f, 0), Quaternion.identity);
-            secInc1.transform.SetParent(boxTransform);
-            //For every second, make 10 increments for each 1/10th second
-            for (int j = 1;j<10;j++)
-            {
-                GameObject tenthInc1 = Instantiate(oneTenthInc, new Vector3(-997 + i * sizeFactor + j*sizeFactor/10, 45.5f, 0), Quaternion.identity);
-                tenthInc1.transform.SetParent(boxTransform);
-            }
-        }
-        //Times by 2 because the width is expanded 2 ways.
-        boxLength = (float)vidPlayer.length * sizeFactor * 2;
-        box.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boxLength);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (vidPlayer.isPrepared && isPlayed)
+        if (vidPlayer.isPrepared && !isPlayed)
         {
-            vidPlayer.Play();
+            //vidPlayer.Play();
             isPlayed = true;
+            sizeFactor = 100;
+            //For every second, make a increment
+            for (int i = 0; i<vidPlayer.length+9;i++)
+            {
+                //                                                    Move 997 so that it's time accurate
+                GameObject secInc1 = Instantiate(secInc, new Vector3(-997+i*sizeFactor, 40f, 0), Quaternion.identity);
+                secInc1.transform.SetParent(boxTransform);
+                //For every second, make 10 increments for each 1/10th second
+                for (int j = 1;j<10;j++)
+                {
+                    GameObject tenthInc1 = Instantiate(oneTenthInc, new Vector3(-997 + i * sizeFactor + j*sizeFactor/10, 45.5f, 0), Quaternion.identity);
+                    tenthInc1.transform.SetParent(boxTransform);
+                }
+            }
+            //Times by 2 because the width is expanded 2 ways.
+            boxLength = (float)vidPlayer.length * sizeFactor * 2;
+            box.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boxLength);
         }
         if (vidPlayer.isPlaying)
         {

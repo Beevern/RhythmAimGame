@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using SimpleFileBrowser;
+using System.IO;
 public class FileSelection : MonoBehaviour
 {
     public Button done;
     public Button vidSelect;
     public Button imageSelect;
-    public static VideoClip theVid;
-    public static RawImage theImage;
+    public static string theVid;
+    public static string theImage;
+    public VideoPlayer vidPlayer;
+    public RawImage vidParent;
+    public RawImage imageDisplayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,13 +38,55 @@ public class FileSelection : MonoBehaviour
         SceneManager.LoadScene("LevelMaker");
     }
 
+
     void selectVid()
     {
-        theVid = null;
+        StartCoroutine(SelectVid());
     }
-
     void selectImage()
     {
-        theImage = null;
+        StartCoroutine(SelectImage());
+    }
+    IEnumerator SelectVid()
+    {
+        // Wait for the user to pick a file
+        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+
+        // Check if the user selected a file
+        if (FileBrowser.Success)
+        {
+            theVid = FileBrowser.Result[0];
+            //Debug.Log("Selected file: " + theVid);
+            vidPlayer.url = theVid;
+            vidPlayer.Prepare();
+            yield return vidPlayer.isPrepared;
+            RenderTexture newTexture = new RenderTexture(vidPlayer.texture.width, vidPlayer.texture.height, 1, RenderTextureFormat.ARGB32);
+            newTexture.Create();
+            vidParent.texture = newTexture;
+            vidPlayer.targetTexture = newTexture;
+            vidPlayer.Play();
+        }
+    }
+
+    IEnumerator SelectImage()
+    {
+        // Wait for the user to pick a file
+        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+
+        // Check if the user selected a file
+        if (FileBrowser.Success)
+        {
+            string theImage = FileBrowser.Result[0];
+            //Debug.Log("Selected file: " + theImage);
+            byte[] fileData = File.ReadAllBytes(theImage);
+            Texture2D texture = new Texture2D(2, 2); // The size is overwritten when loading the image
+            if (texture.LoadImage(fileData))
+            {
+                // Assign the texture to the RawImage component
+                imageDisplayer.texture = texture;
+                imageDisplayer.SetNativeSize(); // Optional: set the size of the RawImage to match the texture size
+                Debug.Log("Image loaded and displayed from: " + theImage);
+            }
+        }
     }
 }

@@ -9,9 +9,9 @@ public class ToDo : MonoBehaviour
     {
         //In Order Of Importance?
         /*
+         * Fix timebox at the end it's a bit short
          * Custom sprites
          * Self adding levels?
-         *  - Allow user to select an image and video
          *  - We would need to add the song to AllSongs in SongSelect2, to the dictionaries in playMusic (video and texture), SongSelect2 (images), and Spawner (array)
          *    This creates an interesting problem as I would need to somehow declare the image, texture, and video and add to dictionaries
          * Optimize initializing dictionaries

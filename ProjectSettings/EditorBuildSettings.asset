@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelMakerSetup.unity
     guid: 8bad41cd67c5c7b40b9cb05501a61d67
+  - enabled: 1
+    path: Assets/Scenes/LevelMaker.unity
+    guid: 944abe41119cf10429768de4ab7cfc6b
   m_configObjects: {}
