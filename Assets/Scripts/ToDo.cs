@@ -9,6 +9,8 @@ public class ToDo : MonoBehaviour
     {
         //In Order Of Importance?
         /*
+         * Times only increment each 0.04
+         * A non 0 or 5 scale results in off scale (eg 300 is not correct)
          * Fix timebox at the end it's a bit short
          * Custom sprites
          * Self adding levels?

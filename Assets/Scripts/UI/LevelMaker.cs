@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System.IO;
 using TMPro;
+using SimpleFileBrowser;
 public class LevelMaker : MonoBehaviour
 {
     //Prefabs
@@ -23,8 +25,8 @@ public class LevelMaker : MonoBehaviour
     public TextMeshProUGUI playPauseText;
     public TextMeshProUGUI markerT;
     //Instances
-    public float timeNow;
-    ArrayList times = new ArrayList();
+    public static float timeNow;
+    public ArrayList times = new ArrayList();
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,7 @@ public class LevelMaker : MonoBehaviour
         }
         
         //Must multiply inside then round, then divide so its rounded
-        timeT.text = "Time: "+Mathf.Round((float)vidPlayer.time*100)/100;
+        timeT.text = "Time: "+timeNow;
 
         if (vidPlayer.isPlaying)
         {
@@ -116,17 +118,26 @@ public class LevelMaker : MonoBehaviour
         {
             //vidPlayer.Pause();
             vidPlayer.time = timeSlider.value;
-            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2.0f), needle.GetComponent<RectTransform>().anchoredPosition.y+27);
+            //The problem with this is when I move the end (forward) it works fine (the box catches up) but when I move to the start (backwards) the box doesn't slide back.
+            //The needle's x position stays at a stupid high number
+            //It also doesn't appear to be dependant on where the current needle is, just set the time. So if the level is already halfway through, it'll still move the box as if it was at the start
+            //eg 88624, 82687, the first being after some time has passed and we click the end, the second is clicking to end at the start.
+            Debug.Log((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2));
+            //                                                                                        v82619
+            needle.transform.position = new Vector2((timeSlider.value/timeSlider.maxValue)*(TimeBox.boxLength/2), needle.GetComponent<RectTransform>().anchoredPosition.y+27);
+            Debug.Log("Run");
         }
     }
 
     void doneFunc()
     {
+        LevelSaver theScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LevelSaver>();
         foreach (GameObject marker in GameObject.FindGameObjectsWithTag("Marker"))
         {
-            times.Add(marker.GetComponent<Marker>().myTime);
+            theScript.dataList.Add(marker.GetComponent<Marker>().myTime);
         }
-
+        //theScript.SaveFiles(new string[]{FileSelection.theVid, FileSelection.theImage});
+        theScript.SaveArrayListData();
     }
 
     void PlayPause()
@@ -193,7 +204,8 @@ public class LevelMaker : MonoBehaviour
         newTexture.Create();
         vidParent.texture = newTexture;
         vidPlayer.targetTexture = newTexture;
-        vidPlayer.Play();
     }
+
+    
 }
 

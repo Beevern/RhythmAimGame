@@ -596,6 +596,7 @@ MonoBehaviour:
   secInc: {fileID: 8850114294942533203, guid: 193b90880a919fe4781b75277210f9e4, type: 3}
   boxTransform: {fileID: 760806608}
   isPlayed: 0
+  isMoved: 0
   sizeFactor: 0
 --- !u!114 &760806610
 MonoBehaviour:
@@ -873,6 +874,7 @@ GameObject:
   - component: {fileID: 900519193}
   - component: {fileID: 900519192}
   - component: {fileID: 900519195}
+  - component: {fileID: 900519196}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -980,7 +982,21 @@ MonoBehaviour:
   done: {fileID: 1292791615}
   playPauseText: {fileID: 1567120901}
   markerT: {fileID: 8923473505502331770, guid: 730a5f180eaadaa468374dda2d293f28, type: 3}
-  timeNow: 0
+--- !u!114 &900519196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900519191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791de93a980722f45bf57702dc1989fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderName: SavedLevels
+  fileName: data.json
+  folderPath: 
 --- !u!1 &1192670523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1237,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492001233}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 44395889028899d4493cb37d45469017, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 32531b124a2505e479989967969eb67a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1231,7 +1247,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -1243,7 +1259,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1

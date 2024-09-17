@@ -20,6 +20,7 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
     //Instances
     public static float boxLength;
     public bool isPlayed;
+    public bool isMoved;
     public int sizeFactor;
     // Start is called before the first frame update
 
@@ -35,11 +36,14 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
+        if(!isMoved)
+        {
+            LevelMaker.timeNow-=0.09f;
+        }
         if (vidPlayer.isPrepared && !isPlayed)
         {
-            //vidPlayer.Play();
             isPlayed = true;
-            sizeFactor = 100;
+            sizeFactor = 500;
             //For every second, make a increment
             for (int i = 0; i<vidPlayer.length+9;i++)
             {
@@ -56,21 +60,24 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
             //Times by 2 because the width is expanded 2 ways.
             boxLength = (float)vidPlayer.length * sizeFactor * 2;
             box.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boxLength);
+            vidPlayer.Play();
         }
-        if (vidPlayer.isPlaying)
+        if (isPlayed && vidPlayer.isPlaying)
         {
             if (needle.transform.position.x > rightBound.transform.position.x && box.transform.position.x < boxLength-1920)
             {
-                box.transform.position += Vector3.left * sizeFactor*5;
-                rightBound.transform.position += Vector3.right * sizeFactor * 5;
-                leftBound.transform.position += Vector3.right * sizeFactor * 5;
+                //Debug.Log("Moved right");
+                box.transform.position += Vector3.left * sizeFactor*2;
+                rightBound.transform.position += Vector3.right * sizeFactor*2;
+                leftBound.transform.position += Vector3.right * sizeFactor*2;
 
             }
-            if (needle.transform.position.x < leftBound.transform.position.x && box.transform.position.x <= -sizeFactor*5)
+            if (needle.transform.position.x < leftBound.transform.position.x && box.transform.position.x <= -sizeFactor)
             {
-                box.transform.position += Vector3.right * sizeFactor * 5;
-                leftBound.transform.position += Vector3.left * sizeFactor * 5;
-                rightBound.transform.position += Vector3.left * sizeFactor * 5;
+                //Debug.Log("Moved left");
+                box.transform.position += Vector3.right * sizeFactor*2;
+                leftBound.transform.position += Vector3.left * sizeFactor*2;
+                rightBound.transform.position += Vector3.left * sizeFactor*2;
             }
 
             needle.transform.position += Vector3.right * sizeFactor * Time.deltaTime;
@@ -79,6 +86,7 @@ public class TimeBox : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        isMoved = true;
         Vector2 localPoint;
         // Convert the screen point to a local point in the timeline's RectTransform
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(box.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localPoint))

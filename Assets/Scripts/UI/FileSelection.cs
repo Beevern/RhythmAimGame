@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using SimpleFileBrowser;
@@ -13,12 +14,15 @@ public class FileSelection : MonoBehaviour
     public Button imageSelect;
     public static string theVid;
     public static string theImage;
+    public static string theName;
     public VideoPlayer vidPlayer;
     public RawImage vidParent;
     public RawImage imageDisplayer;
+    public TMP_InputField nameField;
     // Start is called before the first frame update
     void Start()
     {
+        nameField.onValueChanged.AddListener(delegate { setName(); });
         Button doneBtn = done.GetComponent<Button>();
         doneBtn.onClick.AddListener(doneFunc);
         Button vidSel = vidSelect.GetComponent<Button>();
@@ -38,7 +42,10 @@ public class FileSelection : MonoBehaviour
         SceneManager.LoadScene("LevelMaker");
     }
 
-
+    void setName()
+    {
+        theName = nameField.text;
+    }
     void selectVid()
     {
         StartCoroutine(SelectVid());
@@ -76,7 +83,7 @@ public class FileSelection : MonoBehaviour
         // Check if the user selected a file
         if (FileBrowser.Success)
         {
-            string theImage = FileBrowser.Result[0];
+            theImage = FileBrowser.Result[0];
             //Debug.Log("Selected file: " + theImage);
             byte[] fileData = File.ReadAllBytes(theImage);
             Texture2D texture = new Texture2D(2, 2); // The size is overwritten when loading the image
