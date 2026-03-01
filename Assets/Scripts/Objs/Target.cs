@@ -32,6 +32,7 @@ public class Target : MonoBehaviour
         
     }
 
+    //Destroy if hit by player
     public static void manualDestroy()
     {
         ScoreKeeper.noteHits++;
@@ -44,6 +45,7 @@ public class Target : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
 
+    //Change sprite for certain levels?
     public void changeSprite()
     {
 

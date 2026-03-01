@@ -50,11 +50,13 @@ public class Player : MonoBehaviour
         
         
     }
+    //Accuracy text: shots hit over shots fired NOT USED ANYMORE!
     private void showText()
     {
         accuracy = Mathf.Round(((float)shotsHit / shotsFired) * 100);
         accuracyText.text = "Accuracy: " + accuracy + "%";
     }
+    //Shoot for targets
     private void shoot()
     {
         //Mouse input
@@ -82,6 +84,8 @@ public class Player : MonoBehaviour
                     //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }
+                //If hit a counter while trying to hit a target, destroy the counter. (Maybe remove?)
+                /*
                 if (hit.transform.tag == "Counter")
                 {
                     targetHit = hit.collider.gameObject;
@@ -92,10 +96,11 @@ public class Player : MonoBehaviour
                     Destroy(targetHit);
                     ScoreKeeper.combo = 0;
                 }
+                */
             }
         }
     }
-
+    //Right click for helds
     private void hold()
     {
         if (Input.GetMouseButtonDown(1) && !holding)
@@ -117,6 +122,8 @@ public class Player : MonoBehaviour
                     holdTime = 0;
                     ScoreKeeper.combo++;
                 }
+                //If hit a target while trying to hit a held
+                /*
                 if (hit.transform.tag == "Counter")
                 {
                     holdTime = 0;
@@ -126,6 +133,7 @@ public class Player : MonoBehaviour
                     Destroy(heldHit);
                     ScoreKeeper.combo = 0;
                 }
+                */
             }
         }
         if (heldHit == null && Input.GetMouseButton(1) && holding)

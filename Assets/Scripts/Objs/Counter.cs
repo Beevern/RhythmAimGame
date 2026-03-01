@@ -34,6 +34,7 @@ public class Counter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Changing colour if is priority
         if (!Pause.isPaused)
         {
             isPri = true;
@@ -57,10 +58,11 @@ public class Counter : MonoBehaviour
                 }
             }
             
-
+            //Make bigger as time goes down
             this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.001f, (3.0f - destroyTimer) * (0.5f / 3));
             destroyTimer -= Time.deltaTime;
-            //Debug.Log(destroyTimer);
+
+            //Spawn either a target or held target
             if (destroyTimer <= 0)
             {
                 if (isHeld)
