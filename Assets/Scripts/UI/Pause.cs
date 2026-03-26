@@ -8,13 +8,20 @@ using TMPro;
 public class Pause : MonoBehaviour
 {
     public static bool isPaused;
+    public Button resumeButton;
     public GameObject pauseUI;
     public TextMeshProUGUI startTimer;
     public GameObject field;
-    public static float lifeTime = 2f;
-    public static float destroyTimer = 0f;
     public TMP_InputField sensField;
     public bool isCountingDown = false;
+    private Coroutine countdownRoutine;
+
+    private void Start()
+    {
+        Button btn = resumeButton.GetComponent<Button>();
+        btn.onClick.AddListener(resume);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +31,14 @@ public class Pause : MonoBehaviour
 
             if (isPaused)
             {
-                resume1();
+                if (isCountingDown)
+                {
+                    pause();
+                }
+                else
+                {
+                    resume();
+                }
             }
             else
             {
@@ -35,62 +49,46 @@ public class Pause : MonoBehaviour
         //Debug.Log(field.GetComponent<InputField>().text);
     }
 
-    public void resume1()
+    public void resume()
     {
-        StartCoroutine(resume2());
         
-        Time.timeScale = 0.00000000001f;
-        //isPaused = false;
         pauseUI.SetActive(false);
-
         Cursor.lockState = CursorLockMode.Locked;
-        
+        countdownRoutine = StartCoroutine(countdown());
     }
-    IEnumerator resume2()
+
+    IEnumerator countdown()
     {
-        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<AudioSource>().Pause();
-        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().Pause();
-        Cursor.lockState = CursorLockMode.Locked;
         if (!isCountingDown)
         {
             isCountingDown = true;
             startTimer.text = "3";
-            yield return new WaitForSeconds(0.000000000005f);
+            yield return new WaitForSecondsRealtime(0.5f);
             startTimer.text = "2";
-            yield return new WaitForSeconds(0.000000000005f);
+            yield return new WaitForSecondsRealtime(0.5f);
             startTimer.text = "1";
-            yield return new WaitForSeconds(0.000000000005f);
+            yield return new WaitForSecondsRealtime(0.5f);
             startTimer.text = "Go!";
-            yield return new WaitForSeconds(0.000000000005f);
+            yield return new WaitForSecondsRealtime(0.5f);
             startTimer.text = "";
             isCountingDown = false;
 
+            Time.timeScale = 1f;
             GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().Play();
-            Time.timeScale = 1f;
             isPaused = false;
-            pauseUI.SetActive(false);
         }
-        /*
-        if (isCountingDown)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                StopCoroutine(pause2());
-                isPaused = true;
-                isCountingDown = false;
-            }
-        }
-        */
-        
-
-
-        
     }
 
     public void pause()
     {
-
+        if (countdownRoutine != null)
+        {
+            StopCoroutine(countdownRoutine);
+            countdownRoutine = null;
+            isCountingDown = false;
+            startTimer.text = "";
+        }
         isPaused = true;
         pauseUI.SetActive(true);
         Time.timeScale = 0f;

@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         
         
     }
-    //Accuracy text: shots hit over shots fired NOT USED ANYMORE!
+    //Accuracy text: shots hit over shots fired (NOT USED ANYMORE!)
     private void showText()
     {
         accuracy = Mathf.Round(((float)shotsHit / shotsFired) * 100);
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
                     //Debug.Log(scoreToAdd);
                     GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(targetHit.transform.position.x+0.15f, targetHit.transform.position.y+0.005f), Quaternion.identity);
                 }
-                //If hit a counter while trying to hit a target, destroy the counter. (Maybe remove?)
+                //If hit a counter while trying to hit a target, destroy the counter. (Maybe remove? | Currently removed)
                 /*
                 if (hit.transform.tag == "Counter")
                 {
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         else if ((heldHit == null || !Input.GetMouseButton(1)) && holding)
         {
             holding = false;
-            holdScore = (double)(holdTime / HeldTarget.destroyTimer) * 500;
+            holdScore = (double)(holdTime / HeldTarget/*heldHit.GetComponent<Counter>()*/.destroyTimer) * 500;
             scoreToAdd = (int)holdScore;
             if (scoreToAdd>0)
             {

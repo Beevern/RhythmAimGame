@@ -10,7 +10,7 @@ public class MouseBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mySource = GameObject.FindGameObjectWithTag("Overviewer").GetComponent<AudioSource>();
+        //mySource = GameObject.FindGameObjectWithTag("Overviewer").GetComponent<AudioSource>();
     }
     void OnMouseOver()
     {

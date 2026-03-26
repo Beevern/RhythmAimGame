@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -204,6 +200,7 @@ GameObject:
   - component: {fileID: 271370928}
   - component: {fileID: 271370927}
   - component: {fileID: 271370926}
+  - component: {fileID: 271370930}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -326,6 +323,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271370924}
   m_CullTransparentMesh: 1
+--- !u!114 &271370930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271370924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574d6d2f8eca87c47988d05e3f723639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MouseBehaviour
+  mySource: {fileID: 350821661}
+  hover: {fileID: 8300000, guid: 45a9d8d59f0f0a2449686d3267318f26, type: 3}
+  click: {fileID: 8300000, guid: be00acb88d282c041b7767a126fa29aa, type: 3}
 --- !u!1001 &350821658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,6 +426,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -499,6 +512,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &350821661 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3506568435123413057, guid: 3fe0ec9f409eca7488495abf46b21f2b, type: 3}
+  m_PrefabInstance: {fileID: 350821658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &355151512
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,8 +654,8 @@ MonoBehaviour:
   playButton: {fileID: 355151514}
   sceneName: SongSelect
   source: {fileID: 350821660}
-  hover: {fileID: 8300000, guid: edf2390bbca0a4043ae9779f22b29255, type: 3}
-  press: {fileID: 8300000, guid: 7e34674786c52644b939f706fd014327, type: 3}
+  hover: {fileID: 8300000, guid: 45a9d8d59f0f0a2449686d3267318f26, type: 3}
+  press: {fileID: 8300000, guid: be00acb88d282c041b7767a126fa29aa, type: 3}
 --- !u!1 &373917502
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,20 +751,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -806,8 +827,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 154}
-  m_SizeDelta: {x: 702.9176, y: 50}
+  m_AnchoredPosition: {x: -0.000005722, y: 186}
+  m_SizeDelta: {x: 318.0767, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410039297
 MonoBehaviour:
@@ -829,7 +850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Osu without the anime songs
+  m_text: Synced Dinks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 913de906a815ce54380d00a901a2b753, type: 2}
   m_sharedMaterial: {fileID: 2813362177255720221, guid: 913de906a815ce54380d00a901a2b753, type: 2}
@@ -867,20 +888,23 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -963,7 +987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Maker
+  m_text: Level Maker (WIP)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 913de906a815ce54380d00a901a2b753, type: 2}
   m_sharedMaterial: {fileID: 2813362177255720221, guid: 913de906a815ce54380d00a901a2b753, type: 2}
@@ -1001,20 +1025,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1256,20 +1283,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1391,8 +1421,8 @@ RectTransform:
   m_Children:
   - {fileID: 410039296}
   - {fileID: 355151513}
-  - {fileID: 475257538}
   - {fileID: 1661608303}
+  - {fileID: 475257538}
   - {fileID: 271370925}
   - {fileID: 4519776198485084288}
   m_Father: {fileID: 0}
@@ -1514,9 +1544,9 @@ MonoBehaviour:
   volSlider: {fileID: 4519776198485084289}
   settingsMenu: {fileID: 4519776198485084291}
   isSettings: 0
-  source: {fileID: 0}
-  hover: {fileID: 0}
-  press: {fileID: 0}
+  source: {fileID: 350821661}
+  hover: {fileID: 8300000, guid: 45a9d8d59f0f0a2449686d3267318f26, type: 3}
+  press: {fileID: 8300000, guid: be00acb88d282c041b7767a126fa29aa, type: 3}
 --- !u!1 &1661608302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,8 +1584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.98, y: 30}
-  m_SizeDelta: {x: 198.9541, y: 25.552}
+  m_AnchoredPosition: {x: -214.26556, y: 30}
+  m_SizeDelta: {x: 274.383, y: 25.552}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661608304
 MonoBehaviour:
@@ -1654,8 +1684,8 @@ MonoBehaviour:
   playButton: {fileID: 1661608304}
   sceneName: LevelMakerSetup
   source: {fileID: 0}
-  hover: {fileID: 0}
-  press: {fileID: 0}
+  hover: {fileID: 8300000, guid: 45a9d8d59f0f0a2449686d3267318f26, type: 3}
+  press: {fileID: 8300000, guid: be00acb88d282c041b7767a126fa29aa, type: 3}
 --- !u!1 &2069555807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,20 +1781,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

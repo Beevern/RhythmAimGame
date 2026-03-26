@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,6 @@ public class HeldTarget : MonoBehaviour
     {
         ScoreKeeper.notesGiven++;
         lifeTime = 0f;
-
     }
 
     // Update is called once per frame

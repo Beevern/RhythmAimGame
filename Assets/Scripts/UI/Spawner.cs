@@ -70,11 +70,14 @@ public class Spawner : MonoBehaviour
         songTimes.Add("Say Goodbye by Krewella", SongSelect2.times[18]);
         songTimes.Add("Hate You by Jim Yosef X Riell", SongSelect2.times[19]);
         songTimes.Add("Lowlife by Neck Deep", SongSelect2.times[20]);
+        songTimes.Add("Sad Song by We The Kings", SongSelect2.times[21]);
+        songTimes.Add("Endlessly by The Cab", SongSelect2.times[22]);
 
         heldTimes.Add("Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)", SongSelect2.heldTimes[11]);
         heldTimes.Add("We're Only Goonswarm by Srsli", SongSelect2.heldTimes[13]);
         heldTimes.Add("Lowlife by Neck Deep", SongSelect2.heldTimes[20]);
-
+        heldTimes.Add("Sad Song by We The Kings", SongSelect2.heldTimes[21]);
+        heldTimes.Add("Endlessly by The Cab", SongSelect2.heldTimes[22]);
         //For some reason, replacing songTimes[SongSelect2.theSong] with beatArr doesn't work
         beatArr = songTimes[SongSelect2.theSong];
         heldArr = heldTimes[SongSelect2.theSong];
@@ -133,7 +136,7 @@ public class Spawner : MonoBehaviour
         startTimer.text = "";
     }
 }
-//enter ="'"&J2&"'"&"," in a random cell in excel after importing Edit Index to add single quotes (remember to CTRL+H to replace with double quotes) and a comma at the end
+//enter ="""" & J2 & """," in a random cell in excel after importing Edit Index to add single quotes (remember to CTRL+H to replace with double quotes) and a comma at the end
 //https://replit.com/@Bevern/Convert-TimeFrames-to-Seconds#Main.java For converting frames in Davinci resolve to seconds in Unity :)
 
 //When adding a new song: Import vid and coverimage, include in SongSelection scene, Game scene, playMusic script, songSelect2 script, and Spawner script.
