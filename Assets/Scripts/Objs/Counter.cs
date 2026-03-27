@@ -15,19 +15,21 @@ public class Counter : MonoBehaviour
     public Material noti;
     public Material heldNoti;
     //Instance
-    public bool isPri = false;
+    private bool isPri = false;
     public float destroyTimer = 3f;
     public bool isHeld = false;
+    public float timeTransfer = 0;
     //private int notesInSecond = 0;
-    private Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
+    public Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
     // Start is called before the first frame update
     void Start()
     {
         this.transform.localScale = new Vector3((0.5f / 3) * (3.0f - destroyTimer), 0.0f, (3.0f - destroyTimer) * (0.5f / 3));
         spawnPos = Spawner.spawnPos;
+        //Change material if its a counter for held note, otherwise keep default
         if(isHeld)
         {
-            this.gameObject.GetComponent<Renderer>().material = heldNoti;
+            this.GetComponent<Renderer>().material = heldNoti;
         }
     }
 
@@ -65,25 +67,29 @@ public class Counter : MonoBehaviour
             //Spawn either a target or held target
             if (destroyTimer <= 0)
             {
+                GameObject target = GameObject.FindGameObjectWithTag("Target");
                 if (isHeld)
                 {
                     //Debug.Log("Spawn a target");
-                    if (GameObject.FindGameObjectWithTag("Target") != null)
+                    if (target != null)
                     {
                         //Debug.Log("I'm destroying the Target");
-                        Target.naturalDestroy();
+                        target.GetComponent<Target>().naturalDestroy();
+                        //Target.naturalDestroy();
                     }
-                    Instantiate(heldPrefab, transform.position, Quaternion.identity);
+                    GameObject heldTarget = Instantiate(heldPrefab, transform.position, Quaternion.identity);
+                    heldTarget.GetComponent<HeldTarget>().destroyTimer = timeTransfer;
                     Instantiate(trailPrefab, transform.position, Quaternion.identity);
                     ScoreKeeper.bloom += 0.01f;
                     Destroy(this.gameObject);
                 }
                 else
                 {
-                    if (GameObject.FindGameObjectWithTag("Target") != null)
+                    if (target != null)
                     {
                         //Debug.Log("I'm destroying the Target");
-                        Target.naturalDestroy();
+                        target.GetComponent<Target>().naturalDestroy();
+                        //Target.naturalDestroy();
                     }
                     Instantiate(targetPrefab, transform.position, Quaternion.identity);
                     Instantiate(trailPrefab, transform.position, Quaternion.identity);

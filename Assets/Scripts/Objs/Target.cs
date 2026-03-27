@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 public class Target : MonoBehaviour
 {
     //Instance
-    public static int scoreToAdd;
-    public static float lifeTime = 0f;
+    public float lifeTime = 0f;
     //Other Objs
-    public static GameObject scoreDesc;
-    public GameObject trailPrefab;
+    public GameObject scoreDesc;
     //Sprites
     public Sprite Circle;
     public Sprite Goonswarm;
@@ -37,11 +37,15 @@ public class Target : MonoBehaviour
     {
         ScoreKeeper.noteHits++;
         ScoreKeeper.combo++;
+        //Why not "this"?
         Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
-    public static void naturalDestroy()
+    public void naturalDestroy()
     {
         ScoreKeeper.combo = 0;
+        GameObject scoreDesc1 = Instantiate(scoreDesc, GameObject.FindGameObjectWithTag("Target").GetComponent<Transform>().position, Quaternion.identity);
+        scoreDesc1.GetComponent<ScoreDesc>().scoreToAdd = 0;
+        //Why not "this"?
         Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
 

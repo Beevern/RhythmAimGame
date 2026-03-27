@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreDesc : MonoBehaviour
 {
-    public float timeToDestroy = 0.5f;
+    public float timeToDestroy = 0.3f;
     public int scoreToAdd;
     // Start is called before the first frame update
     void Start()
     {
-        scoreToAdd = Player.scoreToAdd;
         //Debug.Log("transferred");
         //Debug.Log(scoreToAdd);
         if (scoreToAdd >= 475)
@@ -20,15 +19,18 @@ public class ScoreDesc : MonoBehaviour
         {
             this.GetComponent<TextMesh>().text = "Great";
         }
+        else if (scoreToAdd >= 300)
+        {
+            this.GetComponent<TextMesh>().text = "Good";
+        }
         else if (scoreToAdd >= 1)
         {
-            this.GetComponent<TextMesh>().text = "Nice";
+            this.GetComponent<TextMesh>().text = "Hit";
         }
         else if (scoreToAdd <= 0)
         {
-            this.GetComponent<TextMesh>().text = "Bad";
+            this.GetComponent<TextMesh>().text = "Miss";
         }
-        //Destroy(GameObject.FindGameObjectWithTag("Target"));
     }
 
     // Update is called once per frame

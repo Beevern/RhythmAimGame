@@ -169,6 +169,13 @@ public class SongSelect2 : MonoBehaviour
         songLengths.Add("Lowlife by Neck Deep", times[20].Length);
         songLengths.Add("Sad Song by We The Kings", times[21].Length);
         songLengths.Add("Endlessly by The Cab", times[22].Length);
+        /*
+        for (int i = 0; i < SongSelect2.allSongs.Length; i++)
+        {
+            Spawner.songTimes.Add(allSongs[i], times[i]);
+            Spawner.heldTimes.Add(allSongs[i], heldTimes[i]);
+        }
+        */
     }
 
     void Start()

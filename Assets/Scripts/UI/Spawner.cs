@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     //Other GameObjects
     private Transform canvasTrans;
     private GameObject counterObject;
+    private Counter counterScript; 
     public TextMeshProUGUI startTimer;
     //Prefabs
     public GameObject targetPrefab;
@@ -30,17 +31,6 @@ public class Spawner : MonoBehaviour
     public static Dictionary<string, float[]> songTimes = new Dictionary<string, float[]>();
     public static Dictionary<string, float[]> heldTimes = new Dictionary<string, float[]>();
 
-    void Awake()
-    {
-        songTimes.Clear();
-        /*
-        for (int i = 0;i<SongSelect2.allSongs.Length;i++)
-        {
-            songTimes.Add(SongSelect2.allSongs[i], SongSelect2.times[i]);
-            heldTimes.Add(SongSelect2.allSongs[i], SongSelect2.heldTimes[i]);
-        }
-        */
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -78,10 +68,7 @@ public class Spawner : MonoBehaviour
         heldTimes.Add("Lowlife by Neck Deep", SongSelect2.heldTimes[20]);
         heldTimes.Add("Sad Song by We The Kings", SongSelect2.heldTimes[21]);
         heldTimes.Add("Endlessly by The Cab", SongSelect2.heldTimes[22]);
-        //For some reason, replacing songTimes[SongSelect2.theSong] with beatArr doesn't work
-        beatArr = songTimes[SongSelect2.theSong];
-        heldArr = heldTimes[SongSelect2.theSong];
-
+        
         totalTime = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().length;
         totalNotes = songTimes[SongSelect2.theSong].Length + heldTimes[SongSelect2.theSong].Length;
 
@@ -116,8 +103,9 @@ public class Spawner : MonoBehaviour
         {
             spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f + bloom), 0.0f);
             GameObject heldCounter = Instantiate(counterPrefab, spawnPos, Quaternion.AngleAxis(90, Vector3.right));
-            heldCounter.GetComponent<Counter>().isHeld = true;
-            HeldTarget.destroyTimer = heldTimes[SongSelect2.theSong][held + 1] - heldTimes[SongSelect2.theSong][held];
+            counterScript = heldCounter.GetComponent<Counter>();
+            counterScript.isHeld = true;
+            counterScript.timeTransfer = heldTimes[SongSelect2.theSong][held + 1] - heldTimes[SongSelect2.theSong][held];
             held += 2;
         }
         bloom = 0;

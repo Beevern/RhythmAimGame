@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\heldtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\heldtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,28 @@
       "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\playmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\playmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\audiobar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\audiobar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\scoredesc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\scoredesc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\target.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\target.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\objs\\heldtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\heldtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\objs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +42,131 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "Target.cs",
+              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Target.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\Target.cs",
+              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Target.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objs\\Target.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAA3wC0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T23:45:11.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "HeldTarget.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\HeldTarget.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\HeldTarget.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\HeldTarget.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objs\\HeldTarget.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBIAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T07:43:11.525Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "Counter.cs",
+              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Counter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\Counter.cs",
+              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Counter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objs\\Counter.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAD4v00AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:44:25.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ScoreDesc.cs",
+              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\ScoreDesc.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\ScoreDesc.cs",
+              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\ScoreDesc.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objs\\ScoreDesc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T23:03:36.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Spawner.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\Spawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Spawner.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\Spawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\Spawner.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwEYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-17T00:58:04.523Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\Player.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\Player.cs",
               "RelativeToolTip": "Assets\\Scripts\\Objs\\Player.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAIAwwJMAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAowKEAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T23:54:47.208Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "playMusic.cs",
+              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\playMusic.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\playMusic.cs",
+              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\playMusic.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\playMusic.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAQwE4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T01:51:47.317Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "f9e02c7b-010f-4405-8056-88b8acc6a5e9",
+        "Display": 0,
+        "X": 612,
+        "Y": 311,
+        "Width": 1193,
+        "Height": 568,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "SongSelect2.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\SongSelect2.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\SongSelect2.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\SongSelect2.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\SongSelect2.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAAAEsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAQwFEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-28T18:24:59.608Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AudioBar.cs",
-              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\AudioBar.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Objs\\AudioBar.cs",
-              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\Objs\\AudioBar.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Objs\\AudioBar.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBsAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T00:29:41.055Z",
               "EditorCaption": ""
             }
           ]

@@ -52,7 +52,7 @@ public class ScoreKeeper : MonoBehaviour
         {
             highestCombo = combo;
         }
-        if (combo > 0 && score >= 1)
+        if (combo > 2 && score >= 1)
         {
             comboText.text = "x" + combo;
         }

@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class HeldTarget : MonoBehaviour
 {
     //Instance
-    public static int heldScoreToAdd;
     public float lifeTime = 0f;
-    public static float destroyTimer;
+    public float destroyTimer;
     //Other Objs
-    public static GameObject scoreDesc;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +29,6 @@ public class HeldTarget : MonoBehaviour
     {
         if(lifeTime>=destroyTimer)
         {
-            //Player.holding = false;
             //GameObject scoreDesc1 = Instantiate(scoreDesc, new Vector2(this.transform.position.x + 0.15f, this.transform.position.y + 0.005f), Quaternion.identity);
             Destroy(this.gameObject);
         }
