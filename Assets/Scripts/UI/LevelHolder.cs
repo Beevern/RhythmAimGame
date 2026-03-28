@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System.IO;
 public class LevelHolder : MonoBehaviour
 {
     //Time arrays
@@ -150,7 +151,7 @@ public class LevelHolder : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        
+        //PREBUILT LEVELS
         songTimes.Clear();
         heldTimes.Clear();
         songVid.Clear();
@@ -173,7 +174,7 @@ public class LevelHolder : MonoBehaviour
         WhereWeStartedI, DreamsPt2I, LoveIsGoneI, ThePhoenixI, GoonswarmI, DollarSadnessI,NeverKnowI, DeadOrAliveI, 
         HypnotizedI, SayGoodbyeI, HateYouI, LowlifeI, SadSongI, EndlesslyI};
         
-        for (int i = 0; i < allSongs.Length; i++)
+        for (int i = 0; i < images.Length; i++)
         {
             songTimes.Add(allSongs[i], times[i]);
             heldTimes.Add(allSongs[i], heldTimesArray[i]);
@@ -311,36 +312,79 @@ public class LevelHolder : MonoBehaviour
         songText.Add("Sad Song by We The Kings", SadSongTexture);
         songText.Add("Endlessly by The Cab", EndlesslyTexture);
         */
+            
         }
 
-        /*
-        List<string> newAllSongs = new List<string>(allSongs);
+        //CUSTOM LEVELS
+        RegisterCustomLevelsFromCsv();
+    }
+
+    void RegisterCustomLevelsFromCsv()
+    {
+        if (CustomLevelManager.Instance == null)
+        {
+            Debug.LogWarning("CustomLevelManager missing; skipping custom CSV levels.");
+            return;
+        }
+
         foreach (var custom in CustomLevelManager.Instance.levelList.levels)
         {
-            if (!songTimes.ContainsKey(custom.levelName))
+            // Avoid duplicates
+            if (songTimes.ContainsKey(custom.levelName))
+                continue;
+
+            float[] times = new float[0];
+
+            if (!string.IsNullOrEmpty(custom.noteFilePath))
             {
-                // TODO: parse custom.chartFilePath into float[] arrays when you implement it
-                songTimes.Add(custom.levelName, new float[1]);
-                heldTimes.Add(custom.levelName, new float[1]);
-
-                // For now, assign generic/default media until you wire dynamic loading
-                songVid.Add(custom.levelName, RandomVid);
-                songText.Add(custom.levelName, RandomTexture);
-                songImages.Add(custom.levelName, RandomI);
-                songLengths.Add(custom.levelName, 1);
-
-                newAllSongs.Add(custom.levelName);
+                // Parse J column (index 10) at 30 fps
+                times = CsvParser.ParseTimeColumn(custom.noteFilePath, 10, 25);
             }
-        }
-        allSongs = newAllSongs.ToArray();
-        */
-    }
-        
 
-    // Update is called once per frame
-    void Update()
+            float[] timesHeld = new float[0];
+
+            if (!string.IsNullOrEmpty(custom.noteFilePath))
+            {
+                // Parse J column (index 10) at 30 fps
+                timesHeld = CsvParser.ParseTimeColumn(custom.heldFilePath, 10, 25);
+            }
+
+            // Hook into your existing dictionaries
+            songTimes.Add(custom.levelName, times);
+            heldTimes.Add(custom.levelName, timesHeld);
+            songLengths.Add(custom.levelName, times.Length);
+
+            // For now, reuse default visuals (you can later load from imageFilePath, etc.)
+            songVid.Add(custom.levelName, RandomVid);
+            songText.Add(custom.levelName, RandomTexture);
+            songImages.Add(custom.levelName, LoadSpriteFromPath(custom.imageFilePath));
+        }
+
+        // Optionally extend allSongs so the selector sees custom tracks
+        var names = new List<string>(allSongs);
+        foreach (var custom in CustomLevelManager.Instance.levelList.levels)
+        {
+            if (!names.Contains(custom.levelName))
+                names.Add(custom.levelName);
+        }
+        allSongs = names.ToArray();
+    }
+
+    Sprite LoadSpriteFromPath(string path)
     {
-        
+        if (string.IsNullOrEmpty(path) || !File.Exists(path))
+            return RandomI;
+
+        byte[] bytes = File.ReadAllBytes(path);
+        Texture2D tex = new Texture2D(2, 2);
+        if (!tex.LoadImage(bytes))
+            return RandomI;
+
+        return Sprite.Create(
+            tex,
+            new Rect(0, 0, tex.width, tex.height),
+            new Vector2(0.5f, 0.5f)
+        );
     }
 }
 

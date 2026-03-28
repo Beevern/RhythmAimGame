@@ -172,7 +172,7 @@ public class SongSelect2 : MonoBehaviour
             }
             Array.Sort(lengths);
             //Debug.Log(lengths);
-            for (int i = 0; i < LevelHolder.allSongs.Length; i++)
+            for (int i = 0; i < LevelHolder.times.Length; i++)
             {
                 //Debug.Log(times.Length);
                 foreach (string key in LevelHolder.songLengths.Keys)

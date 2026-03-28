@@ -36,10 +36,29 @@ public class playMusic : MonoBehaviour
             yield return new WaitForSeconds(0.35f);
         }
         yield return new WaitForSeconds(3f);
-        vidPlayer.clip = LevelHolder.songVid[SongSelect2.theSong];
+        // existing: built-in video
+        if (LevelHolder.songVid.ContainsKey(SongSelect2.theSong) && LevelHolder.songVid[SongSelect2.theSong] != null)
+        {
+            vidPlayer.source = VideoSource.VideoClip;
+            vidPlayer.clip = LevelHolder.songVid[SongSelect2.theSong];
+            vidPlayer.targetTexture = LevelHolder.songText[SongSelect2.theSong];
+        }
+        else
+        {
+            // custom level: find its info
+            var info = CustomLevelManager.Instance.levelList.levels
+                         .Find(l => l.levelName == SongSelect2.theSong);
+
+            if (info != null && !string.IsNullOrEmpty(info.songFilePath))
+            {
+                vidPlayer.source = VideoSource.Url;
+                vidPlayer.url = info.songFilePath;
+            }
+        }
+        //vidPlayer.clip = LevelHolder.songVid[SongSelect2.theSong];
         vidPlayer.targetTexture = LevelHolder.songText[SongSelect2.theSong];
         VideoPlayerParent.GetComponent<RawImage>().texture = LevelHolder.songText[SongSelect2.theSong];
-        yield return new WaitForSeconds((float)vidPlayer.clip.length);
-        SceneManager.LoadScene("GameOver");
+        //yield return new WaitForSeconds((float)vidPlayer.clip.length);
+        //SceneManager.LoadScene("GameOver");
     }
 }

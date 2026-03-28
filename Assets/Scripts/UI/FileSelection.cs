@@ -13,10 +13,15 @@ public class FileSelection : MonoBehaviour
     public Button done;
     public Button vidSelect;
     public Button imageSelect;
+    public Button noteSelect;
+    public Button heldSelect;
+
 
     public static string theVid;
     public static string theImage;
     public static string theName;
+    public static string notePath;
+    public static string heldPath;
 
     public VideoPlayer vidPlayer;
     public RawImage vidParent;
@@ -30,6 +35,8 @@ public class FileSelection : MonoBehaviour
         done.onClick.AddListener(doneFunc);
         vidSelect.onClick.AddListener(selectVid);
         imageSelect.onClick.AddListener(selectImage);
+        noteSelect.onClick.AddListener(selectNote);
+        heldSelect.onClick.AddListener(selectHeld);
     }
 
     void doneFunc()
@@ -47,17 +54,19 @@ public class FileSelection : MonoBehaviour
         }
 
         // 2) Create a CustomLevelInfo from what the user chose
-        /*
+        
         CustomLevelInfo info = new CustomLevelInfo
         {
             levelName = theName,
             songFilePath = theVid,      // using the video path as the song/video source
-            chartFilePath = ""          // you can fill this later when you have note files
+            imageFilePath = theImage,
+            noteFilePath = notePath,          // you can fill this later when you have note files
+            heldFilePath = heldPath,
         };
 
         // 3) Add to persistent manager
         CustomLevelManager.Instance.AddLevel(info);
-        */
+        
         Debug.Log("Custom level registered: " + theName +
                   "\nVideo: " + theVid +
                   "\nImage: " + theImage);
@@ -81,10 +90,22 @@ public class FileSelection : MonoBehaviour
         StartCoroutine(SelectImage());
     }
 
+    void selectNote()
+    {
+        StartCoroutine(SelectNote());
+    }
+
+    void selectHeld()
+    {
+        StartCoroutine(SelectHeld());
+    }
+
     IEnumerator SelectVid()
     {
         yield return FileBrowser.WaitForLoadDialog(
-            FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+            FileBrowser.PickMode.Files, false, Path.Combine(
+        System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile),
+        "Downloads"), "Select a File", "Select");
 
         if (FileBrowser.Success)
         {
@@ -111,7 +132,9 @@ public class FileSelection : MonoBehaviour
     IEnumerator SelectImage()
     {
         yield return FileBrowser.WaitForLoadDialog(
-            FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+            FileBrowser.PickMode.Files, false, Path.Combine(
+        System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile),
+        "Downloads"), "Select a File", "Select");
 
         if (FileBrowser.Success)
         {
@@ -123,6 +146,54 @@ public class FileSelection : MonoBehaviour
             {
                 imageDisplayer.texture = texture;
             }
+        }
+    }
+
+    IEnumerator SelectNote()
+    {
+        // Only allow .csv files
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("CSV", ".csv"));
+        FileBrowser.SetDefaultFilter(".csv");
+
+        yield return FileBrowser.WaitForLoadDialog(
+            FileBrowser.PickMode.Files,
+            false,
+            Path.Combine(
+        System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile),
+        "Downloads"),
+            "Select CSV File",
+            "Select"
+        );
+
+        if (FileBrowser.Success)
+        {
+            notePath = FileBrowser.Result[0];
+
+            // TODO: use csvPath (read file, store path, etc.)
+        }
+    }
+
+    IEnumerator SelectHeld()
+    {
+        // Only allow .csv files
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("CSV", ".csv"));
+        FileBrowser.SetDefaultFilter(".csv");
+
+        yield return FileBrowser.WaitForLoadDialog(
+            FileBrowser.PickMode.Files,
+            false,
+            Path.Combine(
+        System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile),
+        "Downloads"),
+            "Select CSV File",
+            "Select"
+        );
+
+        if (FileBrowser.Success)
+        {
+            heldPath = FileBrowser.Result[0];
+
+            // TODO: use csvPath (read file, store path, etc.)
         }
     }
 

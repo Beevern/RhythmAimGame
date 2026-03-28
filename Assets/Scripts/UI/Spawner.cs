@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("persistentDataPath = " + Application.persistentDataPath);
+        //Debug.Log("persistentDataPath = " + Application.persistentDataPath);
         canvasTrans = GameObject.FindGameObjectWithTag("CrosshairUI").GetComponent<Transform>();
         StartCoroutine(countdown());
         totalTime = GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().length;
@@ -58,6 +58,7 @@ public class Spawner : MonoBehaviour
             }
         }
         */
+        //Debug.Log(LevelHolder.songTimes[SongSelect2.theSong][beat]);
         if (beat < LevelHolder.songTimes[SongSelect2.theSong].Length && (float)Time.timeSinceLevelLoadAsDouble >= LevelHolder.songTimes[SongSelect2.theSong][beat])
         {
             spawnPos = new Vector3(Random.Range(-1.4f - bloom, 1.4f + bloom), Random.Range(-1.4f - bloom, 1.4f - bloom), 0.0f);
@@ -73,6 +74,11 @@ public class Spawner : MonoBehaviour
             counterScript.isHeld = true;
             counterScript.timeTransfer = LevelHolder.heldTimes[SongSelect2.theSong][held + 1] - LevelHolder.heldTimes[SongSelect2.theSong][held];
             held += 2;
+        }
+
+        if (beat >= LevelHolder.songTimes[SongSelect2.theSong].Length && held >= LevelHolder.heldTimes[SongSelect2.theSong].Length)
+        {
+            SceneManager.LoadScene("GameOver");
         }
         bloom = 0;
     }

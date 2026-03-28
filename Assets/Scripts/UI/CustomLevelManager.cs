@@ -58,7 +58,8 @@ public class CustomLevelInfo
     public string levelName;     // Whatever you want to show in UI
     public string songFilePath;  // Absolute path to song (or folder)
     public string imageFilePath; // Path to cover image
-    public string chartFilePath; // Example: your note data, etc.
+    public string noteFilePath; // Example: your note data, etc.
+    public string heldFilePath; // Held note data
 }
 
 [Serializable]
