@@ -1313,6 +1313,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5561827094530680776, guid: 24ea06b44a93e5141bd0ca7dff9d7d89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 949829155}
+    - targetCorrespondingSourceObject: {fileID: 5561827094530680776, guid: 24ea06b44a93e5141bd0ca7dff9d7d89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 949829156}
   m_SourcePrefab: {fileID: 100100000, guid: 24ea06b44a93e5141bd0ca7dff9d7d89, type: 3}
 --- !u!20 &645880693 stripped
 Camera:
@@ -2137,6 +2140,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1616370915}
   barPrefab: {fileID: 6661143920144042798, guid: d0454c6b96049c8479c57cda0841d1f2, type: 3}
+--- !u!114 &949829156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949829148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19835ceebdaf8d4a8c7117215061ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelHolder
+  image: {fileID: 0}
+  RandomI: {fileID: 21300000, guid: 0c191e03ecdf1cc4eb4e502e4635754b, type: 3}
+  CirclesI: {fileID: 0}
+  SeasonsKitaI: {fileID: 0}
+  SeasonsI: {fileID: 0}
+  MillionDaysI: {fileID: 0}
+  MeYouI: {fileID: 0}
+  BrokenGlassI: {fileID: 0}
+  NevadaI: {fileID: 0}
+  StayAlignedI: {fileID: 0}
+  XOI: {fileID: 0}
+  WhereWeStartedI: {fileID: 0}
+  DreamsPt2I: {fileID: 0}
+  LoveIsGoneI: {fileID: 0}
+  ThePhoenixI: {fileID: 0}
+  GoonswarmI: {fileID: 0}
+  DollarSadnessI: {fileID: 0}
+  NeverKnowI: {fileID: 0}
+  DeadOrAliveI: {fileID: 0}
+  HypnotizedI: {fileID: 0}
+  SayGoodbyeI: {fileID: 0}
+  HateYouI: {fileID: 0}
+  LowlifeI: {fileID: 0}
+  SadSongI: {fileID: 0}
+  EndlesslyI: {fileID: 0}
+  RandomVid: {fileID: 0}
+  CirclesVid: {fileID: 32900000, guid: 32531b124a2505e479989967969eb67a, type: 3}
+  SeasonsKitaVid: {fileID: 32900000, guid: 5a27b050dd1189b4083c9afbfd39f8d4, type: 3}
+  SeasonsVid: {fileID: 32900000, guid: eb71281c3584e0c4487ea832d4be71e2, type: 3}
+  MillionDaysVid: {fileID: 32900000, guid: 5ea49f1eddc13d142bb6a07517cd94a2, type: 3}
+  MeYouVid: {fileID: 32900000, guid: bff6bc01c8c0f75498a548b4a1106f3f, type: 3}
+  BrokenGlassVid: {fileID: 32900000, guid: a96dceb9ce493d64284fa6e60a81b84c, type: 3}
+  NevadaVid: {fileID: 32900000, guid: ffea4aaee5e099043b05d92644d65fe1, type: 3}
+  StayAlignedVid: {fileID: 32900000, guid: dcaf8e58fb5a6a54db381817d8707e96, type: 3}
+  XOVid: {fileID: 32900000, guid: b7c9ad86025c1b2498e4ec538365c06a, type: 3}
+  WhereWeStartedVid: {fileID: 32900000, guid: dcd13ee10b1a9aa458196ac9cdf97e91, type: 3}
+  DreamsPt2Vid: {fileID: 32900000, guid: 19d247da3deacd940a1427e93b348394, type: 3}
+  LoveIsGoneVid: {fileID: 32900000, guid: eda636158f02eda429a6e9c3ffd8f080, type: 3}
+  ThePhoenixVid: {fileID: 32900000, guid: 02a3e4e9968dce74d9814e0f0337d48c, type: 3}
+  GoonswarmVid: {fileID: 32900000, guid: e868412687c25064391e6d6da2aeb95b, type: 3}
+  DollarSadnessVid: {fileID: 32900000, guid: e1ff3d57950114d41869c94102844ad3, type: 3}
+  NeverKnowVid: {fileID: 32900000, guid: 8c77e30a16282614da7e9674e1cd4639, type: 3}
+  DeadOrAliveVid: {fileID: 32900000, guid: b8a1290bd07b96a45acc75a8256e20e0, type: 3}
+  HypnotizedVid: {fileID: 32900000, guid: 89c1d5bcecfed2743ae498be4d227b55, type: 3}
+  SayGoodbyeVid: {fileID: 32900000, guid: e8a3aadcfe86d5543adda58a2d6ed271, type: 3}
+  HateYouVid: {fileID: 32900000, guid: 44395889028899d4493cb37d45469017, type: 3}
+  LowlifeVid: {fileID: 32900000, guid: e274de3f0b1c0744c9615c6d2fd0babf, type: 3}
+  SadSongVid: {fileID: 32900000, guid: 7d794f25a4c40fd4a935d1e512f6b3bb, type: 3}
+  EndlesslyVid: {fileID: 32900000, guid: 1d82c51d373905c4bb81457ec19fd98b, type: 3}
+  RandomTexture: {fileID: 0}
+  CirclesTexture: {fileID: 8400000, guid: 0a3045c0b15fa044999dd92d90a0f7f8, type: 2}
+  SeasonsKitaTexture: {fileID: 8400000, guid: b619ad9f8073f3e4dace3abbd47576da, type: 2}
+  SeasonsTexture: {fileID: 8400000, guid: 39d78c65549d1c0438293de0914964ac, type: 2}
+  MillionDaysTexture: {fileID: 8400000, guid: e71356915c4eeea4b880e384678022b0, type: 2}
+  MeYouTexture: {fileID: 8400000, guid: ea347cc8c38acb84ca9373e09840898e, type: 2}
+  BrokenGlassTexture: {fileID: 8400000, guid: e39889c60cb95614abd0c853c0fe07ff, type: 2}
+  NevadaTexture: {fileID: 8400000, guid: d28d66f4af2780a4b95fec689df97872, type: 2}
+  StayAlignedTexture: {fileID: 8400000, guid: ee22b2adf6490af41a7b021b001437cf, type: 2}
+  XOTexture: {fileID: 8400000, guid: 1a40f27bd73079749a9720039565460c, type: 2}
+  WhereWeStartedTexture: {fileID: 8400000, guid: 890403cbf308cfd418c787303621988b, type: 2}
+  DreamsPt2Texture: {fileID: 8400000, guid: cd341794e87d16c468a13a136849041c, type: 2}
+  LoveIsGoneTexture: {fileID: 8400000, guid: 66d1c5b9e5225884db2e37d5fa6f0423, type: 2}
+  ThePhoenixTexture: {fileID: 8400000, guid: b8c170fc6e65cdf46be49b7957c36e43, type: 2}
+  GoonswarmTexture: {fileID: 8400000, guid: fed1f398f0022e541982075949e01ca3, type: 2}
+  DollarSadnessTexture: {fileID: 8400000, guid: bf63e9b11fc8f8648a5ca99aa88950e5, type: 2}
+  NeverKnowTexture: {fileID: 8400000, guid: 266ccd5129f22444a9c16b635b637103, type: 2}
+  DeadOrAliveTexture: {fileID: 8400000, guid: 7712b203b94de7d46b6fb1424ed61891, type: 2}
+  HypnotizedTexture: {fileID: 8400000, guid: 0dbf1faec05245e4fbc3c524b0b726d4, type: 2}
+  SayGoodbyeTexture: {fileID: 8400000, guid: 28d27c676829455459ff5cb7d26e87fc, type: 2}
+  HateYouTexture: {fileID: 8400000, guid: 1ddc7a2e591e3ce4589efc76e5881172, type: 2}
+  LowlifeTexture: {fileID: 8400000, guid: f23f63f4802999c40944f017a792ade2, type: 2}
+  SadSongTexture: {fileID: 8400000, guid: 6766d79fc0dabe745b62bd4828273236, type: 2}
+  EndlesslyTexture: {fileID: 8400000, guid: 5d59d6826533a6748976f7de7b159f68, type: 2}
 --- !u!1 &1077524914
 GameObject:
   m_ObjectHideFlags: 0

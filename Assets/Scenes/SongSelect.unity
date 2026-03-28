@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.6, y: -102}
+  m_AnchoredPosition: {x: 281.6, y: -123.29}
   m_SizeDelta: {x: 225.21, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9122143
@@ -352,6 +352,8 @@ RectTransform:
   m_Children:
   - {fileID: 616363670}
   - {fileID: 1801858122}
+  - {fileID: 574582411}
+  - {fileID: 521638727}
   - {fileID: 2079170014}
   - {fileID: 1440127351}
   - {fileID: 2074226422}
@@ -544,7 +546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.6, y: -127}
+  m_AnchoredPosition: {x: 281.6, y: -144}
   m_SizeDelta: {x: 225.21, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &100960512
@@ -1710,6 +1712,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445605383}
   m_CullTransparentMesh: 1
+--- !u!1 &521638726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521638727}
+  - component: {fileID: 521638729}
+  - component: {fileID: 521638728}
+  m_Layer: 0
+  m_Name: RightImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &521638727
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521638726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 23726310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 180, y: 0.0000077486}
+  m_SizeDelta: {x: 184, y: 173.38}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &521638728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521638726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &521638729
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521638726}
+  m_CullTransparentMesh: 1
 --- !u!1 &552022814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,6 +2060,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552888786}
+  m_CullTransparentMesh: 1
+--- !u!1 &574582410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574582411}
+  - component: {fileID: 574582413}
+  - component: {fileID: 574582412}
+  m_Layer: 0
+  m_Name: LeftImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &574582411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574582410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 23726310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -179, y: 1.537}
+  m_SizeDelta: {x: 184, y: 173.38}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &574582412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574582410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &574582413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574582410}
   m_CullTransparentMesh: 1
 --- !u!1 &616363669
 GameObject:
@@ -2796,7 +2948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.6, y: -79}
+  m_AnchoredPosition: {x: 281.6, y: -104.7}
   m_SizeDelta: {x: 225.21, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686844860
@@ -3054,7 +3206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.61, y: -152}
+  m_AnchoredPosition: {x: 281.61, y: -163}
   m_SizeDelta: {x: 225.21, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &774552162
@@ -3170,6 +3322,7 @@ GameObject:
   - component: {fileID: 782870977}
   - component: {fileID: 782870981}
   - component: {fileID: 782870982}
+  - component: {fileID: 782870983}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3266,30 +3419,8 @@ MonoBehaviour:
   right: {fileID: 1440127352}
   left: {fileID: 2074226423}
   image: {fileID: 2079170013}
-  RandomI: {fileID: 21300000, guid: 0c191e03ecdf1cc4eb4e502e4635754b, type: 3}
-  CirclesI: {fileID: 21300000, guid: e1d773a053bbf9e4f892f0c63a96f6c0, type: 3}
-  SeasonsKitaI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
-  SeasonsI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
-  MillionDaysI: {fileID: 21300000, guid: aed43997772776d4ca485c507092b414, type: 3}
-  MeYouI: {fileID: 21300000, guid: c139d60f54f0444468bd7da2ed62638a, type: 3}
-  BrokenGlassI: {fileID: 21300000, guid: 98509390e4faec54dbc36ca814aa594b, type: 3}
-  NevadaI: {fileID: 21300000, guid: a1f3b3e9748d1f64f9bf1957a1d7c5c3, type: 3}
-  StayAlignedI: {fileID: 21300000, guid: eef3ca8cd6c626646aea27f8774059fb, type: 3}
-  XOI: {fileID: 21300000, guid: 1c61f82dc310dc744954fc6fd922e314, type: 3}
-  WhereWeStartedI: {fileID: 21300000, guid: b3de440bcd802c747bfa596d42c00105, type: 3}
-  DreamsPt2I: {fileID: 21300000, guid: 6a7bbfc469b5e0246b87c53f3d5cc147, type: 3}
-  LoveIsGoneI: {fileID: 21300000, guid: 69c0d77f4bc6267499cfb2818fe72639, type: 3}
-  ThePhoenixI: {fileID: 21300000, guid: 2f2213522a4113e498a82d7aa35eec68, type: 3}
-  GoonswarmI: {fileID: 21300000, guid: 0dfbbb29dd217634bbf5082b7c5c88d4, type: 3}
-  DollarSadnessI: {fileID: 21300000, guid: 03d4040f08a1a3c40b52ad0832ec6e88, type: 3}
-  NeverKnowI: {fileID: 21300000, guid: 76f5822b7b8f4114da4f6366871ae3d7, type: 3}
-  DeadOrAliveI: {fileID: 21300000, guid: 970edf55671b60743b36d5591268cc53, type: 3}
-  HypnotizedI: {fileID: 21300000, guid: ab71b96c866978e48af5a81b9f18eee2, type: 3}
-  SayGoodbyeI: {fileID: 21300000, guid: cbd78b3d5623e8f4b8b1b7f7db3c6dbc, type: 3}
-  HateYouI: {fileID: 21300000, guid: a3049e1204eef7645979a6d218adef50, type: 3}
-  LowlifeI: {fileID: 21300000, guid: 895e248f60993dd4e8093dd4582e0bdb, type: 3}
-  SadSongI: {fileID: 21300000, guid: 570391baf61ac4243b0405666b5ec636, type: 3}
-  EndlesslyI: {fileID: 21300000, guid: 05993c49126be8d44a94bbfa8b412302, type: 3}
+  leftImage: {fileID: 574582410}
+  rightImage: {fileID: 521638726}
   songName: {fileID: 1801858123}
   sortDrop: {fileID: 0}
   searchBar: {fileID: 0}
@@ -3314,6 +3445,91 @@ MonoBehaviour:
   highComboT: {fileID: 1264345585}
   avgScoreT: {fileID: 100960512}
   avgPartiT: {fileID: 774552162}
+--- !u!114 &782870983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782870976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19835ceebdaf8d4a8c7117215061ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelHolder
+  image: {fileID: 0}
+  RandomI: {fileID: 21300000, guid: 0c191e03ecdf1cc4eb4e502e4635754b, type: 3}
+  CirclesI: {fileID: 21300000, guid: e1d773a053bbf9e4f892f0c63a96f6c0, type: 3}
+  SeasonsKitaI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
+  SeasonsI: {fileID: 21300000, guid: 227588cf4074b8040a480dd391318e46, type: 3}
+  MillionDaysI: {fileID: 21300000, guid: aed43997772776d4ca485c507092b414, type: 3}
+  MeYouI: {fileID: 21300000, guid: c139d60f54f0444468bd7da2ed62638a, type: 3}
+  BrokenGlassI: {fileID: 21300000, guid: 98509390e4faec54dbc36ca814aa594b, type: 3}
+  NevadaI: {fileID: 21300000, guid: a1f3b3e9748d1f64f9bf1957a1d7c5c3, type: 3}
+  StayAlignedI: {fileID: 21300000, guid: eef3ca8cd6c626646aea27f8774059fb, type: 3}
+  XOI: {fileID: 21300000, guid: 1c61f82dc310dc744954fc6fd922e314, type: 3}
+  WhereWeStartedI: {fileID: 21300000, guid: b3de440bcd802c747bfa596d42c00105, type: 3}
+  DreamsPt2I: {fileID: 21300000, guid: 6a7bbfc469b5e0246b87c53f3d5cc147, type: 3}
+  LoveIsGoneI: {fileID: 21300000, guid: 69c0d77f4bc6267499cfb2818fe72639, type: 3}
+  ThePhoenixI: {fileID: 21300000, guid: 2f2213522a4113e498a82d7aa35eec68, type: 3}
+  GoonswarmI: {fileID: 21300000, guid: 0dfbbb29dd217634bbf5082b7c5c88d4, type: 3}
+  DollarSadnessI: {fileID: 21300000, guid: 03d4040f08a1a3c40b52ad0832ec6e88, type: 3}
+  NeverKnowI: {fileID: 21300000, guid: 76f5822b7b8f4114da4f6366871ae3d7, type: 3}
+  DeadOrAliveI: {fileID: 21300000, guid: 970edf55671b60743b36d5591268cc53, type: 3}
+  HypnotizedI: {fileID: 21300000, guid: ab71b96c866978e48af5a81b9f18eee2, type: 3}
+  SayGoodbyeI: {fileID: 21300000, guid: cbd78b3d5623e8f4b8b1b7f7db3c6dbc, type: 3}
+  HateYouI: {fileID: 21300000, guid: a3049e1204eef7645979a6d218adef50, type: 3}
+  LowlifeI: {fileID: 21300000, guid: 895e248f60993dd4e8093dd4582e0bdb, type: 3}
+  SadSongI: {fileID: 21300000, guid: 570391baf61ac4243b0405666b5ec636, type: 3}
+  EndlesslyI: {fileID: 21300000, guid: 05993c49126be8d44a94bbfa8b412302, type: 3}
+  RandomVid: {fileID: 0}
+  CirclesVid: {fileID: 0}
+  SeasonsKitaVid: {fileID: 0}
+  SeasonsVid: {fileID: 0}
+  MillionDaysVid: {fileID: 0}
+  MeYouVid: {fileID: 0}
+  BrokenGlassVid: {fileID: 0}
+  NevadaVid: {fileID: 0}
+  StayAlignedVid: {fileID: 0}
+  XOVid: {fileID: 0}
+  WhereWeStartedVid: {fileID: 0}
+  DreamsPt2Vid: {fileID: 0}
+  LoveIsGoneVid: {fileID: 0}
+  ThePhoenixVid: {fileID: 0}
+  GoonswarmVid: {fileID: 0}
+  DollarSadnessVid: {fileID: 0}
+  NeverKnowVid: {fileID: 0}
+  DeadOrAliveVid: {fileID: 0}
+  HypnotizedVid: {fileID: 0}
+  SayGoodbyeVid: {fileID: 0}
+  HateYouVid: {fileID: 0}
+  LowlifeVid: {fileID: 0}
+  SadSongVid: {fileID: 0}
+  EndlesslyVid: {fileID: 0}
+  RandomTexture: {fileID: 0}
+  CirclesTexture: {fileID: 0}
+  SeasonsKitaTexture: {fileID: 0}
+  SeasonsTexture: {fileID: 0}
+  MillionDaysTexture: {fileID: 0}
+  MeYouTexture: {fileID: 0}
+  BrokenGlassTexture: {fileID: 0}
+  NevadaTexture: {fileID: 0}
+  StayAlignedTexture: {fileID: 0}
+  XOTexture: {fileID: 0}
+  WhereWeStartedTexture: {fileID: 0}
+  DreamsPt2Texture: {fileID: 0}
+  LoveIsGoneTexture: {fileID: 0}
+  ThePhoenixTexture: {fileID: 0}
+  GoonswarmTexture: {fileID: 0}
+  DollarSadnessTexture: {fileID: 0}
+  NeverKnowTexture: {fileID: 0}
+  DeadOrAliveTexture: {fileID: 0}
+  HypnotizedTexture: {fileID: 0}
+  SayGoodbyeTexture: {fileID: 0}
+  HateYouTexture: {fileID: 0}
+  LowlifeTexture: {fileID: 0}
+  SadSongTexture: {fileID: 0}
+  EndlesslyTexture: {fileID: 0}
 --- !u!1 &805352244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,7 +3929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 314.20996, y: 110.00002}
+  m_AnchoredPosition: {x: 314.21, y: 190}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861094985
@@ -4517,7 +4733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Search
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4752,7 +4968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.6, y: -176.51427}
+  m_AnchoredPosition: {x: 281.6, y: -182.5}
   m_SizeDelta: {x: 225.21, y: 25.0285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264345585
@@ -5308,8 +5524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 244, y: -199.71}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 244, y: -201.87}
+  m_SizeDelta: {x: 160, y: 25.681}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423109822
 MonoBehaviour:
@@ -5905,7 +6121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 314.21, y: 80}
+  m_AnchoredPosition: {x: 314.22, y: 148}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1511025128
