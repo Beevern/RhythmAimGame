@@ -150,12 +150,14 @@ public class LevelHolder : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        
         songTimes.Clear();
         heldTimes.Clear();
         songVid.Clear();
         songText.Clear();
         songImages.Clear();
         songLengths.Clear();
+        
 
         VideoClip[] videos = { CirclesVid, SeasonsKitaVid, SeasonsVid, MillionDaysVid, MeYouVid, BrokenGlassVid, NevadaVid,
         StayAlignedVid, XOVid, WhereWeStartedVid, DreamsPt2Vid, LoveIsGoneVid, ThePhoenixVid, GoonswarmVid,

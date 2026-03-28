@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\customlevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\customlevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\levelholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\levelholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\ui\\fileselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\spawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\levelholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\levelholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|c:\\users\\bever\\onedrive\\documents\\github\\rhythmaimgame\\assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\songselect2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\levelsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\levelsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\objs\\heldtarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,6 +41,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\objs\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE9C809F-A9C0-E58B-05F0-98459442E6AA}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objs\\counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\assets\\scripts\\ui\\customlevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\ui\\customlevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,69 +54,79 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "LevelSaver.cs",
+              "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\LevelSaver.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\LevelSaver.cs",
+              "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\LevelSaver.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\LevelSaver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T19:17:34.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FileSelection.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\FileSelection.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\FileSelection.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\FileSelection.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\FileSelection.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAADwv34AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwDsAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-27T06:28:02.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "CustomLevelManager.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\CustomLevelManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\CustomLevelManager.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\CustomLevelManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\CustomLevelManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowCUAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAwwEMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-27T06:17:11.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-27T06:17:11.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Spawner.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\Spawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Spawner.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\Spawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\Spawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-27T02:30:05.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-27T02:30:05.095Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "LevelHolder.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\LevelHolder.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\LevelHolder.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\LevelHolder.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\LevelHolder.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAIwEIBAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAIwKQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-27T00:24:57.323Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "SongSelect2.cs",
               "DocumentMoniker": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\SongSelect2.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\SongSelect2.cs",
               "ToolTip": "C:\\Users\\bever\\OneDrive\\Documents\\GitHub\\RhythmAimGame\\Assets\\Scripts\\UI\\SongSelect2.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\SongSelect2.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAD4vzEAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAIAwwFsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-27T06:51:22.767Z",
               "EditorCaption": ""

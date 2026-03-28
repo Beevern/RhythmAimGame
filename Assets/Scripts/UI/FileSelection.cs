@@ -7,68 +7,101 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using SimpleFileBrowser;
 using System.IO;
+
 public class FileSelection : MonoBehaviour
 {
     public Button done;
     public Button vidSelect;
     public Button imageSelect;
+
     public static string theVid;
     public static string theImage;
     public static string theName;
+
     public VideoPlayer vidPlayer;
     public RawImage vidParent;
     public RawImage imageDisplayer;
     public TMP_InputField nameField;
-    // Start is called before the first frame update
+
     void Start()
     {
         nameField.onValueChanged.AddListener(delegate { setName(); });
-        Button doneBtn = done.GetComponent<Button>();
-        doneBtn.onClick.AddListener(doneFunc);
-        Button vidSel = vidSelect.GetComponent<Button>();
-        vidSel.onClick.AddListener(selectVid);
-        Button imageSel = imageSelect.GetComponent<Button>();
-        imageSel.onClick.AddListener(selectImage);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        done.onClick.AddListener(doneFunc);
+        vidSelect.onClick.AddListener(selectVid);
+        imageSelect.onClick.AddListener(selectImage);
     }
 
     void doneFunc()
     {
-        SceneManager.LoadScene("LevelMaker");
+        // 1) Validate name and video
+        if (string.IsNullOrWhiteSpace(theName))
+        {
+            Debug.LogError("Level name is empty.");
+            return;
+        }
+        if (string.IsNullOrEmpty(theVid))
+        {
+            Debug.LogError("No video selected.");
+            return;
+        }
+
+        // 2) Create a CustomLevelInfo from what the user chose
+        /*
+        CustomLevelInfo info = new CustomLevelInfo
+        {
+            levelName = theName,
+            songFilePath = theVid,      // using the video path as the song/video source
+            chartFilePath = ""          // you can fill this later when you have note files
+        };
+
+        // 3) Add to persistent manager
+        CustomLevelManager.Instance.AddLevel(info);
+        */
+        Debug.Log("Custom level registered: " + theName +
+                  "\nVideo: " + theVid +
+                  "\nImage: " + theImage);
+
+        // 4) Go to Menu
+        SceneManager.LoadScene("Menu");
     }
 
     void setName()
     {
         theName = nameField.text;
     }
+
     void selectVid()
     {
         StartCoroutine(SelectVid());
     }
+
     void selectImage()
     {
         StartCoroutine(SelectImage());
     }
+
     IEnumerator SelectVid()
     {
-        // Wait for the user to pick a file
-        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+        yield return FileBrowser.WaitForLoadDialog(
+            FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
 
-        // Check if the user selected a file
         if (FileBrowser.Success)
         {
             theVid = FileBrowser.Result[0];
-            //Debug.Log("Selected file: " + theVid);
-            vidPlayer.url = theVid;
+
+            vidPlayer.url = theVid;                // runtime path is fine[web:76][web:82]
             vidPlayer.Prepare();
-            yield return vidPlayer.isPrepared;
-            RenderTexture newTexture = new RenderTexture(vidPlayer.texture.width, vidPlayer.texture.height, 1, RenderTextureFormat.ARGB32);
+            while (!vidPlayer.isPrepared)
+                yield return null;
+
+            RenderTexture newTexture = new RenderTexture(
+                vidPlayer.texture.width,
+                vidPlayer.texture.height,
+                1,
+                RenderTextureFormat.ARGB32);
             newTexture.Create();
+
             vidParent.texture = newTexture;
             vidPlayer.targetTexture = newTexture;
             vidPlayer.Play();
@@ -77,23 +110,20 @@ public class FileSelection : MonoBehaviour
 
     IEnumerator SelectImage()
     {
-        // Wait for the user to pick a file
-        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
+        yield return FileBrowser.WaitForLoadDialog(
+            FileBrowser.PickMode.Files, false, null, "Select a File", "Select");
 
-        // Check if the user selected a file
         if (FileBrowser.Success)
         {
             theImage = FileBrowser.Result[0];
-            //Debug.Log("Selected file: " + theImage);
+
             byte[] fileData = File.ReadAllBytes(theImage);
-            Texture2D texture = new Texture2D(2, 2); // The size is overwritten when loading the image
+            Texture2D texture = new Texture2D(2, 2);
             if (texture.LoadImage(fileData))
             {
-                // Assign the texture to the RawImage component
                 imageDisplayer.texture = texture;
-                imageDisplayer.SetNativeSize(); // Optional: set the size of the RawImage to match the texture size
-                Debug.Log("Image loaded and displayed from: " + theImage);
             }
         }
     }
+
 }

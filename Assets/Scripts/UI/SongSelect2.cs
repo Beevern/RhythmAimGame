@@ -31,7 +31,7 @@ public class SongSelect2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        songNames = LevelHolder.allSongs;
+        songNames = (string[])LevelHolder.allSongs.Clone();
     }
 
     void Start()
@@ -82,7 +82,7 @@ public class SongSelect2 : MonoBehaviour
         if (songNames.Length > current && songNames.Length > 0)
         {
             image.GetComponent<Image>().sprite = LevelHolder.songImages[songNames[current]];
-            /*
+            
             if (current-1 <0)
             {
                 leftImage.GetComponent<Image>().sprite = LevelHolder.songImages[songNames[songNames.Length-1]];
@@ -99,7 +99,7 @@ public class SongSelect2 : MonoBehaviour
             {
                 rightImage.GetComponent<Image>().sprite = LevelHolder.songImages[songNames[current + 1]];
             }
-            */
+            
             songName.text = songNames[current];
             theSong = songNames[current];
         }
@@ -108,7 +108,7 @@ public class SongSelect2 : MonoBehaviour
     {
         if (searchBar.text.Equals("") || searchBar.text == null)
         {
-            songNames = LevelHolder.allSongs;
+            songNames = (string[])LevelHolder.allSongs.Clone();
         }
         List<string> results = new List<string>();
         for (int i = 0; i < LevelHolder.allSongs.Length; i++)
