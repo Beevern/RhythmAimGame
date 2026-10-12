@@ -21,6 +21,12 @@ public class SwitchScene : MonoBehaviour
 
     void TaskOnClick()
     {
+        //Duo mode: Song Select's play button starts the song on both PCs (host only)
+        if (sceneName == "Game" && NetSession.Active)
+        {
+            if (!NetSession.IsHost) return;
+            NetSession.StartSong(SongSelect2.theSong);
+        }
         SceneManager.LoadScene(sceneName);
         source.PlayOneShot(press);
         ScoreKeeper.combo = 0;

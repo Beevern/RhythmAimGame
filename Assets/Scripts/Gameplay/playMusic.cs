@@ -17,6 +17,10 @@ public class playMusic : MonoBehaviour
     public static double volume;
     //True once the song video has actually started (Pause shouldn't start it early)
     public static bool VideoStarted { get; private set; }
+    //Time.timeSinceLevelLoad when the video started (song time = now - this; see DrumHits)
+    public static float VideoStartTime { get; private set; }
+    //True once the video is loaded and ready to play (or there is none); duo mode waits for both players'
+    public static bool Prepared { get; private set; }
 
     //Notes are charted against the video starting this long after the level loads
     private const float CountdownSeconds = 3f;
@@ -24,9 +28,14 @@ public class playMusic : MonoBehaviour
     void Awake()
     {
         VideoStarted = false;
+        Prepared = false;
         //Set before Settings.Start applies the volume, so the level's own volume is included
         Settings.LevelVolume = Settings.CombinedLevelVolume(SongSelect2.theSong);
         StartCoroutine(playVid());
+        //Drum hit events for animations (levels with a drums.csv)
+        gameObject.AddComponent<DrumHits>();
+        //Lyrics + song name shown in game (levels with a lyrics.json)
+        if (LyricsDisplay.InGame) gameObject.AddComponent<LyricsDisplay>();
     }
 
     IEnumerator playVid()
@@ -35,6 +44,7 @@ public class playMusic : MonoBehaviour
         if (!LevelHolder.levels.TryGetValue(SongSelect2.theSong ?? "", out LevelInfo level) || level.videoPath == null)
         {
             Debug.LogWarning("No video for level: " + SongSelect2.theSong);
+            Prepared = true;
             yield break;
         }
 
@@ -61,6 +71,7 @@ public class playMusic : MonoBehaviour
         renderTexture.Create();
         vidPlayer.targetTexture = renderTexture;
         VideoPlayerParent.GetComponent<RawImage>().texture = renderTexture;
+        Prepared = true;
 
         //Start on the beat: after the countdown, plus any per-level delay (level.json "videoDelay").
         //Scaled time, so pausing during the countdown holds the video back too.
@@ -68,6 +79,7 @@ public class playMusic : MonoBehaviour
         while (Time.timeSinceLevelLoad < startAt || Pause.isPaused)
             yield return null;
         vidPlayer.Play();
+        VideoStartTime = Time.timeSinceLevelLoad;
         VideoStarted = true;
     }
 

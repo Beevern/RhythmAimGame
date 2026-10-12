@@ -12,6 +12,9 @@ public class EditNote
     public bool hold;
     public float end;      //hold release time (holds only)
     public string label = "";
+    //Sung pitch (MIDI) and on-screen height (0..1) from the auto-chart tools; NaN = none
+    public float pitch = float.NaN;
+    public float height = float.NaN;
 
     public EditNote Clone() => (EditNote)MemberwiseClone();
 }
@@ -79,15 +82,15 @@ public class EditableLevel
         string notesPath = Path.Combine(folder, "notes.csv");
         if (File.Exists(notesPath))
         {
-            List<float> t = CsvParser.ParseNotes(notesPath, out List<string> labels, 10, fps);
-            for (int i = 0; i < t.Count; i++) lv.notes.Add(new EditNote { time = t[i], label = labels[i] });
+            List<float> t = CsvParser.ParseNotes(notesPath, out List<string> labels, out List<float> pitches, out List<float> hs, 10, fps);
+            for (int i = 0; i < t.Count; i++) lv.notes.Add(new EditNote { time = t[i], label = labels[i], pitch = pitches[i], height = hs[i] });
         }
         string heldPath = Path.Combine(folder, "held.csv");
         if (File.Exists(heldPath))
         {
-            List<float> t = CsvParser.ParseNotes(heldPath, out List<string> labels, 10, fps);
+            List<float> t = CsvParser.ParseNotes(heldPath, out List<string> labels, out List<float> pitches, out List<float> hs, 10, fps);
             for (int i = 0; i + 1 < t.Count; i += 2)
-                lv.notes.Add(new EditNote { time = t[i], end = t[i + 1], hold = true, label = labels[i] });
+                lv.notes.Add(new EditNote { time = t[i], end = t[i + 1], hold = true, label = labels[i], pitch = pitches[i], height = hs[i] });
         }
         lv.Sort();
         return lv;
@@ -185,29 +188,32 @@ public class EditableLevel
     //Same layout as the converted/auto-charted CSVs: exact seconds plus a timecode for Resolve
     void WriteChart(string path, bool holds)
     {
-        var lines = new List<string> { "#,Word,Seconds,Aligned,Snapped,Confidence,Duration,Edge,,,Record In" };
+        var lines = new List<string> { "#,Word,Seconds,Aligned,Snapped,Confidence,Duration,Edge,,,Record In,Pitch,Height" };
         int i = 1;
         foreach (EditNote n in notes)
         {
             if (n.hold != holds) continue;
             if (holds)
             {
-                lines.Add(Row(i++, n.label, n.time, "start"));
-                lines.Add(Row(i++, n.label, n.end, "end"));
+                lines.Add(Row(i++, n, n.time, "start"));
+                lines.Add(Row(i++, n, n.end, "end"));
             }
             else
             {
-                lines.Add(Row(i++, n.label, n.time, ""));
+                lines.Add(Row(i++, n, n.time, ""));
             }
         }
         File.WriteAllLines(path, lines);
     }
 
-    static string Row(int index, string label, float seconds, string edge)
+    static string Row(int index, EditNote n, float seconds, string edge)
     {
-        string word = (label ?? "").Replace(",", " ").Replace("\"", "");
-        return index + "," + word + "," + seconds.ToString("R", CultureInfo.InvariantCulture) + ",,,,," + edge + ",,," + Timecode(seconds);
+        string word = (n.label ?? "").Replace(",", " ").Replace("\"", "");
+        return index + "," + word + "," + seconds.ToString("R", CultureInfo.InvariantCulture) + ",,,,," + edge + ",,," + Timecode(seconds)
+            + "," + Num(n.pitch, "0.00") + "," + Num(n.height, "0.000");
     }
+
+    static string Num(float v, string format) => float.IsNaN(v) ? "" : v.ToString(format, CultureInfo.InvariantCulture);
 
     //hh:mm:ss:ff at 30 fps on a timeline starting at 01:00:00:00 (only used by external tools)
     static string Timecode(float seconds)

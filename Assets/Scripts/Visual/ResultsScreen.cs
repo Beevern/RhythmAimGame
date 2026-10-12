@@ -125,6 +125,15 @@ public class ResultsScreen : MonoBehaviour
         Label(s, artist, 256, 172, 1100, 40, 28, false, Theme.TextMuted, TextAlignmentOptions.Left);
 
         Box(s, "Divider", 72, 256, W - 144, 2, Theme.Track);
+
+        //Duo mode: both players' scores and the team total, top right
+        if (NetSession.Active)
+        {
+            RectTransform duo = new GameObject("Duo", typeof(RectTransform)).GetComponent<RectTransform>();
+            duo.SetParent(s, false);
+            Place(duo, 1420, 64, 428, 172);
+            gameObject.AddComponent<DuoResults>().Build(duo);
+        }
     }
 
     private void BuildLeft(RectTransform s)
@@ -281,12 +290,40 @@ public class ResultsScreen : MonoBehaviour
 
     private void BuildButtons(RectTransform s)
     {
+        //Duo mode: only the host starts songs (for both players); the other player waits in the lobby
+        if (NetSession.Active)
+        {
+            if (NetSession.IsHost)
+            {
+                Button("PLAY AGAIN", 580, true, s, () =>
+                {
+                    NetSession.StartSong(SongSelect2.theSong);
+                    SceneManager.LoadScene("Game");
+                });
+                Button("SONG SELECT", "SongSelect", 840, false, s);
+            }
+            else
+            {
+                Button("LOBBY", "Menu", 710, true, s);
+            }
+            Button("LEAVE DUO", NetSession.IsHost ? 1100 : 970, false, s, () =>
+            {
+                NetSession.Leave();
+                SceneManager.LoadScene("Menu");
+            });
+            return;
+        }
         Button("RETRY", "Game", 580, true, s);
         Button("SONG SELECT", "SongSelect", 840, false, s);
         Button("MENU", "Menu", 1100, false, s);
     }
 
     private void Button(string text, string scene, float x, bool primary, RectTransform parent)
+    {
+        Button(text, x, primary, parent, () => SceneManager.LoadScene(scene));
+    }
+
+    private void Button(string text, float x, bool primary, RectTransform parent, Action onClick)
     {
         Image bg = Box(parent, text, x, 976, 240, 64, Color.white, Theme.RoundedRect);
         bg.type = Image.Type.Sliced;
@@ -303,7 +340,7 @@ public class ResultsScreen : MonoBehaviour
         b.onClick.AddListener(() =>
         {
             ScoreKeeper.combo = 0;
-            SceneManager.LoadScene(scene);
+            onClick();
         });
         bg.gameObject.AddComponent<ButtonFeedback>();
         TextMeshProUGUI label = Label(bg.rectTransform, text, 0, 0, 240, 64, 24, true, primary ? Theme.Background : Theme.Text, TextAlignmentOptions.Center);

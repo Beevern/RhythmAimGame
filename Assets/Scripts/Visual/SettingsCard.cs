@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //with a soft scale/fade in whenever it opens. Elements are found by their prefab names.
 public class SettingsCard : MonoBehaviour
 {
-    private const float CardW = 440f, CardH = 390f;
+    private const float CardW = 440f, CardH = 440f;
     private const float Pad = 24f;
     private const float OpenTime = 0.18f;
 
@@ -84,7 +84,8 @@ public class SettingsCard : MonoBehaviour
         labelFont = sample != null ? sample.font : null;
         //One extra row inside a level (Level volume)
         float extra = settings.levelVolSlider != null ? 50f : 0f;
-        float cardH = CardH + extra;
+        //The Lyrics row only exists while in-game lyrics are on (LyricsDisplay.InGame)
+        float cardH = CardH + extra - (LyricsDisplay.InGame ? 0f : 50f);
         float left = -CardW / 2 + Pad, right = CardW / 2 - Pad, top = cardH / 2;
 
         //Darker, solid scrim behind everything
@@ -155,6 +156,9 @@ public class SettingsCard : MonoBehaviour
         //Rows that open the full editors
         OpenerRow("Crosshair", top - 206 - extra, left, right, labelW, k, CrosshairEditor.Open);
         OpenerRow("Note colours", top - 256 - extra, left, right, labelW, k, NoteColorEditor.Open);
+        //Lyrics + song name shown during levels that have them (see LyricsDisplay)
+        if (LyricsDisplay.InGame)
+            SwitchRow("Lyrics", top - 306 - extra, left, right, labelW, k, LyricsDisplay.Enabled, v => LyricsDisplay.Enabled = v);
 
         //"Work in progress" note becomes a quiet footer
         Text("Text (TMP)", new Vector2(0.5f, 0.5f), new Vector2(0, -cardH / 2 + 28), new Vector2(CardW - 2 * Pad, 24), 13, false, Theme.TextMuted, TextAlignmentOptions.Center, k);
@@ -205,6 +209,21 @@ public class SettingsCard : MonoBehaviour
         Style(btnText, 14, true, Theme.Text, TextAlignmentOptions.Center, k);
         btnText.characterSpacing = 3;
         btnText.raycastTarget = false;
+    }
+
+    //Label on the left, on/off switch on the right
+    private void SwitchRow(string label, float y, float left, float right, float labelW, float k, bool initial, System.Action<bool> changed)
+    {
+        TextMeshProUGUI text = new GameObject(label + "Text", typeof(RectTransform)).AddComponent<TextMeshProUGUI>();
+        text.text = label;
+        MatchFont(text);
+        Pin(text.rectTransform, new Vector2(0, 0.5f), new Vector2(left, y), new Vector2(labelW + 40, 32), k);
+        Style(text, 20, false, Theme.Text, TextAlignmentOptions.Left, k);
+        text.raycastTarget = false;
+
+        UISwitch sw = UISwitch.Create(transform, initial);
+        Pin((RectTransform)sw.transform, new Vector2(1, 0.5f), new Vector2(right, y), new Vector2(52, 28), k);
+        sw.Changed += changed;
     }
 
     void OnEnable()

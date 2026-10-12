@@ -42,18 +42,28 @@ public class SongSelect2 : MonoBehaviour
         right.GetComponent<Button>().onClick.AddListener(goRight);
         left.GetComponent<Button>().onClick.AddListener(goLeft);
         sortDrop = dropDownObj.GetComponent<TMP_Dropdown>();
-        //The scene's dropdown has Song / Artist / Length; add Difficulty as the 4th option
-        if (sortDrop.options.Count < 4)
+        //Sort options, in the same order as the cases in sort()
+        sortDrop.ClearOptions();
+        sortDrop.AddOptions(new System.Collections.Generic.List<string>
         {
-            sortDrop.options.Add(new TMP_Dropdown.OptionData("Difficulty"));
-            sortDrop.RefreshShownValue();
-        }
+            "Title (A-Z)",
+            "Artist (A-Z)",
+            "Length (short-long)",
+            "Difficulty (easy-hard)",
+        });
+        //Difficulty by default; after that, whichever sort the player picked last
+        sortDrop.SetValueWithoutNotify(Mathf.Clamp(PlayerPrefs.GetInt("songSort", 3), 0, 3));
+        sortDrop.RefreshShownValue();
         searchBar = searchObj.GetComponent<TMP_InputField>();
         centreImg = image.GetComponent<Image>();
         leftImg = leftImage.GetComponent<Image>();
         rightImg = rightImage.GetComponent<Image>();
         sort(sortDrop);
-        sortDrop.onValueChanged.AddListener(delegate { sort(sortDrop); });
+        sortDrop.onValueChanged.AddListener(delegate
+        {
+            PlayerPrefs.SetInt("songSort", sortDrop.value);
+            sort(sortDrop);
+        });
         searchBar.onValueChanged.AddListener(delegate { search(); });
     }
 
@@ -63,6 +73,12 @@ public class SongSelect2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow)) goLeft();
         if (Input.GetKeyDown(KeyCode.Return) && songNames.Length > 0)
         {
+            //Duo mode: the host's pick starts the song on both PCs (the other player never gets here)
+            if (NetSession.Active)
+            {
+                if (!NetSession.IsHost) return;
+                NetSession.StartSong(theSong);
+            }
             SceneManager.LoadScene("Game");
         }
         if (dirty) Refresh();

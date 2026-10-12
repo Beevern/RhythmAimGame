@@ -52,6 +52,21 @@ public class CustomLevelManager : MonoBehaviour
         LevelHolder.Rescan();
     }
 
+    //Drops a level from custom_levels.json (after its folder has been deleted)
+    public static void RemoveFromRegistry(string levelName)
+    {
+        if (Instance != null)
+        {
+            if (Instance.levelList.levels.RemoveAll(l => l.levelName == levelName) > 0) Instance.SaveLevels();
+            return;
+        }
+        string path = Path.Combine(Application.persistentDataPath, "custom_levels.json");
+        if (!File.Exists(path)) return;
+        CustomLevelList list = JsonUtility.FromJson<CustomLevelList>(File.ReadAllText(path)) ?? new CustomLevelList();
+        if (list.levels.RemoveAll(l => l.levelName == levelName) > 0)
+            File.WriteAllText(path, JsonUtility.ToJson(list, true));
+    }
+
     void SaveLevels()
     {
         string json = JsonUtility.ToJson(levelList, true);
@@ -96,6 +111,8 @@ public class CustomLevelManager : MonoBehaviour
         info.imageFilePath = Store(info.imageFilePath, folder, "cover");
         info.noteFilePath = Store(info.noteFilePath, folder, "notes");
         info.heldFilePath = Store(info.heldFilePath, folder, "held");
+        info.drumsFilePath = Store(info.drumsFilePath, folder, "drums");
+        info.lyricsFilePath = Store(info.lyricsFilePath, folder, "lyrics");
         //Keeps the exact level name even if the folder name had to be changed,
         //and the frame rate the chart's timecodes were placed at
         File.WriteAllText(Path.Combine(folder, "level.json"),
@@ -197,6 +214,8 @@ public class CustomLevelInfo
     public string imageFilePath; // Cover image (copied into the level's folder)
     public string noteFilePath;  // Notes CSV (copied into the level's folder)
     public string heldFilePath;  // Held notes CSV (copied into the level's folder)
+    public string drumsFilePath; // Drum hits CSV for drum animations (copied into the level's folder)
+    public string lyricsFilePath; // Lyrics JSON shown in game (copied into the level's folder)
     public float chartFps;       // Frame rate of the video the chart was made against (0 = 30)
 }
 

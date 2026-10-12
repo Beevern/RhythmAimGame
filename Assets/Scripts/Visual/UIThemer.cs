@@ -46,7 +46,11 @@ public static class UIThemer
             Exclude(select.right);
         }
 
-        if (SceneManager.GetActiveScene().name == "Menu") AddLevelEditorButton();
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            AddLevelEditorButton();
+            MultiplayerLobby.AddMenuButton();
+        }
 
         foreach (Canvas canvas in Object.FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
@@ -67,7 +71,11 @@ public static class UIThemer
         else
         {
             MenuBackdrop.Create();
-            if (SceneManager.GetActiveScene().name == "Menu") MenuLogo.Create();
+            if (SceneManager.GetActiveScene().name == "Menu")
+            {
+                MenuLogo.Create();
+                ClearMenuButtonBackgrounds();
+            }
         }
         SongSelect2 songSelect = Object.FindFirstObjectByType<SongSelect2>();
         if (songSelect != null && songSelect.GetComponent<SongSelectFx>() == null)
@@ -89,6 +97,29 @@ public static class UIThemer
         foreach (Component part in c.GetComponentsInChildren<Component>(true))
         {
             if (part is Selectable || part is Graphic || part is Shadow) themed.Add(part.GetInstanceID());
+        }
+    }
+
+    //Main menu: buttons are just their text (no panel behind them); hover/press still scale them.
+    //Buttons inside the settings panel keep their background.
+    private static void ClearMenuButtonBackgrounds()
+    {
+        var settingsPanels = new List<Transform>();
+        foreach (Settings st in Object.FindObjectsByType<Settings>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            if (st.settingsMenu != null) settingsPanels.Add(st.settingsMenu.transform);
+
+        foreach (Button b in Object.FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            bool inSettings = false;
+            foreach (Transform panel in settingsPanels)
+                if (b.transform.IsChildOf(panel)) { inSettings = true; break; }
+            if (inSettings || b.GetComponentInParent<NoTheme>(true) != null) continue;
+
+            ColorBlock cb = b.colors;
+            cb.normalColor = cb.highlightedColor = cb.pressedColor = cb.selectedColor = cb.disabledColor = Color.clear;
+            b.colors = cb;
+            //Keep the (invisible) image so the whole button area stays clickable
+            if (b.targetGraphic != null) b.targetGraphic.color = Color.white;
         }
     }
 

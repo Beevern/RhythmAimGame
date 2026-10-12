@@ -33,7 +33,7 @@ public class Pause : MonoBehaviour
     {
 
         //Esc belongs to the crosshair editor while it's open
-        if (Input.GetKeyDown(KeyCode.Escape) && !CrosshairEditor.IsOpen && !NoteColorEditor.IsOpen)
+        if (Input.GetKeyDown(KeyCode.Escape) && !CrosshairEditor.IsOpen && !NoteColorEditor.IsOpen && !DuoGame.Waiting)
         {
 
             if (isPaused)
@@ -55,9 +55,13 @@ public class Pause : MonoBehaviour
 
     }
 
-    public void resume()
+    //Duo mode: pausing and resuming are mirrored on the partner's PC (tellPartner = false when the partner did it)
+    public void resume() => resume(true);
+
+    public void resume(bool tellPartner)
     {
-        
+        if (tellPartner) NetSession.Send("RESUME");
+
         pauseUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         countdownRoutine = StartCoroutine(countdown());
@@ -90,8 +94,11 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void pause()
+    public void pause() => pause(true);
+
+    public void pause(bool tellPartner)
     {
+        if (tellPartner) NetSession.Send("PAUSE");
         if (countdownRoutine != null)
         {
             StopCoroutine(countdownRoutine);
@@ -112,6 +119,12 @@ public class Pause : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        //Duo mode: leaving the song takes both players back to the lobby
+        if (NetSession.Active)
+        {
+            NetSession.Send("LOBBY");
+            MultiplayerLobby.OpenOnLoad = true;
+        }
         SceneManager.LoadScene("Menu");
     }
     public void QuitGame()

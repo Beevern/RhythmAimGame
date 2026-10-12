@@ -30,6 +30,9 @@ public class Spawner : MonoBehaviour
     private float[] tapTimes;
     //Held notes are stored as start/end pairs
     private float[] heldTimes;
+    //0..1 on-screen height per note from the chart (sung pitch), NaN = random height
+    private float[] tapHeights;
+    private float[] heldHeights;
     //End of level: wait for the video to finish instead of cutting off after the last note
     private VideoPlayer vidPlayer;
     private bool videoEnded;
@@ -49,8 +52,21 @@ public class Spawner : MonoBehaviour
 
         tapTimes = LevelHolder.songTimes[SongSelect2.theSong];
         heldTimes = LevelHolder.heldTimes[SongSelect2.theSong];
+        LevelHolder.songHeights.TryGetValue(SongSelect2.theSong, out tapHeights);
+        LevelHolder.heldHeights.TryGetValue(SongSelect2.theSong, out heldHeights);
+        LevelHolder.levels.TryGetValue(SongSelect2.theSong, out LevelInfo level);
+        if (level != null) chartOffset = level.offset;
+        //Duo mode: the instrumental player gets the drum chart (taps only) instead of the vocal one
+        if (NetSession.Active && NetSession.MyRole == NetSession.Role.Instrumental
+            && DuoChart.TryInstrumental(level, out float[] drumTimes, out float[] drumHeights))
+        {
+            tapTimes = drumTimes;
+            tapHeights = drumHeights;
+            heldTimes = new float[0];
+            heldHeights = null;
+            chartOffset = level.videoDelay;
+        }
         totalNotes = tapTimes.Length + heldTimes.Length / 2;
-        if (LevelHolder.levels.TryGetValue(SongSelect2.theSong, out LevelInfo level)) chartOffset = level.offset;
 
         beat = 0;
         held = 0;
@@ -62,14 +78,14 @@ public class Spawner : MonoBehaviour
 
         if (beat < tapTimes.Length && now >= tapTimes[beat])
         {
-            Counter counter = SpawnCounter();
+            Counter counter = SpawnCounter(HeightAt(tapHeights, beat));
             counter.isHeld = false;
             counter.chartTime = tapTimes[beat] - chartOffset;
             beat++;
         }
         if (held + 1 < heldTimes.Length && now >= heldTimes[held])
         {
-            Counter counter = SpawnCounter();
+            Counter counter = SpawnCounter(HeightAt(heldHeights, held / 2));
             counter.isHeld = true;
             counter.timeTransfer = heldTimes[held + 1] - heldTimes[held];
             counter.chartTime = heldTimes[held] - chartOffset;
@@ -86,9 +102,11 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private Counter SpawnCounter()
+    static float HeightAt(float[] heights, int i) => heights != null && i < heights.Length ? heights[i] : float.NaN;
+
+    private Counter SpawnCounter(float height)
     {
-        Vector2 p = PickSpawnPoint();
+        Vector2 p = PickSpawnPoint(height);
         hasLastSpawn = true;
         lastSpawn = p;
         spawnPos = new Vector3(p.x, p.y, 0.0f);
@@ -98,13 +116,17 @@ public class Spawner : MonoBehaviour
 
     //Uniform over the spawn square, rejecting points too close to the previous note.
     //Rejection keeps the result uniform over everything that's allowed, so no side is favoured.
-    private Vector2 PickSpawnPoint()
+    //With a height from the chart (0 = bottom, 1 = top of the spawn square, from the sung pitch)
+    //only left/right is random; otherwise both are.
+    private Vector2 PickSpawnPoint(float height)
     {
         Vector2 best = spawnCentre;
         float bestDist = -1f;
+        bool fixedY = !float.IsNaN(height);
+        float y = fixedY ? Mathf.Lerp(-SpawnRange, SpawnRange, Mathf.Clamp01(height)) : 0f;
         for (int attempt = 0; attempt < 30; attempt++)
         {
-            Vector2 p = spawnCentre + new Vector2(Random.Range(-SpawnRange, SpawnRange), Random.Range(-SpawnRange, SpawnRange));
+            Vector2 p = spawnCentre + new Vector2(Random.Range(-SpawnRange, SpawnRange), fixedY ? y : Random.Range(-SpawnRange, SpawnRange));
             if (!hasLastSpawn) return p;
             float d = Vector2.Distance(p, lastSpawn);
             if (d >= MinSpacing) return p;

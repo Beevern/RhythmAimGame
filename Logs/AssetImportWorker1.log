@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever" at "2026-10-12T07:24:27.2495318Z"
 Built from '6000.3/respin/6000.3.5f1-a1ec4b2f2d19' branch; Version is '6000.3.5f2 (3fa8bc678cb0) revision 4171964'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever" at "2026-10-11T21:53:21.973505Z"
 OS: 'Windows 11  (10.0.26200) Core' Language: 'en' Physical Memory: 31801 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-10-11T21:53:21Z
+Date: 2026-10-12T07:24:27Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.3.5f2\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/bever/OneDrive/Documents/GitHub/RhythmAimGame
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-53578
+57785
 -licensingIpc
 LicenseClient-bever
 -job-worker-count
@@ -67,12 +67,12 @@ C:/Users/bever/OneDrive/Documents/GitHub/RhythmAimGame
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [20976]  Target information:
+Player connection [8820]  Target information:
 
-Player connection [20976]  * "[IP] 10.154.2.176 [Port] 0 [Flags] 2 [Guid] 1729040044 [EditorId] 1729040044 [Version] 1048832 [Id] WindowsEditor(7,BevernPrizedPossession) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [8820]  * "[IP] 10.154.2.176 [Port] 0 [Flags] 2 [Guid] 1571755293 [EditorId] 1571755293 [Version] 1048832 [Id] WindowsEditor(7,BevernPrizedPossession) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [20976] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [20976] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8820] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8820] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -84,7 +84,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.08 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.34 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.5f2 (3fa8bc678cb0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/Resources/UnitySubsystems
@@ -100,55 +100,55 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56284
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56860
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001743 seconds.
-- Loaded All Assemblies, in  0.320 seconds
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.17.4+4293ba1
-  Session Id:              df25ab07bfdc434eb3938a139028017c
-  Correlation Id:          6d4c1ad26435ff39b68e68eeec2b9e62
-  External correlation Id: 772813973603753734
-  Machine Id:              QIr9hr87tNlcBFqFfo9YmhmMAMw=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-bever" (connect: 0.00s, validation: 0.00s, handshake: 0.80s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever-notifications" at "2026-10-11T21:53:22.7721649Z"
-[Licensing::Module] Licensing Background thread has ended after 0.80s
+Registered in 0.004099 seconds.
+- Loaded All Assemblies, in  0.456 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              6b266716ee274f7c89dea84ac3e14a0e
+  Correlation Id:          3056fefcc40f365bf93cb6ad6b082b42
+  External correlation Id: 4495415791835725879
+  Machine Id:              QIr9hr87tNlcBFqFfo9YmhmMAMw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-bever" (connect: 0.00s, validation: 0.00s, handshake: 1.21s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever-notifications" at "2026-10-12T07:24:28.4705899Z"
+[Licensing::Module] Licensing Background thread has ended after 1.22s
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.272 seconds
-Domain Reload Profiling: 591ms
-	BeginReloadAssembly (99ms)
+- Finished resetting the current domain, in  0.369 seconds
+Domain Reload Profiling: 822ms
+	BeginReloadAssembly (166ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (142ms)
-		LoadAssemblies (96ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (50ms)
+	LoadAllAssembliesAndSetupDomain (189ms)
+		LoadAssemblies (163ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (140ms)
-			TypeCache.Refresh (138ms)
-				TypeCache.ScanAssembly (126ms)
+		AnalyzeDomain (186ms)
+			TypeCache.Refresh (184ms)
+				TypeCache.ScanAssembly (170ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (272ms)
+	FinalizeReload (369ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (240ms)
+		SetupLoadedEditorAssemblies (334ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (35ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (60ms)
-			ProcessInitializeOnLoadAttributes (94ms)
-			ProcessInitializeOnLoadMethodAttributes (49ms)
+			InitializePlatformSupportModulesInManaged (47ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (97ms)
+			ProcessInitializeOnLoadAttributes (118ms)
+			ProcessInitializeOnLoadMethodAttributes (68ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -163,8 +163,8 @@ Begin MonoManager ReloadAssembly
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-- Loaded All Assemblies, in  0.395 seconds
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.518 seconds
+Refreshing native plugins compatible for Editor in 0.89 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -173,93 +173,252 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.338 seconds
-Domain Reload Profiling: 732ms
-	BeginReloadAssembly (117ms)
+- Finished resetting the current domain, in  0.484 seconds
+Domain Reload Profiling: 999ms
+	BeginReloadAssembly (142ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (29ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (224ms)
-		LoadAssemblies (179ms)
+		CreateAndSetChildDomain (35ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (315ms)
+		LoadAssemblies (265ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (103ms)
-			TypeCache.Refresh (68ms)
-				TypeCache.ScanAssembly (61ms)
-			BuildScriptInfoCaches (29ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (339ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (85ms)
+				TypeCache.ScanAssembly (74ms)
+			BuildScriptInfoCaches (31ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (485ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (263ms)
+		SetupLoadedEditorAssemblies (388ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1ms)
-			SetLoadedEditorAssemblies (2ms)
-			BeforeProcessingInitializeOnLoad (69ms)
-			ProcessInitializeOnLoadAttributes (162ms)
-			ProcessInitializeOnLoadMethodAttributes (25ms)
-			AfterProcessingInitializeOnLoad (4ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (114ms)
+			ProcessInitializeOnLoadAttributes (230ms)
+			ProcessInitializeOnLoadMethodAttributes (32ms)
+			AfterProcessingInitializeOnLoad (6ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (6ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 0.48 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.59 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3647 unused Assets / (2.8 MB). Loaded Objects now: 4260.
-Memory consumption went from 98.6 MB to 95.8 MB.
-Total: 5.082400 ms (FindLiveObjects: 0.407200 ms CreateObjectMapping: 0.146200 ms MarkObjects: 3.365300 ms  DeleteObjects: 1.162900 ms)
+Unloading 3649 unused Assets / (2.8 MB). Loaded Objects now: 4262.
+Memory consumption went from 98.7 MB to 95.9 MB.
+Total: 6.896400 ms (FindLiveObjects: 0.498700 ms CreateObjectMapping: 0.087100 ms MarkObjects: 4.690200 ms  DeleteObjects: 1.619300 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 591139.360384 seconds.
-  path: Assets/Scripts/LevelEditor/LevelEditorView.cs
-  artifactKey: Guid(406ad604f3c1a134d8b56441e721d956) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
-Start importing Assets/Scripts/LevelEditor/LevelEditorView.cs using Guid(406ad604f3c1a134d8b56441e721d956) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '7a9455690cee470e2769ab1ee1d39e05') in 0.0523751 seconds
+  Time since last request: 1646.297191 seconds.
+  path: Assets/Editor/AutoChartBuildHook.cs
+  artifactKey: Guid(37cf3f5b0d53a5842bc66ffeea2801de) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Editor/AutoChartBuildHook.cs using Guid(37cf3f5b0d53a5842bc66ffeea2801de) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '66ae77a63298f866c86e4d1c8054e0ad') in 0.053809 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Scripts/Core/LevelHolder.cs
-  artifactKey: Guid(d19835ceebdaf8d4a8c7117215061ff4) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
-Start importing Assets/Scripts/Core/LevelHolder.cs using Guid(d19835ceebdaf8d4a8c7117215061ff4) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd539b9a4c80e69d8e78f721bb4a9cbf9') in 0.0055906 seconds
+  Time since last request: 0.000196 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/notes.csv
+  artifactKey: Guid(103a1901c0126a1409c258754d2f2ea5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/notes.csv using Guid(103a1901c0126a1409c258754d2f2ea5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'efd298ecb2d3d22bc6636e01b19d3bb0') in 0.0069518 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/StreamingAssets/Levels/Sad Song by We The Kings/notes.csv
+  artifactKey: Guid(3fbf9bce892cca94cb5361eb9c344969) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Sad Song by We The Kings/notes.csv using Guid(3fbf9bce892cca94cb5361eb9c344969) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '704182c893e321f81fcbe2a03c62cf61') in 0.0056532 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/lyrics.json
+  artifactKey: Guid(8112a8495ce2ca0478c0d55100cd3120) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/lyrics.json using Guid(8112a8495ce2ca0478c0d55100cd3120) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '161d6a08ffd0f21397d12e9d34de84d6') in 0.005104 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Scripts/Visual/SettingsCard.cs
+  artifactKey: Guid(950a1abc21c436048b068441a8817286) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Visual/SettingsCard.cs using Guid(950a1abc21c436048b068441a8817286) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '0a49dd1f857297f6667c9e2b9ad14ed0') in 0.0060436 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000085 seconds.
-  path: Assets/Scripts/Gameplay/Player.cs
-  artifactKey: Guid(9dbc64374b98d7146aa568221dbbc929) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
-Start importing Assets/Scripts/Gameplay/Player.cs using Guid(9dbc64374b98d7146aa568221dbbc929) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'e6483cf6a57c74ad04fe46c004e11453') in 0.0043721 seconds
+  Time since last request: 0.000094 seconds.
+  path: Assets/Scripts/ToDo.cs
+  artifactKey: Guid(f6d99fca79e1f7048aef45a01051a110) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/ToDo.cs using Guid(f6d99fca79e1f7048aef45a01051a110) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '843009ee10d568a6f9590e55320317dc') in 0.0055146 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 15.342977 seconds.
-  path: Assets/Prefabs/LevelManager.prefab
-  artifactKey: Guid(10eae7f5eb1796a4fa162a8eed0eac03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/LevelManager.prefab using Guid(10eae7f5eb1796a4fa162a8eed0eac03) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be629c05681fb0cf2f12b384c9fa0d41') in 0.0232729 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+  Time since last request: 0.000069 seconds.
+  path: Assets/StreamingAssets/Levels/Circles by EDEN/drums.csv
+  artifactKey: Guid(4f3e511f1d046c34ab58a35c2fc88162) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Circles by EDEN/drums.csv using Guid(4f3e511f1d046c34ab58a35c2fc88162) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2af71bfbcb550d8e1cbe0d09a1e429d5') in 0.0060392 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Prefabs/TrailParent.prefab
-  artifactKey: Guid(931689686d3ae3149b9d6a1b1196c4e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/TrailParent.prefab using Guid(931689686d3ae3149b9d6a1b1196c4e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '844d72aadfe64766a0b7cd8ffff4380f') in 0.0411031 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+  Time since last request: 0.000094 seconds.
+  path: Assets/StreamingAssets/Levels/Just the Way You Are By Bruno Mars/notes.csv
+  artifactKey: Guid(ad774072374123c4195fc035abccb6f7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Just the Way You Are By Bruno Mars/notes.csv using Guid(ad774072374123c4195fc035abccb6f7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '207d3d059f029dead405cd9bf58bbb93') in 0.0060882 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/StreamingAssets/Levels/Endlessly by The Cab/held.csv
+  artifactKey: Guid(e3e755faf7becf14c9d2354f7adfe271) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Endlessly by The Cab/held.csv using Guid(e3e755faf7becf14c9d2354f7adfe271) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2f2e562dbe752df8349072b8bd7fcb81') in 0.006737 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/notes.csv
+  artifactKey: Guid(b9fc34d1c7e172844a8099ba2caf30ac) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/notes.csv using Guid(b9fc34d1c7e172844a8099ba2caf30ac) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd48ec7e2b58a70f1d3de3b8942017683') in 0.0066002 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/notes.csv
+  artifactKey: Guid(424921ecc17ed3040b2c80452ff44f40) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/notes.csv using Guid(424921ecc17ed3040b2c80452ff44f40) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '24875c1f917a7ea3c752afaaff4493e2') in 0.0072976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000082 seconds.
+  path: Assets/StreamingAssets/Levels/XO by EDEN/lyrics.json
+  artifactKey: Guid(b23a5e3bf49f5fd4e81fc5641c3c457d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/XO by EDEN/lyrics.json using Guid(b23a5e3bf49f5fd4e81fc5641c3c457d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '3be22b6a5334235fadb4ca6223cd956e') in 0.0081082 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/StreamingAssets/Levels/Hypnotized by DEAMN/drums.csv
+  artifactKey: Guid(a50cdaf39c14709408300281218a1293) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hypnotized by DEAMN/drums.csv using Guid(a50cdaf39c14709408300281218a1293) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ef3ddf5d51c09aab225ff661c6ba1e70') in 0.005776 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Scripts/Core/CsvParser.cs
+  artifactKey: Guid(6ce39dad95806ca48be5bf0b2dd58919) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Core/CsvParser.cs using Guid(6ce39dad95806ca48be5bf0b2dd58919) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '178ecad1ae672f4ca61906e3526329c7') in 0.0053638 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/StreamingAssets/Levels/Nevada by Vicetone/lyrics.json
+  artifactKey: Guid(a0af3fab75e8af9478c8097897acf4aa) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Nevada by Vicetone/lyrics.json using Guid(a0af3fab75e8af9478c8097897acf4aa) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '02510d1bb8668c750685b257f1f14459') in 0.0052701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/held.csv
+  artifactKey: Guid(0405de012fe18d7408831f483fc68eee) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/held.csv using Guid(0405de012fe18d7408831f483fc68eee) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'e3ee6e679186116eaebedc48247bb210') in 0.0065626 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/StreamingAssets/Levels/Hypnotized by DEAMN/notes.csv
+  artifactKey: Guid(798b8282344ee55499bde1e319c030bc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hypnotized by DEAMN/notes.csv using Guid(798b8282344ee55499bde1e319c030bc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'e4d4870c2080b3fadf129826e17076eb') in 0.0060558 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/StreamingAssets/Levels/XO by EDEN/notes.csv
+  artifactKey: Guid(4ffd81ec2ba7ad9478b33cd4bddf9cca) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/XO by EDEN/notes.csv using Guid(4ffd81ec2ba7ad9478b33cd4bddf9cca) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ec1e99f062712860227c0578c3d1c28a') in 0.0058111 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Scripts/Gameplay/Spawner.cs
+  artifactKey: Guid(f36ba34dceaacd941b12cd0d4543d4ba) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Gameplay/Spawner.cs using Guid(f36ba34dceaacd941b12cd0d4543d4ba) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '13770bbbc8d997020e669d1886156841') in 0.0058995 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000104 seconds.
+  path: Assets/StreamingAssets/Levels/Me Plus You by SABAI/notes.csv
+  artifactKey: Guid(4aa299032bcb68c418687ebe0fb433a3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Me Plus You by SABAI/notes.csv using Guid(4aa299032bcb68c418687ebe0fb433a3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ac3ff0c26b6c32a391b0029e11e25808') in 0.0057946 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000127 seconds.
+  path: Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/notes.csv
+  artifactKey: Guid(446dfd968b5da2e4aa9a86c560cb78d5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/notes.csv using Guid(446dfd968b5da2e4aa9a86c560cb78d5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2a642658491effdd2668763332e6679d') in 0.0053655 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/notes.csv
+  artifactKey: Guid(442c6090639c9e547b5c3507613695d1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/notes.csv using Guid(442c6090639c9e547b5c3507613695d1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c2b92c75193b8232c5c0d3ef51df5208') in 0.0059829 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/notes.csv
+  artifactKey: Guid(1c1d77c84109f7740a307bcf6e0cd381) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/notes.csv using Guid(1c1d77c84109f7740a307bcf6e0cd381) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '9e856d7e1afed848e6a73169d5d787bf') in 0.0059838 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/lyrics.json
+  artifactKey: Guid(7800408dd35ee6c40be36e5c7f555bb3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/lyrics.json using Guid(7800408dd35ee6c40be36e5c7f555bb3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'b8e7e996088d1f93bcae72b9acbff38a') in 0.0060547 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/lyrics.json
+  artifactKey: Guid(92e03f501002fa64aa6deebd4d36f0c2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/lyrics.json using Guid(92e03f501002fa64aa6deebd4d36f0c2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd6aa12420f1566a22b1cd71d3ce5d3da') in 0.0046744 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0.359 seconds
-Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.485 seconds
+Refreshing native plugins compatible for Editor in 1.42 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
@@ -267,45 +426,45 @@ Native extension for WebGL target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.351 seconds
-Domain Reload Profiling: 711ms
-	BeginReloadAssembly (141ms)
+- Finished resetting the current domain, in  0.432 seconds
+Domain Reload Profiling: 915ms
+	BeginReloadAssembly (171ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (36ms)
-	RebuildCommonClasses (22ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (16ms)
-	LoadAllAssembliesAndSetupDomain (172ms)
-		LoadAssemblies (167ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (24ms)
+	LoadAllAssembliesAndSetupDomain (245ms)
+		LoadAssemblies (241ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (73ms)
+		AnalyzeDomain (89ms)
 			TypeCache.Refresh (5ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (63ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (352ms)
+			BuildScriptInfoCaches (77ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (433ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (279ms)
+		SetupLoadedEditorAssemblies (346ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (80ms)
-			ProcessInitializeOnLoadAttributes (163ms)
-			ProcessInitializeOnLoadMethodAttributes (26ms)
+			BeforeProcessingInitializeOnLoad (102ms)
+			ProcessInitializeOnLoadAttributes (202ms)
+			ProcessInitializeOnLoadMethodAttributes (30ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
-Refreshing native plugins compatible for Editor in 0.82 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 1.21 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3647 unused Assets / (2.6 MB). Loaded Objects now: 4270.
-Memory consumption went from 99.8 MB to 97.2 MB.
-Total: 5.760700 ms (FindLiveObjects: 0.402200 ms CreateObjectMapping: 0.094400 ms MarkObjects: 4.182600 ms  DeleteObjects: 1.080400 ms)
+Unloading 3647 unused Assets / (2.6 MB). Loaded Objects now: 4265.
+Memory consumption went from 99.5 MB to 96.8 MB.
+Total: 8.371300 ms (FindLiveObjects: 0.607500 ms CreateObjectMapping: 0.135700 ms MarkObjects: 6.341800 ms  DeleteObjects: 1.285300 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout

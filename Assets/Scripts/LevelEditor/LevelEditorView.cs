@@ -22,6 +22,7 @@ public class LevelEditorView : MonoBehaviour
     [Header("Top bar")]
     public Button back;
     public Button save;
+    public Button deleteLevel;
     public TextMeshProUGUI statusText;
 
     [Header("Levels")]
@@ -100,7 +101,8 @@ public class LevelEditorView : MonoBehaviour
     {
         back = MakeButton(p, "BACK", 24, 20, 120, 44, false, out _);
         Label(p, "LEVEL EDITOR", 164, 20, 400, 44, 30, true, Theme.Text, TextAlignmentOptions.Left).characterSpacing = 4;
-        statusText = Label(p, "", 700, 20, 980, 44, 20, false, Theme.TextMuted, TextAlignmentOptions.Right);
+        statusText = Label(p, "", 600, 20, 890, 44, 20, false, Theme.TextMuted, TextAlignmentOptions.Right);
+        deleteLevel = MakeDeleteButton(p);
         save = MakeButton(p, "SAVE", W - 24 - 200, 20, 200, 44, true, out _);
         Box(p, 24, 76, W - 48, 2, Theme.Track);
     }
@@ -288,6 +290,15 @@ public class LevelEditorView : MonoBehaviour
         st.pivot = new Vector2(0, 1);
         st.localRotation = Quaternion.Euler(0, 0, -90);
         st.anchoredPosition = new Vector2(RightX + RightW - 2, -y);
+    }
+
+    //"DELETE LEVEL" in the top bar, left of SAVE, with red text
+    public static Button MakeDeleteButton(Transform p)
+    {
+        Button b = MakeButton(p, "DELETE LEVEL", W - 24 - 200 - 12 - 180, 20, 180, 44, false, out TextMeshProUGUI label);
+        label.color = Theme.Miss;
+        ThemeSprite.TagAll(b.transform);
+        return b;
     }
 
     static void HeaderCell(Transform p, string text, float x, float y, float w)

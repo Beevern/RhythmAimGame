@@ -127,6 +127,15 @@ public class LevelEditor : MonoBehaviour
     {
         view.back.onClick.AddListener(() => Guarded("leave", () => SceneManager.LoadScene("Menu")));
         view.save.onClick.AddListener(Save);
+        //UIs saved into the scene before this button existed get it added here
+        if (view.deleteLevel == null)
+        {
+            view.deleteLevel = V.MakeDeleteButton(view.save.transform.parent);
+            RectTransform st = view.statusText.rectTransform;
+            st.anchoredPosition = new Vector2(600, st.anchoredPosition.y);
+            st.sizeDelta = new Vector2(890, st.sizeDelta.y);
+        }
+        view.deleteLevel.onClick.AddListener(DeleteLevel);
 
         view.play.onClick.AddListener(TogglePlay);
         view.speed.onClick.AddListener(() =>
@@ -669,6 +678,64 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+    //---------------------------------------------------------------- deleting
+
+    float deleteArmedUntil;
+    string deleteArmedFor;
+
+    //Permanently deletes the open level's folder (needs a second click within 3 seconds)
+    void DeleteLevel()
+    {
+        if (level == null) return;
+        if (deleteArmedFor != level.folder || Time.unscaledTime > deleteArmedUntil)
+        {
+            deleteArmedFor = level.folder;
+            deleteArmedUntil = Time.unscaledTime + 3f;
+            SetStatus("Click DELETE LEVEL again to permanently delete \"" + level.name + "\".", Theme.Miss, 3f);
+            return;
+        }
+        deleteArmedFor = null;
+
+        string folder = level.folder, name = level.name;
+        //Release the video file before removing its folder
+        video.Stop();
+        video.url = "";
+        try
+        {
+            Directory.Delete(folder, true);
+            //Unity keeps a .meta next to every folder inside Assets
+            if (File.Exists(folder + ".meta")) File.Delete(folder + ".meta");
+        }
+        catch (Exception e)
+        {
+            SetStatus("Couldn't delete the level: " + e.Message, Theme.Miss, 6f);
+            LoadVideo();
+            return;
+        }
+        CustomLevelManager.RemoveFromRegistry(name);
+        string hitLog = HitLog.FileFor(name);
+        if (File.Exists(hitLog)) File.Delete(hitLog);
+        if (SongSelect2.theSong == name) SongSelect2.theSong = null;
+
+        level = null;
+        selected = null;
+        dirty = false;
+        undo.Clear();
+        LevelHolder.ReloadAll();
+#if UNITY_EDITOR
+        UnityEditor.AssetDatabase.Refresh();
+#endif
+        if (LevelHolder.allSongs.Length > 0) OpenLevel(LevelHolder.levels[LevelHolder.allSongs[0]].folder);
+        else
+        {
+            RebuildLevelList();
+            RefreshAll();
+            view.videoImage.texture = Texture2D.blackTexture;
+            view.coverImage.texture = Texture2D.blackTexture;
+        }
+        SetStatus("Deleted \"" + name + "\".", Theme.Good, 4f);
+    }
+
     //---------------------------------------------------------------- saving
 
     void Save()
@@ -814,7 +881,10 @@ public class LevelEditor : MonoBehaviour
             if (!approaching && !showingTarget) continue;
 
             NoteSprite s = GetNoteSprite(used++);
-            s.root.anchoredPosition = NotePosition(i) * area;
+            //Same placement as the game: chart height (sung pitch) if known, otherwise random
+            Vector2 pos = NotePosition(i);
+            if (!float.IsNaN(n.height)) pos.y = Mathf.Lerp(-1f, 1f, Mathf.Clamp01(n.height));
+            s.root.anchoredPosition = pos * area;
             bool isNext = n == next;
             if (approaching)
             {

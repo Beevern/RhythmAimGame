@@ -25,6 +25,10 @@ public class LevelHolder : MonoBehaviour
     public static readonly Dictionary<string, float[]> songTimes = new Dictionary<string, float[]>();
     //Held notes are stored as start/end pairs
     public static readonly Dictionary<string, float[]> heldTimes = new Dictionary<string, float[]>();
+    //0..1 on-screen height per note from the chart's "Height" column (sung pitch); NaN = random.
+    //Taps line up with songTimes; held notes have one entry per start/end pair.
+    public static readonly Dictionary<string, float[]> songHeights = new Dictionary<string, float[]>();
+    public static readonly Dictionary<string, float[]> heldHeights = new Dictionary<string, float[]>();
     public static readonly Dictionary<string, Sprite> songImages = new Dictionary<string, Sprite>();
     public static readonly Dictionary<string, int> songLengths = new Dictionary<string, int>();
     public static readonly Dictionary<string, LevelInfo> levels = new Dictionary<string, LevelInfo>();
@@ -56,6 +60,8 @@ public class LevelHolder : MonoBehaviour
     {
         songTimes.Clear();
         heldTimes.Clear();
+        songHeights.Clear();
+        heldHeights.Clear();
         songImages.Clear();
         songLengths.Clear();
         levels.Clear();
@@ -124,14 +130,20 @@ public class LevelHolder : MonoBehaviour
             videoPath = FindFile(dir, "video", VideoExtensions),
             coverPath = FindFile(dir, "cover", ImageExtensions),
             targetPath = FindFile(dir, "target", ImageExtensions),
+            drumsPath = File.Exists(Path.Combine(dir, "drums.csv")) ? Path.Combine(dir, "drums.csv") : null,
+            lyricsPath = File.Exists(Path.Combine(dir, "lyrics.json")) ? Path.Combine(dir, "lyrics.json") : null,
             offset = settings.offset,
             videoDelay = settings.videoDelay,
         };
 
         float fps = settings.chartFps > 0f ? settings.chartFps : ChartFps;
-        float[] taps = Offset(CsvParser.ParseTimeColumn(notes, 10, fps), info.offset);
+        float[] taps = Offset(CsvParser.ParseNotes(notes, out _, out _, out List<float> tapH, 10, fps).ToArray(), info.offset);
         string heldPath = Path.Combine(dir, "held.csv");
-        float[] held = File.Exists(heldPath) ? Offset(CsvParser.ParseTimeColumn(heldPath, 10, fps), info.offset) : new float[0];
+        List<float> heldH = new List<float>();
+        float[] held = File.Exists(heldPath) ? Offset(CsvParser.ParseNotes(heldPath, out _, out _, out heldH, 10, fps).ToArray(), info.offset) : new float[0];
+        //One height per held note (the start row of each pair)
+        var heldPairH = new float[held.Length / 2];
+        for (int i = 0; i < heldPairH.Length; i++) heldPairH[i] = 2 * i < heldH.Count ? heldH[2 * i] : float.NaN;
 
         info.difficulty = settings.difficulty > 0f ? settings.difficulty : Difficulty.Calculate(taps, held);
         info.volume = settings.volume > 0f ? settings.volume : 1f;
@@ -143,6 +155,8 @@ public class LevelHolder : MonoBehaviour
         levels[name] = info;
         songTimes[name] = taps;
         heldTimes[name] = held;
+        songHeights[name] = tapH.ToArray();
+        heldHeights[name] = heldPairH;
         //Note count includes held notes (held times are start/end pairs)
         songLengths[name] = taps.Length + held.Length / 2;
         songImages[name] = info.coverPath != null ? LoadSprite(info.coverPath) : defaultCover;
@@ -212,6 +226,10 @@ public class LevelInfo
     public string coverPath;
     public string targetPath;
     public Sprite targetSprite;
+    //drums.csv (drum hits for animations, see DrumHits), or null
+    public string drumsPath;
+    //lyrics.json (lyrics shown in game, see LyricsDisplay), or null
+    public string lyricsPath;
     public float offset;
     public float videoDelay;
     //Star rating shown on Song Select

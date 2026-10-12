@@ -15,12 +15,19 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //The run finished: add how every note went to this level's hit log
-        HitLog.Save();
+        songText.text = "Song: " + SongSelect2.theSong;
         participationText.text = "Participation Rate: " + ScoreKeeper.participation + "%";
         scoreText.text = "Score: " + ScoreKeeper.score;
         comboText.text = "Highest Combo: " + ScoreKeeper.highestCombo;
-        songText.text = "Song: " + SongSelect2.theSong;
+        if (NetSession.Active)
+        {
+            NetSession.SendFinal();
+            //The instrumental chart isn't this level's normal chart, so it doesn't count towards its records
+            if (NetSession.MyRole == NetSession.Role.Instrumental) return;
+        }
+
+        //The run finished: add how every note went to this level's hit log
+        HitLog.Save();
 
         if (ScoreKeeper.score > PlayerPrefs.GetInt(SongSelect2.theSong + "highScore", 0))
         {

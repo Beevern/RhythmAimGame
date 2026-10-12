@@ -20,8 +20,18 @@ public static class CsvParser
     //Like ParseTimeColumn, plus each note's label from a "Word" or "Name" column ("" if none)
     public static List<float> ParseNotes(string csvPath, out List<string> labels, int columnIndex = 10, float fps = 30f)
     {
+        return ParseNotes(csvPath, out labels, out _, out _, columnIndex, fps);
+    }
+
+    //Also each note's sung "Pitch" (MIDI) and "Height" (0..1 on screen) from the auto-chart tools;
+    //NaN where the chart has no such column or the cell is blank
+    public static List<float> ParseNotes(string csvPath, out List<string> labels, out List<float> pitches, out List<float> heights,
+        int columnIndex = 10, float fps = 30f)
+    {
         var result = new List<float>();
         labels = new List<string>();
+        pitches = new List<float>();
+        heights = new List<float>();
 
         if (!File.Exists(csvPath))
         {
@@ -29,7 +39,7 @@ public static class CsvParser
             return result;
         }
 
-        int secondsCol = -1, timecodeCol = columnIndex, labelCol = -1;
+        int secondsCol = -1, timecodeCol = columnIndex, labelCol = -1, pitchCol = -1, heightCol = -1;
         bool isFirstRow = true;
 
         foreach (var line in File.ReadLines(csvPath))
@@ -49,6 +59,8 @@ public static class CsvParser
                     if (h.Equals("Seconds", StringComparison.OrdinalIgnoreCase)) secondsCol = i;
                     else if (h.Equals("Record In", StringComparison.OrdinalIgnoreCase)) timecodeCol = i;
                     else if (labelCol < 0 && (h.Equals("Word", StringComparison.OrdinalIgnoreCase) || h.Equals("Name", StringComparison.OrdinalIgnoreCase))) labelCol = i;
+                    else if (h.Equals("Pitch", StringComparison.OrdinalIgnoreCase)) pitchCol = i;
+                    else if (h.Equals("Height", StringComparison.OrdinalIgnoreCase)) heightCol = i;
                 }
                 continue;
             }
@@ -58,6 +70,8 @@ public static class CsvParser
             {
                 result.Add(s);
                 labels.Add(Label(cells, labelCol));
+                pitches.Add(Number(cells, pitchCol));
+                heights.Add(Number(cells, heightCol));
                 continue;
             }
 
@@ -72,10 +86,18 @@ public static class CsvParser
             {
                 result.Add(seconds);
                 labels.Add(Label(cells, labelCol));
+                pitches.Add(Number(cells, pitchCol));
+                heights.Add(Number(cells, heightCol));
             }
         }
 
         return result;
+    }
+
+    static float Number(string[] cells, int col)
+    {
+        if (col < 0 || col >= cells.Length) return float.NaN;
+        return float.TryParse(cells[col].Trim().Trim('"'), NumberStyles.Float, CultureInfo.InvariantCulture, out float v) ? v : float.NaN;
     }
 
     static string Label(string[] cells, int col)

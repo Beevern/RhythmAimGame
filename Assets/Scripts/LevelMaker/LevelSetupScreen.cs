@@ -38,7 +38,7 @@ public class LevelSetupScreen : MonoBehaviour
     private readonly AutoChart runner = new AutoChart();
     private TextMeshProUGUI lyricsLabel, outputLabel, wordsValue, wordsHint, status, runLabel;
     private Button runButton, showFilesButton;
-    private Image fillChoice, boxChoice, plainChoice;
+    private Image fillChoice, boxChoice, plainChoice, gameChoice, videoChoice, offChoice;
     private string lastFolder;
 
     //The video the player picked (charted from), and the lyric video that replaced it, if any
@@ -50,7 +50,7 @@ public class LevelSetupScreen : MonoBehaviour
     private static string lyricsPath;
     private string outputFolder;
     private int words;
-    private bool lyricVideo;
+    private string lyricsMode;  //"game", "video" or "off"
     private bool lyricAudio;   //song audio in the lyric video
     private bool lyricTitle;   //song name + artist at the top of the lyric video
     private string karaoke;
@@ -84,7 +84,8 @@ public class LevelSetupScreen : MonoBehaviour
         outputFolder = PlayerPrefs.GetString("autochart.output", "");
         if (outputFolder == "" || !Directory.Exists(outputFolder)) outputFolder = FileSelection.DownloadsFolder();
         words = PlayerPrefs.GetInt("autochart.words", 1);
-        lyricVideo = PlayerPrefs.GetInt("autochart.video", 1) == 1;
+        lyricsMode = PlayerPrefs.GetString("autochart.lyrics", LyricsDisplay.InGame ? "game" : "video");
+        if (!LyricsDisplay.InGame && lyricsMode == "game") lyricsMode = "video";
         lyricAudio = PlayerPrefs.GetInt("autochart.videoAudio", 1) == 1;
         lyricTitle = PlayerPrefs.GetInt("autochart.videoTitle", 1) == 1;
         karaoke = PlayerPrefs.GetString("autochart.karaoke", "fill");
@@ -97,7 +98,7 @@ public class LevelSetupScreen : MonoBehaviour
     {
         PlayerPrefs.SetString("autochart.output", outputFolder);
         PlayerPrefs.SetInt("autochart.words", words);
-        PlayerPrefs.SetInt("autochart.video", lyricVideo ? 1 : 0);
+        PlayerPrefs.SetString("autochart.lyrics", lyricsMode);
         PlayerPrefs.SetInt("autochart.videoAudio", lyricAudio ? 1 : 0);
         PlayerPrefs.SetInt("autochart.videoTitle", lyricTitle ? 1 : 0);
         PlayerPrefs.SetString("autochart.karaoke", karaoke);
@@ -210,7 +211,7 @@ public class LevelSetupScreen : MonoBehaviour
         SectionTitle(p, "CHART", 28);
 
         //Note lists side by side
-        const float colW = (Inner - 16) / 2, listY = 112, listH = 208;
+        const float colW = (Inner - 16) / 2, listY = 112, listH = 168;
         float heldX = Pad + colW + 16;
         tapHeader = SmallLabel(p, "TAP NOTES", Pad, 84);
         heldHeader = SmallLabel(p, "HELD NOTES", heldX, 84);
@@ -219,19 +220,19 @@ public class LevelSetupScreen : MonoBehaviour
         Adopt(sel.noteSelect, p, Pad, listY + listH + 12, colW, 44, "LOAD TAP CSV", false);
         Adopt(sel.heldSelect, p, heldX, listY + listH + 12, colW, 44, "LOAD HELD CSV", false);
 
-        Image divider = Box(p, Pad, 396, Inner, 1, Theme.Track);
+        Image divider = Box(p, Pad, 356, Inner, 1, Theme.Track);
         divider.sprite = Theme.Square;
 
         //Auto-chart
-        SectionTitle(p, "AUTO-CHART FROM LYRICS AND VIDEO", 414);
+        SectionTitle(p, "AUTO-CHART FROM LYRICS AND VIDEO", 374);
         Label(p, "Pick the video and a lyrics .txt, then press Auto-chart. Takes about a minute.",
-            Pad, 446, Inner, 26, 16, false, Theme.TextMuted, TextAlignmentOptions.Left);
+            Pad, 406, Inner, 26, 16, false, Theme.TextMuted, TextAlignmentOptions.Left);
         RectTransform rows = new GameObject("AutoChart", typeof(RectTransform)).GetComponent<RectTransform>();
         rows.SetParent(p, false);
         Place(rows, 0, 0, PanelW, PanelH);
         CanvasGroup autoGroup = rows.gameObject.AddComponent<CanvasGroup>();
 
-        const float y0 = 482;
+        const float y0 = 442;
         float controlX = Pad + LabelW;
         float controlW = Inner - LabelW;
         const float browseW = 130;
@@ -255,44 +256,44 @@ public class LevelSetupScreen : MonoBehaviour
         MakeButton(rows, "+", controlX + 96, y + 6, 40, 32, false, () => SetWords(words + 1));
         wordsHint = Label(rows, "", controlX + 152, y, controlW - 152, RowH, 16, false, Theme.TextMuted, TextAlignmentOptions.Left);
 
-        //Lyric video: on/off + style
+        //Where the lyrics show: drawn by the game, baked into a lyric video, or not at all
         y += RowH;
-        Row(rows, 3, y0, "LYRIC VIDEO");
-        UISwitch sw = UISwitch.Create(rows, lyricVideo);
-        Place((RectTransform)sw.transform, controlX, y + (RowH - 28) / 2, 52, 28);
-        sw.Changed += v =>
-        {
-            lyricVideo = v;
-            RefreshStyle();
-            SaveSettings();
-        };
-        RectTransform style = new GameObject("Style", typeof(RectTransform)).GetComponent<RectTransform>();
-        style.SetParent(rows, false);
-        Place(style, controlX + 76, y, 400, RowH);
-        fillChoice = MakeButton(style, "FILL", 0, 6, 100, 32, false, () => SetKaraoke("fill")).GetComponent<Image>();
-        boxChoice = MakeButton(style, "BOX", 106, 6, 100, 32, false, () => SetKaraoke("box")).GetComponent<Image>();
-        plainChoice = MakeButton(style, "PLAIN", 212, 6, 100, 32, false, () => SetKaraoke("plain")).GetComponent<Image>();
+        Row(rows, 3, y0, "LYRICS");
+        //"In game" only while in-game lyrics are on (LyricsDisplay.InGame)
+        float lx = controlX;
+        gameChoice = MakeButton(rows, "IN GAME", lx, y + 6, 120, 32, false, () => SetLyricsMode("game")).GetComponent<Image>();
+        gameChoice.gameObject.SetActive(LyricsDisplay.InGame);
+        if (LyricsDisplay.InGame) lx += 126;
+        videoChoice = MakeButton(rows, "VIDEO", lx, y + 6, 120, 32, false, () => SetLyricsMode("video")).GetComponent<Image>();
+        offChoice = MakeButton(rows, "OFF", lx + 126, y + 6, 120, 32, false, () => SetLyricsMode("off")).GetComponent<Image>();
 
-        //Lyric video extras: song audio, song name + artist at the top
+        //Highlight style (in game and in the video)
         y += RowH;
-        Row(rows, 4, y0, "VIDEO EXTRAS");
+        Row(rows, 4, y0, "LYRIC STYLE");
+        fillChoice = MakeButton(rows, "FILL", controlX, y + 6, 100, 32, false, () => SetKaraoke("fill")).GetComponent<Image>();
+        boxChoice = MakeButton(rows, "BOX", controlX + 106, y + 6, 100, 32, false, () => SetKaraoke("box")).GetComponent<Image>();
+        plainChoice = MakeButton(rows, "PLAIN", controlX + 212, y + 6, 100, 32, false, () => SetKaraoke("plain")).GetComponent<Image>();
+
+        //Extras: song audio (lyric video only), song name + artist at the top
+        y += RowH;
+        Row(rows, 5, y0, "EXTRAS");
         RectTransform extras = new GameObject("Extras", typeof(RectTransform)).GetComponent<RectTransform>();
         extras.SetParent(rows, false);
         Place(extras, controlX, y, controlW, RowH);
-        Toggle(extras, 0, "Song audio", lyricAudio, v => lyricAudio = v);
+        Toggle(extras, 0, "Video audio", lyricAudio, v => lyricAudio = v);
         Toggle(extras, 196, "Name & artist", lyricTitle, v => lyricTitle = v);
         Label(extras, "from level name", 420, 0, controlW - 420, RowH, 14, false, Theme.TextMuted, TextAlignmentOptions.Left);
 
         //Hold length
         y += RowH;
-        Row(rows, 5, y0, "HOLD NOTES FROM");
+        Row(rows, 6, y0, "HOLD NOTES FROM");
         SliderRow(rows, controlX, y, controlW, 0.5f, 3f, false, holdMin,
             v => holdMin = Mathf.Round(v * 10f) / 10f,
             () => holdMin.ToString("0.0", CultureInfo.InvariantCulture) + " s");
 
         //Timing offset
         y += RowH;
-        Row(rows, 6, y0, "TIMING OFFSET");
+        Row(rows, 7, y0, "TIMING OFFSET");
         SliderRow(rows, controlX, y, controlW, -200, 200, true, offsetMs,
             v => offsetMs = Mathf.RoundToInt(v),
             () => (offsetMs > 0 ? "+" : "") + offsetMs + " ms");
@@ -343,6 +344,16 @@ public class LevelSetupScreen : MonoBehaviour
         Choice(fillChoice, karaoke == "fill");
         Choice(boxChoice, karaoke == "box");
         Choice(plainChoice, karaoke == "plain");
+        Choice(gameChoice, lyricsMode == "game");
+        Choice(videoChoice, lyricsMode == "video");
+        Choice(offChoice, lyricsMode == "off");
+    }
+
+    private void SetLyricsMode(string mode)
+    {
+        lyricsMode = mode;
+        RefreshStyle();
+        SaveSettings();
     }
 
     //Switch with a label to its right
@@ -434,7 +445,7 @@ public class LevelSetupScreen : MonoBehaviour
             outputFolder = outputFolder,
             name = name,
             wordsPerSubtitle = words,
-            lyricVideo = lyricVideo,
+            lyricVideo = lyricsMode == "video",
             karaoke = karaoke,
             lyricVideoAudio = lyricAudio,
             title = title,
@@ -496,6 +507,9 @@ public class LevelSetupScreen : MonoBehaviour
                 //Hand the generated charts to the level setup, as if picked by hand
                 FileSelection.notePath = r.notes;
                 FileSelection.heldPath = File.Exists(r.held) && CsvParser.ParseTimeColumn(r.held, 10, FileSelection.ChartFps).Length > 0 ? r.held : null;
+                FileSelection.drumsPath = File.Exists(r.drums) ? r.drums : null;
+                //In-game lyrics: the level gets lyrics.json (video mode bakes them into the video instead)
+                FileSelection.lyricsPath = lyricsMode == "game" && File.Exists(r.lyricsJson) ? r.lyricsJson : null;
                 lastFolder = r.folder;
                 showFilesButton.gameObject.SetActive(true);
                 string done = "Done: " + r.summary;
@@ -535,7 +549,12 @@ public class LevelSetupScreen : MonoBehaviour
         {
             shownVid = FileSelection.theVid;
             //Picked by hand (not our lyric video): that's the new source to chart from
-            if (shownVid != generatedVideo) sourceVideo = shownVid;
+            if (shownVid != generatedVideo)
+            {
+                sourceVideo = shownVid;
+                FileSelection.drumsPath = null;   //drum hits belonged to the previous video
+                FileSelection.lyricsPath = null;  //so did the lyrics
+            }
             bool has = !string.IsNullOrEmpty(shownVid);
             videoName.text = has ? Path.GetFileName(shownVid) : "";
             videoEmpty.gameObject.SetActive(!has);

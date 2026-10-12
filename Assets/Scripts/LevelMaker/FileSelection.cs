@@ -22,6 +22,8 @@ public class FileSelection : MonoBehaviour
     public static string theName;
     public static string notePath;
     public static string heldPath;
+    public static string drumsPath;   //drum hits from auto-chart (for drum animations), or null
+    public static string lyricsPath;  //lyrics shown in game, from auto-chart, or null
 
     public VideoPlayer vidPlayer;
     public RawImage vidParent;
@@ -69,6 +71,8 @@ public class FileSelection : MonoBehaviour
             imageFilePath = theImage,
             noteFilePath = notePath,          // you can fill this later when you have note files
             heldFilePath = heldPath,
+            drumsFilePath = drumsPath,
+            lyricsFilePath = lyricsPath,
             chartFps = ChartFps,
         };
 

@@ -23,6 +23,7 @@ lyrics skips the slow separation step.
 
 import argparse
 import csv
+import json
 import re
 import sys
 from fractions import Fraction
@@ -32,6 +33,8 @@ import librosa
 import numpy as np
 import soundfile as sf
 import torch
+
+from pitch import fmt, heights, note_pitch, pitch_track
 
 FPS = 30.0               # timeline frame rate for timecodes, EDL and lyric video; set from --fps / the video
 STANDARD_FPS = [Fraction(24000, 1001), 24, 25, Fraction(30000, 1001), 30, 48, 50, Fraction(60000, 1001), 60]
@@ -46,7 +49,11 @@ ALIGN_LAG = 0.08         # CTC tends to emit a word's first letter ~80 ms after 
 
 # ---------------------------------------------------------------- separation
 
-def separate_vocals(song_path: Path, device: str) -> tuple[np.ndarray, int]:
+STEM_FILES = ("vocals", "drums", "instrumental")   # cached next to the song as <song>_<name>.wav
+
+
+def separate_stems(song_path: Path, device: str) -> tuple[dict[str, np.ndarray], int]:
+    """Demucs htdemucs. Returns stereo vocals, drums, and instrumental (everything but vocals)."""
     from demucs.apply import apply_model
     from demucs.pretrained import get_model
 
@@ -67,23 +74,65 @@ def separate_vocals(song_path: Path, device: str) -> tuple[np.ndarray, int]:
     with torch.no_grad():
         sources = apply_model(model, wav[None], device=device, split=True,
                               overlap=0.25, progress=True)[0]
-    sources = sources * std + mean
-    vocals = sources[model.sources.index("vocals")].cpu().numpy()
-    return vocals, sr
+    sources = (sources * std + mean).cpu().numpy()
+    names = list(model.sources)
+    stems = {"vocals": sources[names.index("vocals")], "drums": sources[names.index("drums")]}
+    stems["instrumental"] = sum(sources[i] for i, n in enumerate(names) if n != "vocals")
+    return stems, sr
 
 
-def load_or_separate(song_path: Path, device: str, force: bool) -> tuple[np.ndarray, int]:
-    cache = song_path.with_name(song_path.stem + "_vocals.wav")
-    if cache.exists() and not force:
-        print(f"Using cached vocal stem: {cache}")
-        y, sr = sf.read(str(cache), always_2d=True)
-        return y.T.astype(np.float32), sr
+def load_or_separate(song_path: Path, device: str, force: bool) -> tuple[dict[str, np.ndarray], int]:
+    """Stems for the song, cached next to it so re-runs skip the slow separation."""
+    paths = {n: song_path.with_name(f"{song_path.stem}_{n}.wav") for n in STEM_FILES}
+    if all(p.exists() for p in paths.values()) and not force:
+        print(f"Using cached stems: {paths['vocals'].parent}")
+        stems = {}
+        for n, p in paths.items():
+            y, sr = sf.read(str(p), always_2d=True)
+            stems[n] = y.T.astype(np.float32)
+        return stems, sr
 
     print("Separating vocals with Demucs (this is the slow part)...")
-    vocals, sr = separate_vocals(song_path, device)
-    sf.write(str(cache), vocals.T, sr)
-    print(f"Saved vocal stem: {cache}")
-    return vocals, sr
+    stems, sr = separate_stems(song_path, device)
+    for n, p in paths.items():
+        sf.write(str(p), np.clip(stems[n], -1, 1).T, sr)
+    print(f"Saved stems: {paths['vocals'].parent}")
+    return stems, sr
+
+
+def drum_hits(drums: np.ndarray, sr: int, min_strength: float = 0.15) -> list[tuple[float, str, float]]:
+    """Every drum hit in the drum stem as (seconds, type, strength 0-1).
+    type is kick / snare / hihat: whichever frequency band jumps most at that moment."""
+    y = librosa.to_mono(drums)
+    hop, n_fft = 256, 1024
+    spec = np.abs(librosa.stft(y, n_fft=n_fft, hop_length=hop))
+    freqs = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
+    env = librosa.onset.onset_strength(S=librosa.amplitude_to_db(spec, ref=np.max), sr=sr, hop_length=hop)
+    frames = librosa.onset.onset_detect(onset_envelope=env, sr=sr, hop_length=hop, backtrack=False)
+    bands = {"kick": (20, 150), "snare": (150, 2500), "hihat": (5000, sr / 2)}
+    band_env = {}
+    for name, (lo, hi) in bands.items():
+        band = librosa.amplitude_to_db(spec[(freqs >= lo) & (freqs < hi)], ref=np.max)
+        flux = np.maximum(np.diff(band, axis=1, prepend=band[:, :1]), 0).mean(axis=0)
+        band_env[name] = flux / (np.percentile(flux, 99) + 1e-9)
+    top = np.percentile(env, 99) + 1e-9
+    hits = []
+    for f in frames:
+        strength = float(np.clip(env[f] / top, 0, 1))
+        if strength < min_strength:
+            continue
+        kind = max(bands, key=lambda b: band_env[b][min(f, len(band_env[b]) - 1)])
+        hits.append((f * hop / sr, kind, strength))
+    return hits
+
+
+def write_drums_csv(path: Path, hits: list[tuple[float, str, float]]):
+    """Drum hits for the game (drums.csv in a level folder): one row per hit."""
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["#", "Seconds", "Type", "Strength"])
+        for i, (t, kind, s) in enumerate(hits, 1):
+            w.writerow([i, f"{t:.3f}", kind, f"{s:.2f}"])
 
 
 # ------------------------------------------------------------------ lyrics
@@ -243,14 +292,17 @@ def snap_to_onsets(aligned: list[dict], onsets: np.ndarray, window: float, min_g
 
 
 def estimate_durations(items: list[dict], vocals: np.ndarray, sr: int, drop_db: float = 20.0,
-                       sustain_drop_db: float = 14.0, gap_frames: int = 3):
+                       sustain_drop_db: float = 14.0, gap_frames: int = 3,
+                       words: list[float] | None = None):
     """How long each word is sung. Tuned against hand-charted holds:
       1. until the vocal level falls `drop_db` below the word's attack peak, or the next word starts
       2. for long notes, earlier if it falls `sustain_drop_db` below the sustained part of the note
          (echo and backing vocals keep the level up after the singer stops, so rule 1 alone
          runs line-ending notes ~1 s long)
       3. always ending `gap_frames` frames before the next note, so a hold's end marker never
-         lands on the next note's frame (Resolve keeps only one marker per frame)"""
+         lands on the next note's frame (Resolve keeps only one marker per frame)
+    `words` are the start times of every sung word, including ones dropped as too close to
+    become notes: a word never runs past the next one (else a hold spans the words after it)."""
     hop = 512
     rms = librosa.feature.rms(y=librosa.to_mono(vocals), hop_length=hop)[0]
     rms = np.convolve(rms, np.ones(5) / 5, mode="same")      # ~60 ms smoothing
@@ -260,9 +312,12 @@ def estimate_durations(items: list[dict], vocals: np.ndarray, sr: int, drop_db: 
     attack = frame(0.25) or 1
     settle, sustain_from, sustain_to = int(0.3 * rate), int(0.15 * rate), int(0.6 * rate)
 
+    bounds = np.sort(np.array([it["time"] for it in items] + list(words or []), dtype=float))
     for i, it in enumerate(items):
         start = frame(it["time"])
-        stop = frame(items[i + 1]["time"]) if i + 1 < len(items) else len(db) - 1
+        later = bounds[bounds > it["time"] + 1e-6]
+        nxt = float(later[0]) if len(later) else None
+        stop = frame(nxt) if nxt is not None else len(db) - 1
         peak = db[start:start + attack].max(initial=-80.0)
         quiet = np.nonzero(db[start + 1:stop] < peak - drop_db)[0]
         end = start + 1 + quiet[0] if len(quiet) else stop
@@ -272,8 +327,8 @@ def estimate_durations(items: list[dict], vocals: np.ndarray, sr: int, drop_db: 
             if len(faded):
                 end = start + settle + faded[0]
         seconds = (end - start) / rate
-        if i + 1 < len(items):
-            seconds = min(seconds, items[i + 1]["time"] - it["time"] - gap_frames / FPS)
+        if nxt is not None:
+            seconds = min(seconds, nxt - it["time"] - gap_frames / FPS)
         it["duration"] = max(seconds, 0.0)
     return items
 
@@ -390,7 +445,8 @@ def line_spans(lines: list[dict], items: list[dict], lead: float = 0.1,
     one per word; hyphenated words are separate words ("eenie-meenie" -> "eenie",
     "meenie"). Ad-libs in (parentheses) are left out, and punctuation is stripped.
     A line shows just before its first unit and stays until the next line
-    starts (or `linger` seconds after its last unit)."""
+    starts (or `linger` seconds after its last unit, or as long as that word is held:
+    a held note never outlasts its word on screen)."""
     spans, i = [], 0
     for line in lines:
         n = len(line["words"])
@@ -398,16 +454,21 @@ def line_spans(lines: list[dict], items: list[dict], lead: float = 0.1,
         for (word, _, adlib), it in zip(line["pieces"], items[i:i + n]):
             text = clean_word(word)
             if not adlib and text:
-                units.append({"start": it["time"], "text": text})
+                units.append({"start": it["time"], "text": text, "sung": it.get("duration", 0.0)})
         i += n
         if units:
             spans.append({"units": units, "text": " ".join(u["text"] for u in units)})
 
+    # A line appears `lead` before its first word, but never before the previous line's
+    # last word has started (when one line runs straight into the next)
+    for k, s in enumerate(spans):
+        prev_last = spans[k - 1]["units"][-1]["start"] + 0.05 if k else 0.0
+        s["start"] = max(0.0, s["units"][0]["start"] - lead, min(prev_last, s["units"][0]["start"]))
     for k, s in enumerate(spans):
         units = s["units"]
-        nxt = spans[k + 1]["units"][0]["start"] - lead if k + 1 < len(spans) else np.inf
-        s["start"] = max(0.0, units[0]["start"] - lead)
-        s["end"] = max(min(units[-1]["start"] + linger, nxt), s["start"] + 0.3)
+        nxt = spans[k + 1]["start"] if k + 1 < len(spans) else np.inf
+        last = units[-1]["start"]
+        s["end"] = max(min(last + linger, nxt), last + units[-1]["sung"], s["start"] + 0.3)
         for j, u in enumerate(units):
             end = units[j + 1]["start"] if j + 1 < len(units) else s["end"]
             u["end"] = max(end, u["start"] + 0.05)
@@ -534,6 +595,18 @@ def write_ass(path: Path, spans: list[dict], style: str, duration: float,
     path.write_text(ASS_HEADER + "\n".join(events) + "\n", encoding="utf-8")
 
 
+def write_lyrics_json(path: Path, spans: list[dict], style: str, words_per_line: int,
+                      title: str = "", artist: str = ""):
+    """Lyrics for the game to show itself (lyrics.json in a level folder, read by LyricsDisplay).
+    Lines are split into words_per_line chunks the same way as the subtitles and lyric video."""
+    r = lambda t: round(float(t), 3)
+    lines = [{"start": r(s["start"]), "end": r(s["end"]),
+              "words": [{"text": u["text"], "start": r(u["start"]), "end": r(u["end"])} for u in s["units"]]}
+             for s in chunk_spans(spans, words_per_line)]
+    data = {"title": title, "artist": artist, "style": style, "lines": lines}
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def render_lyric_video(ass_path: Path, video_path: Path, duration: float, audio: Path | None = None):
     """White lyrics on black, 1920x1080 at FPS, with the song's audio if given.
     The filter graph can't take Windows paths or names with commas, so render
@@ -560,7 +633,7 @@ def render_lyric_video(ass_path: Path, video_path: Path, duration: float, audio:
 
 def write_csv(path: Path, markers: list[dict]):
     header = ["#", "Word", "Seconds", "Aligned", "Snapped", "Confidence",
-              "Duration", "Edge", "", "", "Record In"]
+              "Duration", "Edge", "", "", "Record In", "Pitch", "Height"]
     assert header[TIME_COLUMN] == "Record In"
     with path.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
@@ -569,7 +642,8 @@ def write_csv(path: Path, markers: list[dict]):
             w.writerow([i, m["word"], f"{m['time']:.3f}", f"{m['aligned']:.3f}",
                         "yes" if m["snapped"] else "no", f"{m['confidence']:.2f}",
                         f"{m['duration']:.2f}", m["edge"], "", "",
-                        seconds_to_tc(m["time"])])
+                        seconds_to_tc(m["time"]),
+                        fmt(m.get("pitch", float("nan")), 2), fmt(m.get("height", float("nan")), 3)])
 
 
 # -------------------------------------------------------------------- main
@@ -665,7 +739,8 @@ def main(argv=None):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {device}")
 
-    vocals, sr = load_or_separate(args.song, device, args.reseparate)
+    stems, sr = load_or_separate(args.song, device, args.reseparate)
+    vocals = stems["vocals"]
     aligned = align_words(vocals, sr, words, args.model, device)
     onsets = vocal_onsets(vocals, sr)
 
@@ -679,7 +754,7 @@ def main(argv=None):
     main_words = [it for it in items if not it["adlib"]]
     snap_to_onsets(main_words, onsets, args.snap_window, args.min_gap)
     kept = drop_crowded(main_words, args.min_gap)
-    estimate_durations(kept, vocals, sr)
+    estimate_durations(kept, vocals, sr, words=[it["time"] for it in main_words])
     crowded = len(main_words) - len(kept)
     kept = split_multisyllable_holds(kept, vocals, sr, args.hold_min, args.min_gap)
     split_taps = sum(1 for it in kept if it.get("syllable"))
@@ -687,6 +762,13 @@ def main(argv=None):
         it["time"] += args.offset
     for it in kept:
         it["held"] = it["duration"] >= args.hold_min
+
+    # Sung pitch of each note -> its height on screen in the game (higher = further up)
+    track = pitch_track(vocals, sr)
+    for it in kept:
+        it["pitch"] = note_pitch(track, it["time"] - args.offset, it["duration"])
+    for it, h in zip(kept, heights([it["pitch"] for it in kept])):
+        it["height"] = h
 
     markers = build_markers(kept)
     taps = [m for m in markers if not m["edge"]]
@@ -699,14 +781,21 @@ def main(argv=None):
     base = out.stem.removesuffix("_notes")
     srt = out.with_name(base + "_lyrics.srt")
     ass = out.with_name(base + "_lyrics.ass")
+    lyrics_json = out.with_name(base + "_lyrics.json")
     video = out.with_name(base + "_lyrics.mp4")
+    drums_out = out.with_name(base + "_drums.csv")
+    instrumental = out.with_name(base + "_instrumental.wav")
     write_csv(out, taps)
     write_csv(held_out, held)
     write_edl(edl, markers, args.song.stem)
+    hits = drum_hits(stems["drums"], sr)
+    write_drums_csv(drums_out, hits)
+    sf.write(str(instrumental), np.clip(stems["instrumental"], -1, 1).T, sr)
     spans = line_spans(lines, items)
     write_srt(srt, spans, args.words)
     duration = len(vocals[0]) / sr
     write_ass(ass, spans, args.karaoke, duration, args.title.strip(), args.artist.strip(), args.words)
+    write_lyrics_json(lyrics_json, spans, args.karaoke, args.words, args.title.strip(), args.artist.strip())
     if not args.no_video:
         print("Rendering lyric video...")
         render_lyric_video(ass, video, duration, None if args.no_audio else args.song)
@@ -721,9 +810,14 @@ def main(argv=None):
     print(f"Wrote {out}  (taps)")
     print(f"Wrote {held_out}  (held start/end pairs, >= {args.hold_min}s)")
     print(f"Wrote {edl}  (Resolve markers: blue = tap, purple = held start/end)")
+    kinds = {k: sum(1 for _, kind, _ in hits if kind == k) for k in ("kick", "snare", "hihat")}
+    print(f"Wrote {drums_out}  ({len(hits)} drum hits: {kinds['kick']} kick, {kinds['snare']} snare, "
+          f"{kinds['hihat']} hi-hat)")
+    print(f"Wrote {instrumental}  (the song without vocals)")
     shown = "whole lyric lines" if args.words <= 0 else f"{args.words} word(s) at a time"
     print(f"Wrote {srt}  (lyrics subtitles, {shown})")
     print(f"Wrote {ass}  (karaoke lyrics, {args.karaoke} style)")
+    print(f"Wrote {lyrics_json}  (lyrics for the game to show)")
     if not args.no_video:
         audio_note = "no audio" if args.no_audio else "with audio"
         print(f"Wrote {video}  (lyric video, {audio_note}; put it at the start of the timeline)")

@@ -35,6 +35,8 @@ public class AutoChart
         public string summary = "";
         public string notes, held, folder;
         public string lyricVideo;      //null when no lyric video was made
+        public string drums;           //drum hits CSV (for drum animations)
+        public string lyricsJson;      //word timings for lyrics shown in game
     }
 
     //Written by the worker thread, read on the main thread
@@ -45,7 +47,7 @@ public class AutoChart
     private string error = "";
     private bool running;
     private bool finished;
-    private string notesOut, heldOut, outFolder, videoOut;
+    private string notesOut, heldOut, outFolder, videoOut, drumsOut, lyricsOut;
     private Process process;
 
     //Resolved on the main thread (Unity's Application paths can't be read from the worker thread)
@@ -142,7 +144,7 @@ public class AutoChart
         {
             if (!finished) return false;
             finished = false;
-            result = new Result { error = error, summary = summary, notes = notesOut, held = heldOut, folder = outFolder, lyricVideo = videoOut };
+            result = new Result { error = error, summary = summary, notes = notesOut, held = heldOut, folder = outFolder, lyricVideo = videoOut, drums = drumsOut, lyricsJson = lyricsOut };
             return true;
         }
     }
@@ -180,6 +182,8 @@ public class AutoChart
             notesOut = Path.Combine(outFolder, o.name + "_notes.csv");
             heldOut = Path.Combine(outFolder, o.name + "_held.csv");
             videoOut = o.lyricVideo ? Path.Combine(outFolder, o.name + "_lyrics.mp4") : null;
+            drumsOut = Path.Combine(outFolder, o.name + "_drums.csv");
+            lyricsOut = Path.Combine(outFolder, o.name + "_lyrics.json");
 
             if (!File.Exists(audio))
             {
@@ -312,7 +316,7 @@ public class AutoChart
                 return;
             }
             if (l.StartsWith("Separating vocals")) { stage = "Separating vocals (slowest step)..."; percent = ""; }
-            else if (l.StartsWith("Using cached vocal stem")) { stage = "Using cached vocals..."; percent = ""; }
+            else if (l.StartsWith("Using cached")) { stage = "Using cached vocals..."; percent = ""; }
             else if (l.StartsWith("Aligning")) { stage = l.TrimEnd('.') + "..."; percent = ""; }
             else if (l.StartsWith("Rendering lyric video")) { stage = "Rendering lyric video..."; percent = ""; }
             else if (Regex.IsMatch(l, @"^\d+ words ->")) summary = l.Substring(l.IndexOf("->") + 3);
