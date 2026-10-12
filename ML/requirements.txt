@@ -1,0 +1,6 @@
+# On top of Tools/requirements.txt (torch, demucs, librosa, ... already in Tools/.venv)
+scikit-learn
+lightgbm
+mir_eval
+pandas
+matplotlib

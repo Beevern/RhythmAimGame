@@ -1,0 +1,13 @@
+{
+  "_note": "Split by SONG, never by note. 'test' is locked away: only look at it when you want a final, honest score. Tune things on 'val'. Edit freely as you chart more songs.",
+  "test": [
+    "Bruno Mars - Just the Way You Are",
+    "Neck Deep - Lowlife",
+    "DEAMN - Hypnotized"
+  ],
+  "val": [
+    "EDEN - Circles",
+    "Vicetone - Nevada",
+    "We The Kings - Sad Song"
+  ]
+}

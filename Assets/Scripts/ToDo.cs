@@ -7,16 +7,17 @@ public class ToDo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //In Order Of Importance?
+        
         /*
-         * Times only increment each 0.04
-         * A non 0 or 5 scale results in off scale (eg 300 is not correct)
-         * Fix timebox at the end it's a bit short
-         * Custom sprites
-         * Self adding levels?
-         *  - We would need to add the song to AllSongs in SongSelect2, to the dictionaries in playMusic (video and texture), SongSelect2 (images), and Spawner (array)
-         *    This creates an interesting problem as I would need to somehow declare the image, texture, and video and add to dictionaries
-         * Optimize initializing dictionaries
+        Log of each hit to see if its often missed, too early, etc
+        Set a grace period before a note and count as perfect if hit within grace (maybe 0.1 sec?)
+        Give score for tracking the white line
+        Recolor the notes and notis (customizable by player)
+        volume slider for each level
+        disable volume bar in The Phoenix
+        have helds count as notes per min
+        dont make participation go up if hit too early
+        fix auto chart for build
         */
     }
 

@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.3/respin/6000.3.5f1-a1ec4b2f2d19' branch; Version is '6000.3.5f2 (3fa8bc678cb0) revision 4171964'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever" at "2026-03-28T00:26:52.8080324Z"
-OS: 'Windows 11  (10.0.26200) Core' Language: 'en' Physical Memory: 32408 MB
+OS: 'Windows 11  (10.0.26200) Core' Language: 'en' Physical Memory: 31801 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever" at "2026-10-11T13:36:27.7564658Z"
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-03-28T00:26:52Z
+Date: 2026-10-11T13:36:27Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.3.5f2\Editor\Unity.exe
@@ -19,11 +19,11 @@ C:/Users/bever/OneDrive/Documents/GitHub/RhythmAimGame
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-53495
+64807
 -licensingIpc
 LicenseClient-bever
 -job-worker-count
-5
+7
 -background-job-worker-count
 8
 -gc-helper-count
@@ -67,15 +67,13 @@ C:/Users/bever/OneDrive/Documents/GitHub/RhythmAimGame
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [33396]  Target information:
+Player connection [56872]  Target information:
 
-Player connection [33396]  * "[IP] 172.16.0.1 [Port] 0 [Flags] 2 [Guid] 1342731105 [EditorId] 1342731105 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-1A6H9MML) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [56872]  * "[IP] 10.154.2.176 [Port] 0 [Flags] 2 [Guid] 707109139 [EditorId] 707109139 [Version] 1048832 [Id] WindowsEditor(7,BevernPrizedPossession) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [33396]  * "[IP] 192.168.1.74 [Port] 0 [Flags] 2 [Guid] 1342731105 [EditorId] 1342731105 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-1A6H9MML) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
-
-Player connection [33396] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [33396] Host joined alternative multi-casting on [225.0.0.222:34997]...
-JobSystem: Creating JobQueue using job-worker-count value 5
+Player connection [56872] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [56872] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -86,7 +84,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.39 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.5f2 (3fa8bc678cb0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/Resources/UnitySubsystems
@@ -94,52 +92,63 @@ Initialize engine version: 6000.3.5f2 (3fa8bc678cb0)
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 4050 Laptop GPU (ID=0x28a1)
+    Renderer: NVIDIA GeForce RTX 5070 Ti (ID=0x2c05)
     Vendor:   NVIDIA
-    VRAM:     5921 MB
-    Driver:   32.0.15.8183
+    VRAM:     15995 MB
+    Driver:   32.0.16.1656
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56636
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56968
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.5f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002883 seconds.
-- Loaded All Assemblies, in  0.509 seconds
+Registered in 0.001491 seconds.
+- Loaded All Assemblies, in  0.317 seconds
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              fa32f771a0f4419c911e1e28cc5a671f
+  Correlation Id:          f50cf7404c708983af65ff3cd8b92b64
+  External correlation Id: 1587276492859217896
+  Machine Id:              QIr9hr87tNlcBFqFfo9YmhmMAMw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-bever" (connect: 0.00s, validation: 0.00s, handshake: 0.80s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever-notifications" at "2026-10-11T13:36:28.5556131Z"
+[Licensing::Module] Licensing Background thread has ended after 0.80s
 Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.560 seconds
-Domain Reload Profiling: 1066ms
-	BeginReloadAssembly (156ms)
+- Finished resetting the current domain, in  0.276 seconds
+Domain Reload Profiling: 591ms
+	BeginReloadAssembly (93ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (53ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (62ms)
-	LoadAllAssembliesAndSetupDomain (217ms)
-		LoadAssemblies (153ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (144ms)
+		LoadAssemblies (91ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (213ms)
-			TypeCache.Refresh (211ms)
-				TypeCache.ScanAssembly (194ms)
+		AnalyzeDomain (142ms)
+			TypeCache.Refresh (140ms)
+				TypeCache.ScanAssembly (130ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (1ms)
-	FinalizeReload (560ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (276ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (517ms)
+		SetupLoadedEditorAssemblies (242ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (60ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (123ms)
-			ProcessInitializeOnLoadAttributes (224ms)
-			ProcessInitializeOnLoadMethodAttributes (105ms)
+			InitializePlatformSupportModulesInManaged (36ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (59ms)
+			ProcessInitializeOnLoadAttributes (98ms)
+			ProcessInitializeOnLoadMethodAttributes (47ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -148,141 +157,807 @@ Domain Reload Profiling: 1066ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-[Licensing::Module] Licensing is not yet initialized.
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.17.4+4293ba1
-  Session Id:              faf6805047a64d65ad8625dd9e6c929a
-  Correlation Id:          9bc0b7895ef588d3acb4c7f7377cae0f
-  External correlation Id: 7292952874966641490
-  Machine Id:              uww6MU5RHzCI/JBUlfcPS8F17uk=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-bever" (connect: 0.00s, validation: 0.00s, handshake: 2.47s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bever-notifications" at "2026-03-28T00:26:55.2823938Z"
-[Licensing::Module] Licensing Background thread has ended after 2.47s
-[Licensing::Module] Licensing is initialized (took 0.51s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 3574218705359-UnityPersXXXX
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-- Loaded All Assemblies, in  1.069 seconds
-Refreshing native plugins compatible for Editor in 0.85 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.360 seconds
+Refreshing native plugins compatible for Editor in 0.37 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.609 seconds
-Domain Reload Profiling: 1676ms
-	BeginReloadAssembly (677ms)
+- Finished resetting the current domain, in  0.352 seconds
+Domain Reload Profiling: 711ms
+	BeginReloadAssembly (113ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
+		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (35ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (22ms)
-	LoadAllAssembliesAndSetupDomain (323ms)
-		LoadAssemblies (263ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (201ms)
+		LoadAssemblies (164ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (147ms)
-			TypeCache.Refresh (111ms)
-				TypeCache.ScanAssembly (102ms)
-			BuildScriptInfoCaches (29ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (610ms)
+		AnalyzeDomain (94ms)
+			TypeCache.Refresh (63ms)
+				TypeCache.ScanAssembly (55ms)
+			BuildScriptInfoCaches (25ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (352ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (503ms)
+		SetupLoadedEditorAssemblies (281ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (149ms)
-			ProcessInitializeOnLoadAttributes (302ms)
-			ProcessInitializeOnLoadMethodAttributes (41ms)
-			AfterProcessingInitializeOnLoad (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (80ms)
+			ProcessInitializeOnLoadAttributes (167ms)
+			ProcessInitializeOnLoadMethodAttributes (26ms)
+			AfterProcessingInitializeOnLoad (3ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 0.96 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.83 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3609 unused Assets / (2.5 MB). Loaded Objects now: 4223.
-Memory consumption went from 98.8 MB to 96.3 MB.
-Total: 5.317100 ms (FindLiveObjects: 0.279400 ms CreateObjectMapping: 0.141600 ms MarkObjects: 4.011400 ms  DeleteObjects: 0.883600 ms)
+Unloading 3643 unused Assets / (2.6 MB). Loaded Objects now: 4256.
+Memory consumption went from 98.5 MB to 95.9 MB.
+Total: 5.114500 ms (FindLiveObjects: 0.571100 ms CreateObjectMapping: 0.143600 ms MarkObjects: 3.468200 ms  DeleteObjects: 0.930900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 189868.528435 seconds.
-  path: Assets/Scripts/UI/Spawner.cs
-  artifactKey: Guid(f36ba34dceaacd941b12cd0d4543d4ba) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
-Start importing Assets/Scripts/UI/Spawner.cs using Guid(f36ba34dceaacd941b12cd0d4543d4ba) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '45c2865568ee668b36b45e855bec3fa5') in 0.0855035 seconds
+  Time since last request: 561323.804855 seconds.
+  path: Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell
+  artifactKey: Guid(7457091ce9aa36f458c74af5ece4ff17) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell using Guid(7457091ce9aa36f458c74af5ece4ff17) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'eaa044af77024b2b332f223004d193b2') in 0.0362305 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/video.mp4
+  artifactKey: Guid(601dd40bcad9af54b95aab80634aabd2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/video.mp4 using Guid(601dd40bcad9af54b95aab80634aabd2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '129bb729303377ab606815f64f76ad9c') in 0.0081 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner
+  artifactKey: Guid(a29e502e167b32a47a2039b9c5d95a90) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner using Guid(a29e502e167b32a47a2039b9c5d95a90) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '1f88c0484907d8f7234666ebf1f4f65d') in 0.0051183 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/notes.csv
+  artifactKey: Guid(bf5a1b1e36561194f9f6212614e58420) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/notes.csv using Guid(bf5a1b1e36561194f9f6212614e58420) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '32ae6d3a9bcacb9a7c708589394d3d4a') in 0.0065085 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/cover.jpg
+  artifactKey: Guid(bb063bf916e48124da761acde9a7202c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/cover.jpg using Guid(bb063bf916e48124da761acde9a7202c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '9366b84f6e1c2f379ab7b8c4ec45391d') in 0.0059541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/level.json
+  artifactKey: Guid(d21fc3108f9105444b5aab3ed5adaaf0) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/level.json using Guid(d21fc3108f9105444b5aab3ed5adaaf0) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2a7b676365e0f0873fd5200cf70202fc') in 0.0052457 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/StreamingAssets/Levels/Never Know by Swif7/video.mp4
+  artifactKey: Guid(fa33434faf55edb4bb128cc3aa885b60) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Never Know by Swif7/video.mp4 using Guid(fa33434faf55edb4bb128cc3aa885b60) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ae7169259e5db8cdcf14a82b159d192c') in 0.0047632 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/StreamingAssets/Levels/Hypnotized by DEAMN/cover.png
+  artifactKey: Guid(a25720f9910b8ef47bba48aba916cfc5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hypnotized by DEAMN/cover.png using Guid(a25720f9910b8ef47bba48aba916cfc5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c26068de0b18bb3e3cccc0781cc9d795') in 0.0046737 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/LevelSources/Never Know by Swif7
+  artifactKey: Guid(a28ff1b4e4873c34aa54c66e804dc5f7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Never Know by Swif7 using Guid(a28ff1b4e4873c34aa54c66e804dc5f7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6778bf73767bab66968cdfbf93919c69') in 0.0056158 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/StreamingAssets/Levels/Lowlife by Neck Deep
+  artifactKey: Guid(48e07dc0e098ea1408172be0e121a166) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Lowlife by Neck Deep using Guid(48e07dc0e098ea1408172be0e121a166) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'b803c87d5cd44578c9a814b4d2fdc4a2') in 0.0046011 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/StreamingAssets/Levels/Nevada by Vicetone
+  artifactKey: Guid(5802b4c36011e9f49ad61c8d0aa79d4f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Nevada by Vicetone using Guid(5802b4c36011e9f49ad61c8d0aa79d4f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2e8c23826098980246e9ee428da2913d') in 0.0051263 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/StreamingAssets/Levels/Sad Song by We The Kings
+  artifactKey: Guid(0de747a6d480a2e40891ecba9a035daa) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Sad Song by We The Kings using Guid(0de747a6d480a2e40891ecba9a035daa) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '197dccf641222ae5001ee4d72ada048e') in 0.0045987 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy
+  artifactKey: Guid(faa71ea8042a9d74790e93f0134f4f4e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy using Guid(faa71ea8042a9d74790e93f0134f4f4e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'bb563f47ca54eb6d90bf0e50c199426a') in 0.0047512 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/notes.csv
+  artifactKey: Guid(ba40d4793dfd71348b8ccdcab482ea0d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/notes.csv using Guid(ba40d4793dfd71348b8ccdcab482ea0d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'f08ea5af0a0f23e56c01e82b75081906') in 0.0296863 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/LevelSources/Never Know by Swif7/Audio.mp3
+  artifactKey: Guid(01d8dcb3ea4c5654e879f25da7850857) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Never Know by Swif7/Audio.mp3 using Guid(01d8dcb3ea4c5654e879f25da7850857) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c66dc7fa956f569edf3db384b69248f1') in 0.0464642 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Piano Cover by Kita Sora/notes.csv
+  artifactKey: Guid(24621f2e2f0fb3042822d0896d05ad8e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Piano Cover by Kita Sora/notes.csv using Guid(24621f2e2f0fb3042822d0896d05ad8e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '03d9d9fdd3dc350161d341364747338e') in 0.0049863 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)
+  artifactKey: Guid(aac426666ca2b954dbe321ecbc2ac22c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic) using Guid(aac426666ca2b954dbe321ecbc2ac22c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6eaff0cb99476df7da0101acbbde49db') in 0.0047261 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/notes.csv
+  artifactKey: Guid(424921ecc17ed3040b2c80452ff44f40) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/notes.csv using Guid(424921ecc17ed3040b2c80452ff44f40) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2fcf15a4239aebfc65617fa9bf6f304f') in 0.0053274 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000320 seconds.
+  path: Assets/StreamingAssets/Levels/Never Know by Swif7/notes.csv
+  artifactKey: Guid(3393d771e5a60264898f0125198c6eff) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Never Know by Swif7/notes.csv using Guid(3393d771e5a60264898f0125198c6eff) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '5ce52322da600e68535333d75aaf9544') in 0.0049613 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/target.png
+  artifactKey: Guid(678863e98c810734e86b294a549df58f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/target.png using Guid(678863e98c810734e86b294a549df58f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c7cafc3e10dd616a754da37b1d0a719b') in 0.0048836 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/StreamingAssets/Levels/Sad Song by We The Kings/held.csv
+  artifactKey: Guid(7f400b70f753dca42a04943215d8b727) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Sad Song by We The Kings/held.csv using Guid(7f400b70f753dca42a04943215d8b727) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6a4c3e69c02aea792471769da0021871') in 0.0051121 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/LevelSources
+  artifactKey: Guid(d694243481475f7479b429b14445ba50) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources using Guid(d694243481475f7479b429b14445ba50) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c85d38ff45c9ab93e2d7da7fcc07b9c2') in 0.0058674 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/LevelSources/Hypnotized by DEAMN
+  artifactKey: Guid(355d98b5f6ef23546a73628d5fc86b4c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Hypnotized by DEAMN using Guid(355d98b5f6ef23546a73628d5fc86b4c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'f1f83950c9b1e7f69576d90f736534a4') in 0.0048051 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/Scripts/Core/CsvParser.cs
+  artifactKey: Guid(6ce39dad95806ca48be5bf0b2dd58919) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Core/CsvParser.cs using Guid(6ce39dad95806ca48be5bf0b2dd58919) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '37cc91ab3028c8b399d8d8b21c0df27c') in 0.011594 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Scenes/LevelMakerSetup.unity
-  artifactKey: Guid(8bad41cd67c5c7b40b9cb05501a61d67) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
-Start importing Assets/Scenes/LevelMakerSetup.unity using Guid(8bad41cd67c5c7b40b9cb05501a61d67) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'fc0de444cae140fa303f7ae3625483f9') in 0.0157997 seconds
+  Time since last request: 0.000081 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/cover.jpg
+  artifactKey: Guid(08e3531fefec6f24faa66f0544d5c165) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/cover.jpg using Guid(08e3531fefec6f24faa66f0544d5c165) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '64caeeaced2b40f895e329b9e80c1450') in 0.0058189 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.571 seconds
-Refreshing native plugins compatible for Editor in 0.80 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.586 seconds
-Domain Reload Profiling: 1157ms
-	BeginReloadAssembly (205ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (45ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (291ms)
-		LoadAssemblies (290ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (108ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (95ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (586ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (471ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (149ms)
-			ProcessInitializeOnLoadAttributes (271ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
-			AfterProcessingInitializeOnLoad (3ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
-Refreshing native plugins compatible for Editor in 1.10 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3607 unused Assets / (2.5 MB). Loaded Objects now: 4226.
-Memory consumption went from 99.6 MB to 97.1 MB.
-Total: 7.044900 ms (FindLiveObjects: 0.390700 ms CreateObjectMapping: 0.249800 ms MarkObjects: 5.236300 ms  DeleteObjects: 1.166400 ms)
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/cover.png
+  artifactKey: Guid(03adb73772db52843aff890ae4508a9b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/cover.png using Guid(03adb73772db52843aff890ae4508a9b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '7cc70503474f05550529048e90664426') in 0.0053446 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
-Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/StreamingAssets/Levels/Hypnotized by DEAMN/notes.csv
+  artifactKey: Guid(798b8282344ee55499bde1e319c030bc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hypnotized by DEAMN/notes.csv using Guid(798b8282344ee55499bde1e319c030bc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'aca871b3241fa6052d3bd4a675d690f3') in 0.0057421 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/LevelSources/Million Days by SABAI
+  artifactKey: Guid(1380611eb028460448f6674e2dc34c21) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Million Days by SABAI using Guid(1380611eb028460448f6674e2dc34c21) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '5ece9482fdd572c1d4134ed1985912fb') in 0.0066578 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Scripts/Gameplay/Target.cs
+  artifactKey: Guid(e58ec4b9b2f94f84a83c4764b997fbf0) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Gameplay/Target.cs using Guid(e58ec4b9b2f94f84a83c4764b997fbf0) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '666e98edcc2594c35d638e1e53b0ae7a') in 0.004741 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/notes.csv
+  artifactKey: Guid(fb8747307d111974fa3b2d4ef9fdd2fd) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/notes.csv using Guid(fb8747307d111974fa3b2d4ef9fdd2fd) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6a9718225c2ae534c5ccd3a13c100464') in 0.0050872 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/target.png
+  artifactKey: Guid(ef83c355e4491e949887d1d15d55e20d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/How to Stay Aligned by Cearul/target.png using Guid(ef83c355e4491e949887d1d15d55e20d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c7246ef7bf96548ab84d474006b6f14c') in 0.0049976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/StreamingAssets/Levels/Say Goodbye by Krewella/video.mp4
+  artifactKey: Guid(cc34737c05969e847b2c4eaa45ff76ab) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Say Goodbye by Krewella/video.mp4 using Guid(cc34737c05969e847b2c4eaa45ff76ab) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'a45496f725d0cbfd79ee03d82f50966b') in 0.0060378 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000008 seconds.
+  path: Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/notes.csv
+  artifactKey: Guid(446dfd968b5da2e4aa9a86c560cb78d5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/notes.csv using Guid(446dfd968b5da2e4aa9a86c560cb78d5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6b1479419b8898aacf62bf74dab51acd') in 0.0052323 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto
+  artifactKey: Guid(47edea75941f3a746b42a464ee6d3b54) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto using Guid(47edea75941f3a746b42a464ee6d3b54) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '0a15d83bc868c6985716d90b7866fb8a') in 0.0045084 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix
+  artifactKey: Guid(c8bdc6bc83b4de74f8ed68b0b3e912c5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix using Guid(c8bdc6bc83b4de74f8ed68b0b3e912c5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'a8ccc34955ae52a874303a7252338d98') in 0.0053287 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/notes.csv
+  artifactKey: Guid(1c1d77c84109f7740a307bcf6e0cd381) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/notes.csv using Guid(1c1d77c84109f7740a307bcf6e0cd381) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '5fdd8b1925e75625f226d357f72b7880') in 0.0044445 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/LevelSources/Say Goodbye by Krewella/Video (alternate).mp4
+  artifactKey: Guid(2e3d8256b3e210447936efffac92407c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Say Goodbye by Krewella/Video (alternate).mp4 using Guid(2e3d8256b3e210447936efffac92407c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '0f6adf2f897184d1d7cfc3b1c21aab28') in 0.0124617 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/StreamingAssets/Levels/Million Days by SABAI/video.mp4
+  artifactKey: Guid(83f8b3d88be56c7499b6f94a75fe29ec) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Million Days by SABAI/video.mp4 using Guid(83f8b3d88be56c7499b6f94a75fe29ec) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd4b53cd55efe2368d1f736172dfe471e') in 0.0054118 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/lyrics.txt
+  artifactKey: Guid(563e1d91403b898499b5c65f11724bd6) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/lyrics.txt using Guid(563e1d91403b898499b5c65f11724bd6) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '27948bec0141841c705583698380892e') in 0.0051932 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000089 seconds.
+  path: Assets/StreamingAssets/Levels/Lowlife by Neck Deep/lyrics.txt
+  artifactKey: Guid(197ae05e3ad4eeb48a007ecbcd9ddc3b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Lowlife by Neck Deep/lyrics.txt using Guid(197ae05e3ad4eeb48a007ecbcd9ddc3b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '868fd608cfd677542563e0917b451a80') in 0.005054 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/notes.csv
+  artifactKey: Guid(103a1901c0126a1409c258754d2f2ea5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/notes.csv using Guid(103a1901c0126a1409c258754d2f2ea5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '46fbc80206227908eccdc8f117bb8729') in 0.0053595 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/lyrics.txt
+  artifactKey: Guid(c9546187b9d974b429019b161d5c569a) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/lyrics.txt using Guid(c9546187b9d974b429019b161d5c569a) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '03074f1d88af3b02ab92fc9f65df8007') in 0.0046076 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/cover.png
+  artifactKey: Guid(65da93123e35e5149ac90ff909af141d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/The Phoenix by Fall Out Boy/cover.png using Guid(65da93123e35e5149ac90ff909af141d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'cfafd6cd536079c6ee4c6ebb4aac2d36') in 0.0047345 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/StreamingAssets/Levels/Sad Song by We The Kings/audio.mp3
+  artifactKey: Guid(f300d85bbf40fa24682c0256f5717e87) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Sad Song by We The Kings/audio.mp3 using Guid(f300d85bbf40fa24682c0256f5717e87) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '7721ee71b4a877791266b31a2ea261b2') in 0.0051633 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto
+  artifactKey: Guid(63b0a5527c54af44180f71fa949e53bb) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto using Guid(63b0a5527c54af44180f71fa949e53bb) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '1b77c157c07dc123283fa2a50a13a00a') in 0.0048262 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/StreamingAssets/Levels/Me Plus You by SABAI/audio.mp3
+  artifactKey: Guid(9d6b62329ac7d8e48becb82df8cf1f28) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Me Plus You by SABAI/audio.mp3 using Guid(9d6b62329ac7d8e48becb82df8cf1f28) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'b29efd37e662cef83882d93636437d16') in 0.005128 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/lyrics.txt
+  artifactKey: Guid(ce9c484643fa961499d8f51c94834460) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/lyrics.txt using Guid(ce9c484643fa961499d8f51c94834460) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd7cc729d4117f29534b0dc635dfc1f93') in 0.0045299 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/Scripts/Visual/GameHud.cs
+  artifactKey: Guid(a752e5273f4d6ec449e3d7b10dd344cf) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Visual/GameHud.cs using Guid(a752e5273f4d6ec449e3d7b10dd344cf) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '476939c0ec6521d27fcf58727ed7c3cf') in 0.0044949 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+  artifactKey: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '02ce1e5564b402171add4e8e1a64c0bd') in 0.0337537 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/audio.mp3
+  artifactKey: Guid(a0b4d1e64f4c1054ebfa17e1d400b0fc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/audio.mp3 using Guid(a0b4d1e64f4c1054ebfa17e1d400b0fc) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '17a7b5c2732601f1f299d81d17b93275') in 0.0055275 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/StreamingAssets/Levels/Nevada by Vicetone/audio.mp3
+  artifactKey: Guid(e5a4df7a27c403740b8c8c21c38c674d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Nevada by Vicetone/audio.mp3 using Guid(e5a4df7a27c403740b8c8c21c38c674d) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '7784c4e418a2c14e891c2792c2f0a784') in 0.0048017 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/StreamingAssets/Levels/Endlessly by The Cab/cover.jpg
+  artifactKey: Guid(9df3a8f4bd493c64e8867dd14badad99) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Endlessly by The Cab/cover.jpg using Guid(9df3a8f4bd493c64e8867dd14badad99) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '84df43a500306173e0b60af9fc84ab0b') in 0.0048542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/cover.png
+  artifactKey: Guid(f6154bffd7c3e8748ac08656c75135d7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/cover.png using Guid(f6154bffd7c3e8748ac08656c75135d7) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '39028467ccc08d3d83b5de03951f7422') in 0.0044511 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/StreamingAssets/Levels/Never Know by Swif7/audio.mp3
+  artifactKey: Guid(5a4366e3669fcff4caf99ea2017cc769) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Never Know by Swif7/audio.mp3 using Guid(5a4366e3669fcff4caf99ea2017cc769) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd18bda69be061dc10bf624cd8b926bb6') in 0.0046103 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/StreamingAssets/Levels/Endlessly by The Cab/lyrics.txt
+  artifactKey: Guid(03fdec036a1b08d43b2e44a12e0e5e4b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Endlessly by The Cab/lyrics.txt using Guid(03fdec036a1b08d43b2e44a12e0e5e4b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ac820b4e65d502e2a55b841ad2e36059') in 0.0047218 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/StreamingAssets/Levels/Circles by EDEN/video.mp4
+  artifactKey: Guid(716f091d133b0744598d34707d32c8fe) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Circles by EDEN/video.mp4 using Guid(716f091d133b0744598d34707d32c8fe) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'e4a4dac0821b028bbbd6599a7c3eefb2') in 0.0048925 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/StreamingAssets/Levels/Circles by EDEN/audio.mp3
+  artifactKey: Guid(f7b71d2038194154a93c541c6348b432) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Circles by EDEN/audio.mp3 using Guid(f7b71d2038194154a93c541c6348b432) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '4df3789c1632b19836f76277dcd98002') in 0.0042955 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/audio.mp3
+  artifactKey: Guid(fd014e525ea03404792a565a5a1703b2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/audio.mp3 using Guid(fd014e525ea03404792a565a5a1703b2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c68e7c2fb7ceb83d1db7f79b97204e4e') in 0.0049318 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000074 seconds.
+  path: Assets/StreamingAssets/Levels/Hypnotized by DEAMN/audio.mp3
+  artifactKey: Guid(6d2c03323db29f546ae3043d72c50811) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hypnotized by DEAMN/audio.mp3 using Guid(6d2c03323db29f546ae3043d72c50811) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '649a11edd5e1b16304facd49cfea7051') in 0.0048905 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/lyrics.txt
+  artifactKey: Guid(d937f9f2675ac0c44a1ac6d0623713e1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/lyrics.txt using Guid(d937f9f2675ac0c44a1ac6d0623713e1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '9d59e3b0e9aa77a6282f27a632f4b9af') in 0.0042236 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/StreamingAssets
+  artifactKey: Guid(4f068d2a9d2516e44acf5ab5456793cb) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets using Guid(4f068d2a9d2516e44acf5ab5456793cb) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '33ebde386130708c5005cead7930006d') in 0.0044825 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex
+  artifactKey: Guid(cc74f1570f2cccf408320cb8db146c5c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex using Guid(cc74f1570f2cccf408320cb8db146c5c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'f970727d4030f71c5232ef0dc7c39655') in 0.0045052 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/audio.mp3
+  artifactKey: Guid(d2171dc7dddad114bb5f1aa40f5cd01b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/audio.mp3 using Guid(d2171dc7dddad114bb5f1aa40f5cd01b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '22b660d855000b5cdbdc0c57680c7ebb') in 0.0050552 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/StreamingAssets/Levels/Nevada by Vicetone/lyrics.txt
+  artifactKey: Guid(0df4a7526e6ca3c40afe5f7cdce63c59) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Nevada by Vicetone/lyrics.txt using Guid(0df4a7526e6ca3c40afe5f7cdce63c59) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'ddd576c1e07fe51e250f6dab06f992ac') in 0.0054787 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/audio.mp3
+  artifactKey: Guid(10816b962910bb344b81205aa839d95e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Hate You by Jim Yosef X Riell/audio.mp3 using Guid(10816b962910bb344b81205aa839d95e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '1eb74402f071a8ad07040e0820c8c4c5') in 0.0044745 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/StreamingAssets/Levels/Lowlife by Neck Deep/audio.mp3
+  artifactKey: Guid(1ec2e23cb70833b43bf50a82b95483af) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Lowlife by Neck Deep/audio.mp3 using Guid(1ec2e23cb70833b43bf50a82b95483af) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c7976ce9d5c6f3987197fc134b2293f2') in 0.0047769 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000074 seconds.
+  path: Assets/StreamingAssets/Levels/Me Plus You by SABAI/lyrics.txt
+  artifactKey: Guid(1f004fc74913f0e45b5162ce268ca037) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Me Plus You by SABAI/lyrics.txt using Guid(1f004fc74913f0e45b5162ce268ca037) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '946411b6156735970ea25745b5735090') in 0.0046404 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/lyrics.txt
+  artifactKey: Guid(77c0c267dc43bd24ca4b304ad3450c61) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/lyrics.txt using Guid(77c0c267dc43bd24ca4b304ad3450c61) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '3697719ace1db95191d5c2db26725893') in 0.0041502 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/audio.mp3
+  artifactKey: Guid(8264042f7375bd24e86ddab8c9e5a93b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/audio.mp3 using Guid(8264042f7375bd24e86ddab8c9e5a93b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '8eec463fac1c081308954752bc6acf5d') in 0.0045094 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Scripts/LevelMaker/LevelSetupScreen.cs
+  artifactKey: Guid(437f0f580e6d9c740a127272348bf3ea) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/LevelMaker/LevelSetupScreen.cs using Guid(437f0f580e6d9c740a127272348bf3ea) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '8aa22af47b49e299416b3314faf06bad') in 0.0042833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(08312839f989bc2408261a97cc853e3f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scenes/Game.unity using Guid(08312839f989bc2408261a97cc853e3f) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '1808cc68a9f38e78f5ed413e7f18fd25') in 0.0047716 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/StreamingAssets/Levels/Eenie Meenie Miney Mo By Justin Bieber/cover.jpg
+  artifactKey: Guid(0d98995ada319724a8e770212b8c92d3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Eenie Meenie Miney Mo By Justin Bieber/cover.jpg using Guid(0d98995ada319724a8e770212b8c92d3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '0250b07aa5b231c393584f361317ce59') in 0.004885 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/LevelSources/Circles by EDEN
+  artifactKey: Guid(76e3d14786d3d8c4caa31606ee6af201) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/LevelSources/Circles by EDEN using Guid(76e3d14786d3d8c4caa31606ee6af201) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '4bc93eefb3f8ab95838839bd365831a1') in 0.0051859 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Scripts/Gameplay/playMusic.cs
+  artifactKey: Guid(f705853358883624fb071753dcad19b5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/Gameplay/playMusic.cs using Guid(f705853358883624fb071753dcad19b5) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'b3ff108c9733846f3943399f2ad4cc29') in 0.0042237 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/cover.png
+  artifactKey: Guid(78cde24961cf8b541998d25a83942ff3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/cover.png using Guid(78cde24961cf8b541998d25a83942ff3) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'a0f7a42c24670d9e771c1c93c6eef9a2') in 0.0041766 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/StreamingAssets/Levels/XO by EDEN/video.mp4
+  artifactKey: Guid(37531be6471df8f409e46c5a9a496e23) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/XO by EDEN/video.mp4 using Guid(37531be6471df8f409e46c5a9a496e23) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6868d1e6464f27ee04091c5bca97851b') in 0.0044261 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/audio.mp3
+  artifactKey: Guid(abac6f096910fe24bbf6e28183f18e6c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/audio.mp3 using Guid(abac6f096910fe24bbf6e28183f18e6c) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '4bf05d9a64aac47ca12ea861eaae6103') in 0.0048001 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/StreamingAssets/Levels/XO by EDEN/lyrics.txt
+  artifactKey: Guid(d317552a76a307f42a2c3824d6a996e1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/XO by EDEN/lyrics.txt using Guid(d317552a76a307f42a2c3824d6a996e1) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'cd4f25f5288dc5c9b536a458a01341b4') in 0.005221 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/StreamingAssets/Levels/Endlessly by The Cab/audio.mp3
+  artifactKey: Guid(9760f35bd9955b44190842d84620f747) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Endlessly by The Cab/audio.mp3 using Guid(9760f35bd9955b44190842d84620f747) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '951524cb7ed17fc81d6a9a4b7ef6630f') in 0.0046817 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/audio.mp3
+  artifactKey: Guid(f7c36a680e1657a41a4f9be386d27467) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Seasons by Rival and Cadmium Futuristik and Whogaux Remix/audio.mp3 using Guid(f7c36a680e1657a41a4f9be386d27467) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'e5a7539b4fc322768c244ca405b49056') in 0.0044128 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/StreamingAssets/Levels/Eenie Meenie Miney Mo By Justin Bieber/video.mp4
+  artifactKey: Guid(b3e0d364398cc914e96f290a567a7e95) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Eenie Meenie Miney Mo By Justin Bieber/video.mp4 using Guid(b3e0d364398cc914e96f290a567a7e95) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '0572f2dc3171cccd3652a59173ae7932') in 0.0049724 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/audio.mp3
+  artifactKey: Guid(c90514a9b38a00349b7d60031d4bab7e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dreams Pt II by Lost Sky and Sara Skinner/audio.mp3 using Guid(c90514a9b38a00349b7d60031d4bab7e) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '26fe3354accd08924e4657b9b74b8d6b') in 0.0045592 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/Shared/BlackVideo.mp4
+  artifactKey: Guid(971903b6e065edc46ac0e75a5ca062cd) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Shared/BlackVideo.mp4 using Guid(971903b6e065edc46ac0e75a5ca062cd) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'c97f9fa9a7603747e77bcef1aaf1c4a6') in 0.0083891 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.220852 seconds.
+  path: Assets/Scenes/Menu.unity
+  artifactKey: Guid(12945b325aa4eac45a9d7583c6881f6a) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scenes/Menu.unity using Guid(12945b325aa4eac45a9d7583c6881f6a) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '56b8fcba1009050d74074c29bb3e6a93') in 0.0063768 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/level.json
+  artifactKey: Guid(5883b93fa996f5e4294515b9aebfe15b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Love is Gone by SLANDER ft. Dylan Matthew (Acoustic)/level.json using Guid(5883b93fa996f5e4294515b9aebfe15b) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '8da52fc6dc66d39bf5f28742ca22aaaa') in 0.0055042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/StreamingAssets/Levels/Nevada by Vicetone/level.json
+  artifactKey: Guid(ceefc1977cf9cb64cadb8f21fa8549d2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Nevada by Vicetone/level.json using Guid(ceefc1977cf9cb64cadb8f21fa8549d2) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'f3d077e9e0e6ac24c0db0679fd004086') in 0.0055778 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/StreamingAssets/Levels/Broken Glass by SABAI/level.json
+  artifactKey: Guid(8b28714db55c01b41ae694fcb1604e85) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Broken Glass by SABAI/level.json using Guid(8b28714db55c01b41ae694fcb1604e85) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '6fa49a555e59b8dff1916a49cbb91de3') in 0.0052035 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/level.json
+  artifactKey: Guid(5150f287f6a852848b74579f9bb63569) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dollar For Your Sadness by Unlike Pluto/level.json using Guid(5150f287f6a852848b74579f9bb63569) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: 'd031a6c97f4b3df781e33133f31bc8fb') in 0.0051346 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/StreamingAssets/Levels/Circles by EDEN/level.json
+  artifactKey: Guid(fcd7f5c3f594f8b449f96774a4ea7f62) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Circles by EDEN/level.json using Guid(fcd7f5c3f594f8b449f96774a4ea7f62) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '519cbe05910c0d310639d1fe8beeacb0') in 0.0061025 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Scripts/ToDo.cs
+  artifactKey: Guid(f6d99fca79e1f7048aef45a01051a110) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/Scripts/ToDo.cs using Guid(f6d99fca79e1f7048aef45a01051a110) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '9c24eddafecf2342c39eab2f155c928e') in 0.0052481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000080 seconds.
+  path: Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/level.json
+  artifactKey: Guid(aa41abad99d5b884f9985feaf1a51405) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Dead Or Alive by Stileto/level.json using Guid(aa41abad99d5b884f9985feaf1a51405) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '70ef18ea951daba97dd214a889c8450b') in 0.0051068 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/level.json
+  artifactKey: Guid(a34f5116bd74ca84a8ad937d91f2ff61) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/Where We Started by Lost Sky and Jex/level.json using Guid(a34f5116bd74ca84a8ad937d91f2ff61) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '7f290bdf0a02e1b20f278b22b3b61389') in 0.0051714 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/level.json
+  artifactKey: Guid(5bd93e79f40487a4b90a738d00445e29) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e)
+Start importing Assets/StreamingAssets/Levels/We're Only Goonswarm by Srsli/level.json using Guid(5bd93e79f40487a4b90a738d00445e29) Importer(2089858483,d624ce77472d68a35037170ec1d2d27e) (ScriptedImporter) -> (artifact id: '2c861bdc17780e81da72d646dc5f923b') in 0.0049715 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting

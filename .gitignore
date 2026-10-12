@@ -39,3 +39,18 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+# Python env for Tools/auto_chart.py
+Tools/.venv/
+Tools/__pycache__/
+
+# ML project: cached audio/stems and trained models
+ML/cache/
+ML/runs/
+ML/__pycache__/
+
+# Self-contained auto-chart tools (large; built locally, shipped next to the game)
+Tools/python/
+Tools/models/
+Tools/bin/
+Tools/.venv/
+Tools/__pycache__/
