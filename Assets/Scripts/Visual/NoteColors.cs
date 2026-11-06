@@ -9,14 +9,15 @@ public static class NoteColors
 
     public static readonly string[] Labels = { "TARGET RING", "UPCOMING NOTES", "NEXT NOTE", "HOLD NOTES", "NEXT HOLD" };
 
-    //Defaults are the game's original note colours
+    //Defaults stay off the judgement colours (cyan/green/yellow/orange/red) so colour on screen
+    //always means "how did I hit"; the next note stands out by being brighter, not by hue
     public static readonly Color[] Defaults =
     {
-        Hex("#3D8BFF"),   //target ring: blue
+        Hex("#FFFFFF"),   //target ring: white
         Hex("#FF66AB"),   //upcoming: pink
-        Hex("#FF3B3B"),   //next: red
-        Hex("#FFD23F"),   //hold: yellow
-        Hex("#A855F7"),   //next hold: purple
+        Hex("#FFE3F1"),   //next: near-white pink
+        Hex("#B07CFF"),   //hold: lavender
+        Hex("#E2CCFF"),   //next hold: pale lavender
     };
 
     //Swatches offered for every slot
@@ -24,6 +25,7 @@ public static class NoteColors
     {
         Hex("#FFFFFF"), Hex("#FF3B3B"), Hex("#FF9F43"), Hex("#FFD23F"), Hex("#8CE36B"), Hex("#00F0B5"),
         Hex("#4FD8FF"), Hex("#3D8BFF"), Hex("#A855F7"), Hex("#FF66AB"),
+        Hex("#FFE3F1"), Hex("#B07CFF"), Hex("#E2CCFF"),
     };
 
     private static readonly Color[] current = new Color[Defaults.Length];

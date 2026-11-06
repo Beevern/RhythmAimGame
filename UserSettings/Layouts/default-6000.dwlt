@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1397
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 43
     width: 2560
     height: 36
   m_SerializedDataModeController:
@@ -620,7 +620,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 770
-    width: 612
+    width: 611
     height: 624
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 24
+    y: 79
     width: 611
     height: 665
   m_SerializedDataModeController:
@@ -680,10 +680,7 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -6482
-      - m_Data: -2354
-      - m_Data: -2204
-      - m_Data: -1520
+      - m_Data: -1370
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -731,7 +728,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 715
+    y: 770
     width: 611
     height: 624
   m_SerializedDataModeController:
@@ -758,7 +755,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Shared
+    - Assets/Scripts/Gameplay
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -768,7 +765,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 48
   m_LastFolders:
-  - Assets/Shared
+  - Assets/Scripts/Gameplay
   m_LastFoldersGridSize: 48
   m_LastProjectPath: C:\Users\bever\OneDrive\Documents\GitHub\RhythmAimGame
   m_LockTracker:
@@ -777,16 +774,18 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 35166
+    - m_Data: 35706
     m_LastClickedID:
-      m_Data: 35166
+      m_Data: 35706
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 35582
-    - m_Data: 35584
-    - m_Data: 35586
-    - m_Data: 35588
-    - m_Data: 35590
+    - m_Data: 35568
+    - m_Data: 35570
+    - m_Data: 35572
+    - m_Data: 35574
+    - m_Data: 35576
+    - m_Data: 35696
+    - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -819,11 +818,11 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 35582
-    - m_Data: 35584
-    - m_Data: 35586
-    - m_Data: 35588
-    - m_Data: 35590
+    - m_Data: 35568
+    - m_Data: 35570
+    - m_Data: 35572
+    - m_Data: 35574
+    - m_Data: 35576
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -904,8 +903,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 24
+    x: 612
+    y: 79
     width: 1238
     height: 656
   m_SerializedDataModeController:
@@ -1555,8 +1554,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 706
+    x: 612
+    y: 761
     width: 1238
     height: 633
   m_SerializedDataModeController:
@@ -1658,8 +1657,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1853
-    y: 24
+    x: 1852
+    y: 79
     width: 707
     height: 1315
   m_SerializedDataModeController:

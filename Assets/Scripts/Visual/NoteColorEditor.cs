@@ -10,7 +10,7 @@ public class NoteColorEditor : MonoBehaviour
 {
     private const float CardW = 1100f, CardH = 560f;
     private const float RowsX = 400f, RowsY = 100f, RowH = 72f;
-    private const float Swatch = 34f, SwatchGap = 8f;
+    private const float Swatch = 30f, SwatchGap = 6f;
 
     private static NoteColorEditor instance;
     public static bool IsOpen => instance != null;

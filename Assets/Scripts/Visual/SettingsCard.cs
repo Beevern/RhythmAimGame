@@ -18,7 +18,10 @@ public class SettingsCard : MonoBehaviour
     public static void Apply(Settings settings)
     {
         GameObject panel = settings.settingsMenu;
-        if (panel == null || panel.GetComponent<SettingsCard>() != null) return;
+        //The SettingsPanel prefab carries its own disabled Settings with no controls wired up;
+        //only the real one (with a volume slider) may lay out the card
+        if (panel == null || !settings.enabled || settings.volSlider == null || settings.field == null) return;
+        if (panel.GetComponent<SettingsCard>() != null) return;
         CreatePairedControls(settings);
         panel.AddComponent<SettingsCard>().Layout(settings);
     }

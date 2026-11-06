@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Main menu art: a "living note" behind the title that fills like an approach note and bursts on
+//Main menu art: a "living note" in the middle of the screen that fills like an approach note and bursts on
 //every beat, plus a strip of audio bars along the bottom. The bars follow whatever audio is playing;
 //with no music they ripple out from each beat instead. Drawn on its own canvas behind the menu UI.
 public class MenuLogo : MonoBehaviour
@@ -94,23 +94,13 @@ public class MenuLogo : MonoBehaviour
 
     private void UpdateNote()
     {
-        //Follow the title (it lives on a different canvas), sized to its text height
+        //Centre of the screen, sized to the title's text height (the title lives on a different canvas)
+        note.anchoredPosition = Vector2.zero;
         float diameter = 260f;
         if (title != null && title.gameObject.activeInHierarchy)
         {
-            Bounds b = title.textBounds;
-            Vector3 centreWorld = title.transform.TransformPoint(b.center);
-            Vector2 screen = RectTransformUtility.WorldToScreenPoint(null, centreWorld);
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screen, null, out Vector2 local))
-            {
-                note.anchoredPosition = local;
-            }
-            float textHeightPx = b.size.y * title.transform.lossyScale.y;
+            float textHeightPx = title.textBounds.size.y * title.transform.lossyScale.y;
             diameter = Mathf.Clamp(textHeightPx / canvas.scaleFactor * 2.6f, 180f, 440f);
-        }
-        else
-        {
-            note.anchoredPosition = new Vector2(0f, 160f);
         }
 
         //Approach disc fills the rim over each beat, then bursts

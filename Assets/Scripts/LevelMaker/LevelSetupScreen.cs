@@ -38,6 +38,8 @@ public class LevelSetupScreen : MonoBehaviour
     private readonly AutoChart runner = new AutoChart();
     private TextMeshProUGUI lyricsLabel, outputLabel, wordsValue, wordsHint, status, runLabel;
     private Button runButton, showFilesButton;
+    private Image runGlow;
+    private RectTransform runShine;
     private Image fillChoice, boxChoice, plainChoice, gameChoice, videoChoice, offChoice;
     private string lastFolder;
 
@@ -121,8 +123,14 @@ public class LevelSetupScreen : MonoBehaviour
         if (oldTitle != null) oldTitle.gameObject.SetActive(false);
 
         BuildHeader();
-        BuildVisuals(Panel(Margin));
-        BuildChart(Panel(1920f - Margin - PanelW));
+        RectTransform visuals = Panel(Margin), chart = Panel(1920f - Margin - PanelW);
+        BuildVisuals(visuals);
+        BuildChart(chart);
+
+        //Panels fade and slide up into place, one after the other
+        ScreenDecor fx = ScreenDecor.On(gameObject);
+        fx.AddIntro(visuals, 0.05f);
+        fx.AddIntro(chart, 0.13f);
     }
 
     private void BuildHeader()
@@ -177,7 +185,7 @@ public class LevelSetupScreen : MonoBehaviour
         videoName.overflowMode = TextOverflowModes.Ellipsis;
         RectTransform videoFrame = Frame(p, Pad + (Inner - 768) / 2, 216, 768, 432);
         videoFit = Fit(sel.vidParent, videoFrame);
-        videoEmpty = Label(videoFrame, "No video selected", 0, 0, 768, 432, 20, false, Theme.TextMuted, TextAlignmentOptions.Center);
+        videoEmpty = Label(videoFrame, "<size=64><color=#FFFFFF2E>▶</color></size>\nNo video selected", 0, 0, 768, 432, 20, false, Theme.TextMuted, TextAlignmentOptions.Center);
         Adopt(sel.vidSelect, p, Pad, 660, 360, 44, "SELECT VIDEO", false);
 
         //Preview volume beside the picker
@@ -305,8 +313,17 @@ public class LevelSetupScreen : MonoBehaviour
         showFilesButton = MakeButton(rows, "SHOW FILES", Pad + Inner - 150, y - 2, 150, 34, false, ShowFiles);
         showFilesButton.gameObject.SetActive(false);
 
+        //Soft glow behind the run button (breathes, and brightens while working)
+        runGlow = Box(rows, Pad - 60, PanelH - Pad - 56 - 50, Inner + 120, 156, Theme.Accent.WithAlpha(0.12f));
+        runGlow.sprite = Theme.SoftBlob;
         runButton = MakeButton(rows, "AUTO-CHART", Pad, PanelH - Pad - 56, Inner, 56, true, OnRun);
         runLabel = runButton.GetComponentInChildren<TextMeshProUGUI>();
+        //A light band that sweeps across the button, clipped to it
+        runButton.gameObject.AddComponent<RectMask2D>();
+        Image shine = Box(runButton.transform, -140, 0, 110, 56, Color.white.WithAlpha(0f));
+        shine.sprite = Theme.SoftBlob;
+        shine.transform.SetAsFirstSibling();
+        runShine = shine.rectTransform;
 
         SetWords(words);
         RefreshStyle();
@@ -486,6 +503,7 @@ public class LevelSetupScreen : MonoBehaviour
 
     void Update()
     {
+        AnimateRunButton();
         if (runner.Running)
         {
             float dots = Mathf.Repeat(Time.unscaledTime * 2f, 4f);
@@ -570,6 +588,28 @@ public class LevelSetupScreen : MonoBehaviour
         KeepAspect(coverFit, sel.imageDisplayer);
         //A newly picked video starts with its own track volumes, so keep re-applying
         ApplyPreviewVolume();
+    }
+
+    private void AnimateRunButton()
+    {
+        if (runGlow == null) return;
+        float time = Time.unscaledTime;
+        bool working = runner.Running;
+        bool locked = !AutoChart.Available;
+        float breathe = 0.5f + 0.5f * Mathf.Sin(time * (working ? 4f : 1.6f));
+        runGlow.color = Theme.Accent.WithAlpha(locked ? 0f : working ? 0.18f + 0.14f * breathe : 0.08f + 0.06f * breathe);
+
+        //Sweeps continuously while working, otherwise once every few seconds
+        float period = working ? 1.1f : 4f, sweep = working ? 1.1f : 0.9f;
+        float p = Mathf.Repeat(time, period) / sweep;
+        Image shine = runShine.GetComponent<Image>();
+        if (p > 1f || locked)
+        {
+            shine.color = Color.white.WithAlpha(0f);
+            return;
+        }
+        runShine.anchoredPosition = new Vector2(Mathf.Lerp(-140f, Inner + 30f, p), 0f);
+        shine.color = Color.white.WithAlpha(working ? 0.22f : 0.3f);
     }
 
     //The scene's player sends audio straight to the device (Direct mode), so it ignores the
@@ -718,6 +758,8 @@ public class LevelSetupScreen : MonoBehaviour
 
     private static void SectionTitle(Transform parent, string text, float y)
     {
+        //Accent tick in the margin, left of the title
+        Box(parent, Pad - 14, y + 6, 4, 20, Theme.Accent).sprite = Theme.Square;
         Label(parent, text, Pad, y, Inner, 32, 22, true, Theme.Text, TextAlignmentOptions.Left).characterSpacing = 4;
     }
 
@@ -759,6 +801,10 @@ public class LevelSetupScreen : MonoBehaviour
     //Dark frame that clips whatever preview sits inside it
     private static RectTransform Frame(Transform parent, float x, float y, float w, float h)
     {
+        Image outline = Box(parent, x - 3, y - 3, w + 6, h + 6, Theme.Track);
+        outline.sprite = Theme.RoundedRect;
+        outline.type = Image.Type.Sliced;
+        outline.pixelsPerUnitMultiplier = 3f;
         Image bg = Box(parent, x, y, w, h, Color.black);
         bg.gameObject.AddComponent<RectMask2D>();
         return bg.rectTransform;

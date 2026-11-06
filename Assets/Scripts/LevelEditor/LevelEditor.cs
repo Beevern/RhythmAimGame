@@ -47,6 +47,7 @@ public class LevelEditor : MonoBehaviour
 
     //Runtime-only pieces
     int listTop;
+    int currentNote = -2;   //last note at or before the playhead (-1 = none yet)
     readonly List<Image> ticks = new List<Image>();
     readonly List<NoteSprite> notePool = new List<NoteSprite>();
     readonly List<ZoomMarker> zoomPool = new List<ZoomMarker>();
@@ -76,6 +77,7 @@ public class LevelEditor : MonoBehaviour
 
         CreateVideoPlayer();
         Wire();
+        ScreenDecor.DecorateEditor(view);
         view.videoImage.texture = Texture2D.blackTexture;
         view.coverImage.texture = Texture2D.blackTexture;
         RebuildLevelList();
@@ -267,9 +269,16 @@ public class LevelEditor : MonoBehaviour
             b.colors = V.Colors(current ? Theme.SurfaceHover : Theme.Surface, Theme.SurfaceHover);
             string folder = info.folder;
             b.onClick.AddListener(() => Guarded("open", () => OpenLevel(folder)));
+            //Cover thumbnail (letterboxed on a dark square if it isn't square)
+            V.Box(bg.transform, 10, 6, 46, 46, Theme.Field, Theme.Square);
+            if (LevelHolder.songImages.TryGetValue(songs[i], out Sprite cover) && cover != null)
+            {
+                Image thumb = V.Box(bg.transform, 10, 6, 46, 46, Color.white, cover);
+                thumb.preserveAspect = true;
+            }
             LevelNames.Split(info.name, out string artist, out string title);
-            V.Label(bg.transform, title, 14, 6, 300, 26, 19, true, Theme.Text, TextAlignmentOptions.Left).overflowMode = TextOverflowModes.Ellipsis;
-            V.Label(bg.transform, artist, 14, 30, 300, 22, 15, false, Theme.TextMuted, TextAlignmentOptions.Left).overflowMode = TextOverflowModes.Ellipsis;
+            V.Label(bg.transform, title, 66, 6, 232, 26, 19, true, Theme.Text, TextAlignmentOptions.Left).overflowMode = TextOverflowModes.Ellipsis;
+            V.Label(bg.transform, artist, 66, 30, 232, 22, 15, false, Theme.TextMuted, TextAlignmentOptions.Left).overflowMode = TextOverflowModes.Ellipsis;
             V.Label(bg.transform, "★" + info.difficulty.ToString("0.0"), 300, 0, 70, rowH, 17, true, Difficulty.ColorFor(info.difficulty), TextAlignmentOptions.Right);
         }
     }
@@ -466,8 +475,14 @@ public class LevelEditor : MonoBehaviour
             if (!on) continue;
             EditNote note = level.notes[i];
             bool sel = note == selected;
-            view.rowBg[r].color = sel ? Theme.Accent.WithAlpha(0.35f) : (i % 2 == 0 ? Color.white.WithAlpha(0.03f) : Color.clear);
-            view.rowIdx[r].text = (i + 1).ToString();
+            bool cur = i == currentNote;
+            view.rowBg[r].color = sel ? Theme.Accent.WithAlpha(0.35f)
+                : cur ? Color.white.WithAlpha(0.14f)
+                : (i % 2 == 0 ? Color.white.WithAlpha(0.03f) : Color.clear);
+            //The note the playhead last passed gets a marker in the # column
+            view.rowIdx[r].text = cur ? "▶" + (i + 1) : (i + 1).ToString();
+            view.rowIdx[r].color = cur ? Theme.Accent : Theme.TextMuted;
+            view.rowIdx[r].fontStyle = cur ? FontStyles.Bold : FontStyles.Normal;
             view.rowTime[r].text = Fmt(note.time);
             float gap = i + 1 < n ? level.notes[i + 1].time - note.time : -1f;
             view.rowDelta[r].text = gap >= 0f ? Fmt(gap) : "—";
@@ -489,6 +504,29 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+    //Index of the last note at or before the playhead, or -1 before the first note
+    int NoteAtPlayhead()
+    {
+        int found = -1;
+        for (int i = 0; i < level.notes.Count; i++)
+        {
+            if (PreviewTime(level.notes[i].time) <= playhead + 0.0005f) found = i;
+            else break;
+        }
+        return found;
+    }
+
+    //Highlights the current note and scrolls the list to follow it as the playhead moves
+    void FollowPlayhead()
+    {
+        int cur = NoteAtPlayhead();
+        if (cur == currentNote) return;
+        currentNote = cur;
+        //Keep it about a third of the way down, so upcoming notes stay visible
+        if (cur >= 0) listTop = cur - V.ListRows / 3;
+        RefreshList();
+    }
+
     //Keeps the selected note's row on screen
     void ScrollToSelected()
     {
@@ -508,6 +546,7 @@ public class LevelEditor : MonoBehaviour
         dirty = false;
         playhead = 0f;
         listTop = 0;
+        currentNote = -2;
         view.nameField.SetTextWithoutNotify(level.name);
         view.offsetField.SetTextWithoutNotify(Fmt(level.offset));
         log = HitLog.Load(level.name);
@@ -790,6 +829,7 @@ public class LevelEditor : MonoBehaviour
         if (video.isPlaying) playhead = (float)video.time;
         HandleKeys();
         HandleListScroll();
+        FollowPlayhead();
         PlayHitSounds();
         DrawPreviewNotes();
         DrawZoom();

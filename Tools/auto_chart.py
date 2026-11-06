@@ -454,10 +454,22 @@ def line_spans(lines: list[dict], items: list[dict], lead: float = 0.1,
         for (word, _, adlib), it in zip(line["pieces"], items[i:i + n]):
             text = clean_word(word)
             if not adlib and text:
-                units.append({"start": it["time"], "text": text, "sung": it.get("duration", 0.0)})
+                units.append({"start": it["time"], "text": text, "sung": it.get("duration", 0.0),
+                              "note": "duration" in it})
         i += n
         if units:
             spans.append({"units": units, "text": " ".join(u["text"] for u in units)})
+
+    # Words that didn't become notes keep the aligner's rougher time, which can put them out of
+    # order with a neighbour. Notes never move (their subtitle must contain them); the other
+    # word gives way: pushed after the word before it, or pulled before the word after it.
+    flat = [u for sp in spans for u in sp["units"]]
+    for j in range(1, len(flat)):
+        if not flat[j]["note"] and flat[j]["start"] < flat[j - 1]["start"] + 0.05:
+            flat[j]["start"] = flat[j - 1]["start"] + 0.05
+    for j in range(len(flat) - 2, -1, -1):
+        if not flat[j]["note"] and flat[j]["start"] > flat[j + 1]["start"] - 0.05:
+            flat[j]["start"] = flat[j + 1]["start"] - 0.05
 
     # A line appears `lead` before its first word, but never before the previous line's
     # last word has started (when one line runs straight into the next)
